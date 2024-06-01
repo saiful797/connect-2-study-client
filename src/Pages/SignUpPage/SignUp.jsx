@@ -1,15 +1,49 @@
+import axios from "axios";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { SiGithub } from "react-icons/si";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth"
+import toast from "react-hot-toast";
 
 const SignUp = () => {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, reset } = useForm();
+    const { createUser, updateUserProfile } = useAuth();
+    const navigate = useNavigate();
     
 
-    const onSubmit = ( data ) => {
-        console.log(data);
+    const onSubmit = async ( result ) => {
+        const formData = new FormData();
+        formData.append( "image", result.image[0] );
+
+        try{
+            //upload image and get image url
+            const { data } = await axios.post(
+                `https://api.imgbb.com/1/upload?key=${
+                    import.meta.env.VITE_IMGBB_API_KEY
+                }`,
+                formData
+            )
+            
+            const name = result.name;
+            const email = result.email;
+            const image = data.data.display_url;
+            const password = result.password;
+
+            createUser( email, password )
+            .then(() => {
+                updateUserProfile( name, image )
+                .then(() => {
+                    toast.success('User Create Successfully!!');
+                    navigate('/');
+                    reset();
+                })
+            })
+        
+        }catch( err ){
+            console.log( err.message );
+        }
 
 
     }
@@ -45,19 +79,6 @@ const SignUp = () => {
               />
             </div>
             <div>
-              <label htmlFor='image' className='block mb-2 text-sm'>
-                Select Image:
-              </label>
-              <input
-                required
-                type='file'
-                id='image'
-                name='image'
-                {...register("image", { required: true })}
-                accept='image/*'
-              />
-            </div>
-            <div>
               <label htmlFor='email' className='block mb-2 text-sm'>
                 Email address
               </label>
@@ -70,6 +91,19 @@ const SignUp = () => {
                 placeholder='Enter Your Email...'
                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
+              />
+            </div>
+            <div>
+              <label htmlFor='image' className='block mb-2 text-sm'>
+                Select Image:
+              </label>
+              <input
+                required
+                type='file'
+                id='image'
+                name='image'
+                {...register("image", { required: true })}
+                accept='image/*'
               />
             </div>
             <div>
