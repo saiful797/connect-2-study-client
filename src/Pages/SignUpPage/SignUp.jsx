@@ -1,11 +1,19 @@
+import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { SiGithub } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
+    const { register, handleSubmit, reset } = useForm();
+
+    const onSubmit = ( data ) => {
+        console.log(data);
+        
+
+    }
     return (
         <div className='flex justify-center items-center min-h-screen'>
-      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900'>
+      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-green-50 text-gray-900'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
           <p className='text-sm text-gray-400'>Welcome to Connect2Study</p>
@@ -13,6 +21,7 @@ const SignUp = () => {
         <form
           noValidate=''
           action=''
+          onSubmit={handleSubmit(onSubmit)}
           className='space-y-6 ng-untouched ng-pristine ng-valid'
         >
           <div className='space-y-4'>
@@ -24,7 +33,8 @@ const SignUp = () => {
                 type='text'
                 name='name'
                 id='name'
-                placeholder='Enter Your Name Here'
+                {...register("name", { required: true })}
+                placeholder='Enter Your Name...'
                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
@@ -38,6 +48,7 @@ const SignUp = () => {
                 type='file'
                 id='image'
                 name='image'
+                {...register("image", { required: true })}
                 accept='image/*'
               />
             </div>
@@ -49,8 +60,9 @@ const SignUp = () => {
                 type='email'
                 name='email'
                 id='email'
+                {...register("email", { required: true })}
                 required
-                placeholder='Enter Your Email Here'
+                placeholder='Enter Your Email...'
                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
@@ -66,8 +78,9 @@ const SignUp = () => {
                 name='password'
                 autoComplete='new-password'
                 id='password'
+                {...register("password", { required: true })}
                 required
-                placeholder='*******'
+                placeholder='Enter your password...'
                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900'
               />
             </div>
@@ -76,7 +89,7 @@ const SignUp = () => {
           <div>
             <button
               type='submit'
-              className='bg-[#00b16e] w-full rounded-md py-3 text-white'
+              className='bg-[#00b16e] text-lg font-medium w-full rounded-md py-3 text-white'
             >
               Continue
             </button>
