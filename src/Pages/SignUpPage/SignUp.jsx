@@ -1,18 +1,22 @@
+import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { SiGithub } from "react-icons/si";
 import { Link } from "react-router-dom";
 
 const SignUp = () => {
-    const { register, handleSubmit, reset } = useForm();
+    const { register, handleSubmit } = useForm();
 
     const onSubmit = ( data ) => {
         console.log(data);
-        
+
 
     }
     return (
         <div className='flex justify-center items-center min-h-screen'>
+            <Helmet>
+                <title>Connect2Study | Sign Up</title>
+            </Helmet>
       <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-green-50 text-gray-900'>
         <div className='mb-8 text-center'>
           <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
