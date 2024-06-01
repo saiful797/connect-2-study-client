@@ -5,10 +5,12 @@ import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth"
 import toast from "react-hot-toast";
 import SocialMediaSignIn from "../../Shared/SocialMediaSignIn";
+import useAxiosPublic from '../../Hooks/useAxiosPublic';
 
 const SignUp = () => {
     const { register, handleSubmit, reset } = useForm();
     const { createUser, updateUserProfile } = useAuth();
+    const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
     
 
@@ -31,15 +33,20 @@ const SignUp = () => {
             const email = result.email;
             const image = data.data.display_url;
             const password = result.password;
+            const role = result.role;
+
+            const userData = { name, email, role };
 
             createUser( email, password )
             .then(() => {
-                updateUserProfile( name, image )
-                .then(() => {
-                    toast.success('User Create Successfully!!');
-                    navigate('/');
-                    reset();
-                })
+              axiosPublic.post('/users', userData);
+              
+              updateUserProfile( name, image )
+              .then(() => {
+                  toast.success('User Create Successfully!!');
+                  navigate('/');
+                  reset();
+              })
             })
         
         }catch( err ){
