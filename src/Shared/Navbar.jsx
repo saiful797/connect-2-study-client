@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { FaBookReader } from "react-icons/fa";
-import { FiAlignJustify } from "react-icons/fi";
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
+import useAuth from "../Hooks/useAuth";
+import { RxHamburgerMenu } from "react-icons/rx";
 
 const Navbar = () => {
+    const { user } = useAuth();
+
     // Toggle 'Dark' and 'Light' theme
     const [theme, setTheme] = useState(localStorage.getItem("theme")? localStorage.getItem("theme") : "light");
     const handleToggle = (e) =>{
@@ -25,10 +28,6 @@ const Navbar = () => {
 
     const navLinks=<>
         <li className=" font-extrabold"><NavLink to="/">Home </NavLink></li>
-        <div>
-            <li className="md:hidden"><NavLink to="/signIn">Sign in</NavLink></li>
-            <li className="md:hidden"><NavLink to="/signUp">Sign up</NavLink></li>
-        </div>
         <li className=" font-medium"><NavLink to="/about">About Us</NavLink></li>
         <li className=" font-medium"><NavLink to="/contactUs">Contact Us</NavLink></li>
             
@@ -38,10 +37,8 @@ const Navbar = () => {
     <div className="navbar border py-5 border-[#5eedb4] md:rounded-lg mt-2">
         <div className="navbar-start">
             <div className="dropdown">
-                <div tabIndex={0} role="button" className="btn btn-outline btn-sm text-white lg:hidden">
-                    
-                    <FiAlignJustify className="w-5 h-5"/>
-
+                <div tabIndex={0} role="button" className="btn btn-sm lg:hidden">
+                    <RxHamburgerMenu className="w-5 h-5"/>
                 </div>
                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52">
                     {navLinks}
@@ -80,35 +77,36 @@ const Navbar = () => {
                 </label>
             </div>
 
-            {
-                // user?<div className="flex justify-center items-center gap-2 mr-3">
-
-                //     <div className="dropdown dropdown-bottom dropdown-end dropdown-hover">
-                //         <div tabIndex={0}>
-                //             <div className="w-12 h-12" data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName} data-tooltip-place="left">
-                                
-                //                 {user?.photoURL ?(
-                //                     <img className="w-12 h-12 rounded-full" src={user.photoURL} alt="User profile"/>
-                //                 ) : (
-                //                     <img className="w-12 h-12 rounded-full" src="https://i.ibb.co/Jq10C13/user.png" alt="User profile"/>
-                //                 )}
-                                
-                //             </div>
-                //         </div>
-                //         <div className="dropdown-content z-[10] menu">
-                //             <NavLink to="/">
-                //                 <button className="btn btn-sm bg-black text-white">Logout</button> 
-                //             </NavLink>
-                //         </div>
-                //     </div>
-
-                // </div>
-                
-                <div className="space-x-3 hidden md:flex mr-3">
-                    <Link className="btn btn-sm" to="/signIn">Sign In</Link>
-                    <Link className="btn btn-sm" to="/signUp">Sign Up</Link>
+            <div className="flex justify-center items-center gap-2 mr-3">
+                <div className="dropdown dropdown-end">
+                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                        <div className="w-10 rounded-full">
+                            {
+                                user? <img alt="user image" src={user.photoURL} />
+                                :
+                                <img alt="user image" src="https://i.ibb.co/2S1508F/profile-4675159.png"/>
+                            }
+                        </div>
+                    </div>
+                    {
+                        user?<ul tabIndex={0} className="menu menu-sm dropdown-content mt-1 z-[1] p-5 rounded-box w-52 bg-slate-100 text-lg font-bold shadow-md">
+                        <li>
+                            <a>Dashboard</a>
+                        </li>
+                        <li>
+                            <a>Logout</a>
+                        </li>
+                    </ul>
+                    : 
+                    <ul tabIndex={0} className="menu menu-sm dropdown-content mt-1 z-[1] p-5 bg-slate-100 rounded-box w-52 text-lg font-bold shadow-md">
+                        <li><a>Dashboard</a></li>
+                        <li><Link to='/signIn'>Sign in</Link></li>
+                        <li><Link to='/signUp'>Sign up</Link></li>
+                    </ul>
+                    }
                 </div>
-            }
+            </div>
+            
         </div>
         <Tooltip id="my-tooltip" />
     </div>

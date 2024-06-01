@@ -13,6 +13,8 @@ const SignUp = () => {
     
 
     const onSubmit = async ( result ) => {
+        console.log(result);
+        
         const formData = new FormData();
         formData.append( "image", result.image[0] );
 
