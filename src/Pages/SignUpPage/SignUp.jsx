@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 const SignUp = () => {
     const { register, handleSubmit } = useForm();
+    
 
     const onSubmit = ( data ) => {
         console.log(data);
