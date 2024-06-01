@@ -49,17 +49,17 @@ const SignUp = () => {
     return (
         <div className='flex justify-center items-center min-h-screen'>
             <Helmet>
-                <title>Connect2Study | Sign Up</title>
+                <title>Connect2Study | Sign up</title>
             </Helmet>
         <div className='flex flex-col max-w-md p-5 rounded-md sm:p-10 bg-green-50 text-gray-900'>
         <div className='text-center'>
-          <h1 className='mb-2 text-4xl font-bold'>Sign Up</h1>
+          <h1 className='mb-2 text-4xl font-bold'>Sign up</h1>
           <p className='text-sm text-gray-400'>Welcome to <span className="text-[#00b16e]">Connect2Study</span></p>
         </div>
         <form
           noValidate=''
           action=''
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={ handleSubmit(onSubmit) }
           className='space-y-6 ng-untouched ng-pristine ng-valid'
         >
           <div className='space-y-4'>
@@ -95,9 +95,15 @@ const SignUp = () => {
             <div>
                 <label className="form-control w-full">
                     <label htmlFor='image' className='block mb-2 text-sm'>
-                        Select Role:
+                        Role:
                     </label>
-                    <select defaultValue="default" className="select w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900" {...register("role", {required: true})} required>
+                    <select 
+                        defaultValue="default" 
+                        className="select w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900" 
+                        data-temp-mail-org='0'
+                        {...register("role", {required: true})} 
+                        required
+                    >
                         <option disabled value="default">Select your role</option>
                         <option value="student">Student</option>
                         <option value="tutor">Tutor</option>
