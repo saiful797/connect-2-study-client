@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily:{
+        sofia: ["Sofia", "cursive"],
+      }
+    },
   },
   plugins: [
     require('daisyui'),

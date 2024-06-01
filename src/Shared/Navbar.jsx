@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FaBookReader } from "react-icons/fa";
 import { FiAlignJustify } from "react-icons/fi";
 import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
@@ -49,7 +50,10 @@ const Navbar = () => {
             <div className="ml-3 lg:ml-5">
                 <Link to='/' className="text-2xl md:text-4xl font-bold flex">
                     <div className="relative">
-                        <h1>Connect2Study</h1>
+                        <h1 className="flex font-sofia text-[#5eedb4]">
+                            <FaBookReader className="text-[#5eedb4]" />
+                            Connect2Study
+                        </h1>
                     </div>
                 </Link>
             </div>
