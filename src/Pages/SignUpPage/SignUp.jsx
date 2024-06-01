@@ -1,11 +1,10 @@
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { FcGoogle } from "react-icons/fc";
-import { SiGithub } from "react-icons/si";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth"
 import toast from "react-hot-toast";
+import SocialMediaSignIn from "../../Shared/SocialMediaSignIn";
 
 const SignUp = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -25,7 +24,7 @@ const SignUp = () => {
                 }`,
                 formData
             )
-            
+
             const name = result.name;
             const email = result.email;
             const image = data.data.display_url;
@@ -52,10 +51,10 @@ const SignUp = () => {
             <Helmet>
                 <title>Connect2Study | Sign Up</title>
             </Helmet>
-      <div className='flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-green-50 text-gray-900'>
-        <div className='mb-8 text-center'>
-          <h1 className='my-3 text-4xl font-bold'>Sign Up</h1>
-          <p className='text-sm text-gray-400'>Welcome to Connect2Study</p>
+        <div className='flex flex-col max-w-md p-5 rounded-md sm:p-10 bg-green-50 text-gray-900'>
+        <div className='text-center'>
+          <h1 className='mb-2 text-4xl font-bold'>Sign Up</h1>
+          <p className='text-sm text-gray-400'>Welcome to <span className="text-[#00b16e]">Connect2Study</span></p>
         </div>
         <form
           noValidate=''
@@ -66,7 +65,7 @@ const SignUp = () => {
           <div className='space-y-4'>
             <div>
               <label htmlFor='email' className='block mb-2 text-sm'>
-                Name
+                Name:
               </label>
               <input
                 type='text'
@@ -80,7 +79,7 @@ const SignUp = () => {
             </div>
             <div>
               <label htmlFor='email' className='block mb-2 text-sm'>
-                Email address
+                Email Address:
               </label>
               <input
                 type='email'
@@ -92,6 +91,19 @@ const SignUp = () => {
                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
+            </div>
+            <div>
+                <label className="form-control w-full">
+                    <label htmlFor='image' className='block mb-2 text-sm'>
+                        Select Role:
+                    </label>
+                    <select defaultValue="default" className="select w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900" {...register("role", {required: true})} required>
+                        <option disabled value="default">Select your role</option>
+                        <option value="student">Student</option>
+                        <option value="tutor">Tutor</option>
+                        <option value="admin">Admin</option>
+                    </select>
+                </label>
             </div>
             <div>
               <label htmlFor='image' className='block mb-2 text-sm'>
@@ -109,7 +121,7 @@ const SignUp = () => {
             <div>
               <div className='flex justify-between'>
                 <label htmlFor='password' className='text-sm mb-2'>
-                  Password
+                  Password:
                 </label>
               </div>
               <input
@@ -119,7 +131,7 @@ const SignUp = () => {
                 id='password'
                 {...register("password", { required: true })}
                 required
-                placeholder='Enter your password...'
+                placeholder='Enter Your Password...'
                 className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900'
               />
             </div>
@@ -137,19 +149,14 @@ const SignUp = () => {
         <div className='flex items-center pt-4 space-x-1'>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
           <p className='px-3 text-sm dark:text-gray-400'>
-            Sign Up with social accounts
+            Sign up with social accounts
           </p>
           <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
         </div>
-        <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
-            <FcGoogle size={32} />
-            <p>Continue with Google</p>
-          </div>
-          <div className='flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer'>
 
-            <SiGithub size={32}/>
-            <p>Continue with GitHub</p>
-          </div>
+        {/* Social Media Sign In */}
+        <SocialMediaSignIn />
+
         <p className='px-6 text-sm text-center text-gray-500'>
           Already have an account?{' '}
           <Link
