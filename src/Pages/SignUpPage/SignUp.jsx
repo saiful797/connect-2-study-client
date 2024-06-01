@@ -37,10 +37,15 @@ const SignUp = () => {
 
             const userData = { name, email, role };
 
+            if(password < 6){
+              toast.error('Password length should be 6 characters or long!');
+              return;
+            }
+
             createUser( email, password )
             .then(() => {
               axiosPublic.post('/users', userData);
-              
+
               updateUserProfile( name, image )
               .then(() => {
                   toast.success('User Create Successfully!!');
@@ -52,8 +57,6 @@ const SignUp = () => {
         }catch( err ){
             console.log( err.message );
         }
-
-
     }
     return (
         <div className='flex justify-center items-center min-h-screen'>

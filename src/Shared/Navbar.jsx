@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { FaBookReader } from "react-icons/fa";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import useAuth from "../Hooks/useAuth";
 import { RxHamburgerMenu } from "react-icons/rx";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
+    const navigate = useNavigate();
 
     // Toggle 'Dark' and 'Light' theme
     const [theme, setTheme] = useState(localStorage.getItem("theme")? localStorage.getItem("theme") : "light");
@@ -32,6 +34,12 @@ const Navbar = () => {
         <li className=" font-medium"><NavLink to="/contactUs">Contact Us</NavLink></li>
             
     </>
+
+const handleLogOut = () => {
+    logOut();
+    toast.success('Logout Successful!!');
+    navigate('/');
+  }
 
     return (
     <div className="navbar border py-5 border-[#5eedb4] md:rounded-lg mt-2">
@@ -94,7 +102,7 @@ const Navbar = () => {
                             <a>Dashboard</a>
                         </li>
                         <li>
-                            <a>Logout</a>
+                            <Link onClick={handleLogOut}>Logout</Link>
                         </li>
                     </ul>
                     : 
