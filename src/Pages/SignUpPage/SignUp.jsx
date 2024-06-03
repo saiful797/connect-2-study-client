@@ -15,64 +15,63 @@ const SignUp = () => {
     
 
     const onSubmit = async ( result ) => {
-        console.log(result);
         
-        const formData = new FormData();
-        formData.append( "image", result.image[0] );
+      const formData = new FormData();
+      formData.append( "image", result.image[0] );
 
-        try{
-          const password = result.password;
+      try{
+        const password = result.password;
 
-          if(password.length < 6){
-            toast.error('Password should be 6 characters or long!!');
+        if(password.length < 6){
+          toast.error('Password should be 6 characters or long!!');
 
-            return;
-          }
-
-          else if(!/[A-Z]/.test(password)){
-            toast.error('Password should have one small and capital letter!!')
-            
-            return;
+          return;
         }
 
-        else if(!/[a-z]/.test(password)){
-            toast.error('Password should have one small and capital letter!!');
+        else if(!/[A-Z]/.test(password)){
+          toast.error('Password should have one small and capital letter!!')
+          
+          return;
+      }
 
-            return;
-        }
-          //upload image and get image url
-          const { data } = await axios.post(
-            `https://api.imgbb.com/1/upload?key=${
-                import.meta.env.VITE_IMGBB_API_KEY
-            }`,
-            formData
-          )
+      else if(!/[a-z]/.test(password)){
+          toast.error('Password should have one small and capital letter!!');
 
-          const name = result.name;
-          const email = result.email;
-          const image = data.data.display_url;
-          const role = result.role;
+          return;
+      }
+        //upload image and get image url
+        const { data } = await axios.post(
+          `https://api.imgbb.com/1/upload?key=${
+              import.meta.env.VITE_IMGBB_API_KEY
+          }`,
+          formData
+        )
 
-          const userData = { name, email, role };
+        const name = result.name;
+        const email = result.email;
+        const image = data.data.display_url;
+        const role = result.role;
 
-          createUser( email, password )
+        const userData = { name, email, role };
+
+        createUser( email, password )
+        .then(() => {
+          // post user information in DB
+          axiosPublic.post('/users', userData);
+
+          // update user profile
+          updateUserProfile( name, image )
           .then(() => {
-            // post user information in DB
-            axiosPublic.post('/users', userData);
-
-            // update user profile
-            updateUserProfile( name, image )
-            .then(() => {
-                toast.success('User Create Successfully!!');
-                toast.success('Sign in successful!');
-                navigate('/');
-                reset();
-            })
+              toast.success('User Create Successfully!!');
+              toast.success('Sign in successful!');
+              navigate('/');
+              reset();
           })
-        
-        }catch( err ){
-          console.log( err.message );
-        }
+        })
+      
+      }catch( err ){
+        console.log( err.message );
+      }
     }
     return (
         <div className='flex justify-center items-center min-h-screen'>

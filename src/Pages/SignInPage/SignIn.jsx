@@ -14,9 +14,13 @@ const SignIn = () => {
     userSignIn( result.email, result.password )
     .then(() => {
       toast.success("Sign in successful!");
-      navigate('/')
+      navigate('/');
     })
-    
+    .catch(error => {
+      if(error.message){
+        toast.error('Invalid credential!!')
+      }
+    })
   }
 
   return (
