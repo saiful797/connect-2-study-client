@@ -1,8 +1,24 @@
 import { Helmet } from "react-helmet-async";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SocialMediaSignIn from "../../Shared/SocialMediaSignIn";
+import { useForm } from "react-hook-form";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const SignIn = () => {
+  const { register, handleSubmit, reset } = useForm();
+  const navigate = useNavigate();
+  const { userSignIn } = useAuth();
+
+  const onSubmit = ( result ) =>{
+    userSignIn( result.email, result.password )
+    .then(() => {
+      toast.success("Sign in successful!");
+      navigate('/')
+    })
+    
+  }
+
   return (
     <div className='flex justify-center items-center min-h-screen'>
         <Helmet>
@@ -33,6 +49,7 @@ const SignIn = () => {
           </div>
 
           <form
+            onSubmit={ handleSubmit(onSubmit) }
             noValidate=''
             action=''
             className='space-y-6 ng-untouched ng-pristine ng-valid'
@@ -46,6 +63,7 @@ const SignIn = () => {
                   type='email'
                   name='email'
                   id='email'
+                  {...register("email", { required: true })}
                   required
                   placeholder='Enter Your Email...'
                   className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900'
@@ -63,6 +81,7 @@ const SignIn = () => {
                   name='password'
                   autoComplete='current-password'
                   id='password'
+                  {...register("password", { required: true })}
                   required
                   placeholder='Enter Your Password...'
                   className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900'
