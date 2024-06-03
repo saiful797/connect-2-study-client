@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import ScrollToTop from "../../../Shared/ScrollToTop";
+import Banner from "../Banner/Banner";
 
 const Home = () => {
     return (
@@ -7,7 +8,9 @@ const Home = () => {
             <Helmet>
                 <title>Connect2Study | Home</title>
             </Helmet>
-            Home Page
+            <div className="">
+                <Banner />
+            </div>
             <ScrollToTop />
         </div>
     );

@@ -18,7 +18,7 @@ const SignIn = () => {
     })
     .catch(error => {
       if(error.message){
-        toast.error('Invalid credential!!')
+        toast.error('Invalid credential!!');
       }
     })
   }
