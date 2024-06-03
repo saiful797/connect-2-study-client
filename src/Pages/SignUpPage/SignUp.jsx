@@ -57,11 +57,14 @@ const SignUp = () => {
 
           createUser( email, password )
           .then(() => {
+            // post user information in DB
             axiosPublic.post('/users', userData);
 
+            // update user profile
             updateUserProfile( name, image )
             .then(() => {
                 toast.success('User Create Successfully!!');
+                toast.success('Sign in successful!');
                 navigate('/');
                 reset();
             })
