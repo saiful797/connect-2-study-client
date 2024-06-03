@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Banner() {
   return ( 
-    <div className="w-full mb-5 lg:flex p-3 bg-green-50">
+    <div className="w-full mb-5 lg:flex p-3 bg-zinc-100">
         <div className="lg:w-1/2 grid place-content-center mt-28 p-3">
             <h1 className="text-3xl font-bold text-[#00b16e] mb-4">Together We Achieve More: Start Studying Collaboratively!</h1>
             <p className="text-lg text-slate-400">
