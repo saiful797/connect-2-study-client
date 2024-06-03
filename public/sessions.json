@@ -1,42 +1,35 @@
 [
     {
-        "id": 1,
         "title": "Introduction to Machine Learning",
         "description": "Learn the basics of machine learning algorithms and techniques.",
         "status": "ongoing"
     },
     {
-        "id": 2,
         "title": "Advanced Python Programming",
         "description": "Explore advanced topics and best practices in Python programming.",
         "status": "closed"
     },
     {
-        "id": 3,
         "title": "Data Visualization with D3.js",
         "description": "Discover how to create interactive data visualizations using D3.js.",
         "status": "ongoing"
     },
     {
-        "id": 4,
         "title": "Introduction to Web Development",
         "description": "Get started with HTML, CSS, and JavaScript to build web applications.",
         "status": "closed"
     },
     {
-        "id": 5,
         "title": "Cybersecurity Fundamentals",
         "description": "Learn the basics of cybersecurity and how to protect your data online.",
         "status": "ongoing"
     },
     {
-        "id": 6,
         "title": "Introduction to Data Science",
         "description": "Understand the principles and methods used in data science.",
         "status": "ongoing"
     },
     {
-        "id": 7,
         "title": "Machine Learning with Python",
         "description": "Implement machine learning algorithms using Python.",
         "status": "closed"

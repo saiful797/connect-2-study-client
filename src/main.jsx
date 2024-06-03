@@ -8,7 +8,7 @@ import { HelmetProvider } from 'react-helmet-async';
 import { Toaster } from 'react-hot-toast';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <div className='max-w-7xl mx-auto'>
+  <div className='max-w-7xl mx-auto font-sofia_scans'>
     <React.StrictMode>
       <AuthProvider>
         <HelmetProvider>
