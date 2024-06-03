@@ -27,7 +27,6 @@ const Navbar = () => {
     },[theme]);
     // console.log(user);
     
-
     const navLinks=<>
         <li className=" font-extrabold"><NavLink to="/">Home </NavLink></li>
         <li className=" font-medium"><NavLink to="/about">About Us</NavLink></li>

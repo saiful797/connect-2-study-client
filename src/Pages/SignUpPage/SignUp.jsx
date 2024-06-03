@@ -21,48 +21,61 @@ const SignUp = () => {
         formData.append( "image", result.image[0] );
 
         try{
-            //upload image and get image url
-            const { data } = await axios.post(
-                `https://api.imgbb.com/1/upload?key=${
-                    import.meta.env.VITE_IMGBB_API_KEY
-                }`,
-                formData
-            )
+          const password = result.password;
 
-            const name = result.name;
-            const email = result.email;
-            const image = data.data.display_url;
-            const password = result.password;
-            const role = result.role;
+          if(password.length < 6){
+            toast.error('Password should be 6 characters or long!!');
 
-            const userData = { name, email, role };
+            return;
+          }
 
-            if(password < 6){
-              toast.error('Password length should be 6 characters or long!');
-              return;
-            }
+          else if(!/[A-Z]/.test(password)){
+            toast.error('Password should have one small and capital letter!!')
+            
+            return;
+        }
 
-            createUser( email, password )
+        else if(!/[a-z]/.test(password)){
+            toast.error('Password should have one small and capital letter!!');
+
+            return;
+        }
+          //upload image and get image url
+          const { data } = await axios.post(
+            `https://api.imgbb.com/1/upload?key=${
+                import.meta.env.VITE_IMGBB_API_KEY
+            }`,
+            formData
+          )
+
+          const name = result.name;
+          const email = result.email;
+          const image = data.data.display_url;
+          const role = result.role;
+
+          const userData = { name, email, role };
+
+          createUser( email, password )
+          .then(() => {
+            axiosPublic.post('/users', userData);
+
+            updateUserProfile( name, image )
             .then(() => {
-              axiosPublic.post('/users', userData);
-
-              updateUserProfile( name, image )
-              .then(() => {
-                  toast.success('User Create Successfully!!');
-                  navigate('/');
-                  reset();
-              })
+                toast.success('User Create Successfully!!');
+                navigate('/');
+                reset();
             })
+          })
         
         }catch( err ){
-            console.log( err.message );
+          console.log( err.message );
         }
     }
     return (
         <div className='flex justify-center items-center min-h-screen'>
-            <Helmet>
-                <title>Connect2Study | Sign up</title>
-            </Helmet>
+          <Helmet>
+              <title>Connect2Study | Sign up</title>
+          </Helmet>
         <div className='flex flex-col max-w-md p-5 rounded-md sm:p-10 bg-green-50 text-gray-900'>
         <div className='text-center'>
           <h1 className='mb-2 text-4xl font-bold'>Sign up</h1>
@@ -77,7 +90,7 @@ const SignUp = () => {
           <div className='space-y-4'>
             <div>
               <label htmlFor='email' className='block mb-2 text-sm'>
-                Name:
+                Your Name:
               </label>
               <input
                 type='text'
@@ -110,16 +123,16 @@ const SignUp = () => {
                         Role:
                     </label>
                     <select 
-                        defaultValue="default" 
-                        className="select w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900" 
-                        data-temp-mail-org='0'
-                        {...register("role", {required: true})} 
-                        required
+                      defaultValue="default" 
+                      className="select w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900" 
+                      data-temp-mail-org='0'
+                      {...register("role", {required: true})} 
+                      required
                     >
-                        <option disabled value="default">Select your role</option>
-                        <option value="student">Student</option>
-                        <option value="tutor">Tutor</option>
-                        <option value="admin">Admin</option>
+                      <option disabled value="default">Select your role</option>
+                      <option value="student">Student</option>
+                      <option value="tutor">Tutor</option>
+                      <option value="admin">Admin</option>
                     </select>
                 </label>
             </div>
