@@ -7,8 +7,6 @@ const PrivateRoute = ({children}) => {
     const { user, loading } = useAuth();
     const location = useLocation();
 
-    console.log('From Private Route page: ', location);
-
     if(loading){
         return <RingLoader className='mx-auto' color="black" size={200} />
     }

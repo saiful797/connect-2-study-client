@@ -5,7 +5,8 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import SignIn from "../Pages/SignInPage/SignIn";
 import SignUp from "../Pages/SignUpPage/SignUp";
 import DashboardLayout from "../Layout/DashboardLayout";
-import PrivateRoute from "../Routes/PrivateRoute"
+import PrivateRoute from "../Routes/PrivateRoute";
+import AllUsers from "../Components/Dashboard/AllUsers/AllUsers";
 
 
 export const router = createBrowserRouter([
@@ -27,7 +28,8 @@ export const router = createBrowserRouter([
       </PrivateRoute>,
       children:[
         {
-          //
+          path: 'allUsers',
+          element: <AllUsers />
         }
       ]
     },
