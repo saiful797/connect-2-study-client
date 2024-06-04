@@ -18,10 +18,11 @@ const SocialMediaSignIn = () => {
 
             const name = res.user.displayName;
             const email = res.user.email;
+            const image = res.user.photoURL;
             const role= 'student';
 
             // post user information in DB
-            const  userData = { name, email, role };
+            const  userData = { name, email, role, image };
             axiosPublic.post("/users", userData );
 
             navigate('/');

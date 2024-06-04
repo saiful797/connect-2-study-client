@@ -23,7 +23,7 @@ const Home = () => {
             <div className="">
                 <Banner />
             </div>
-           <div>
+           <div className="p-2">
                 <StudySessions />
            </div>
             <ScrollToTop />

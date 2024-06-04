@@ -52,7 +52,7 @@ const SignUp = () => {
         const image = data.data.display_url;
         const role = result.role;
 
-        const userData = { name, email, role };
+        const userData = { name, email, role, image };
 
         createUser( email, password )
         .then(() => {
@@ -62,11 +62,16 @@ const SignUp = () => {
           // update user profile
           updateUserProfile( name, image )
           .then(() => {
-              toast.success('User Create Successfully!!');
               toast.success('Sign in successful!');
+              toast.success('User Create Successfully!!');
               navigate('/');
               reset();
           })
+        })
+        .catch(error => {
+          if(error.message){
+            toast.error('Email already in use!!');
+          }
         })
       
       }catch( err ){

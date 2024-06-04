@@ -5,6 +5,7 @@ import { Tooltip } from "react-tooltip";
 import useAuth from "../Hooks/useAuth";
 import { RxHamburgerMenu } from "react-icons/rx";
 import toast from "react-hot-toast";
+import 'react-tooltip/dist/react-tooltip.css';
 
 const Navbar = () => {
     const { user, logOut } = useAuth();
@@ -40,7 +41,7 @@ const Navbar = () => {
     }
 
     return (
-    <div className="navbar fixed z-50 bg-opacity-0 border mt-px py-5 border-[#5eedb4] md:rounded-lg max-w-7xl mx-auto bg-black">
+    <div className="navbar fixed z-50 bg-opacity-0 border mt-px py-5 border-[#5eedb4] md:rounded-lg max-w-7xl mx-auto ">
         <div className="navbar-start">
             <div className="dropdown">
                 <div tabIndex={0} role="button" className="btn btn-sm lg:hidden">
@@ -85,8 +86,8 @@ const Navbar = () => {
 
             <div className="flex justify-center items-center gap-2 mr-3">
                 <div className="dropdown dropdown-end">
-                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
-                        <div className="w-10 rounded-full">
+                    <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar hover:bg-[#34a87a]">
+                        <div data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName? user.displayName : 'User'} className="w-11 rounded-full">
                             {
                                 user? <img alt="user image" src={user.photoURL} />
                                 :
