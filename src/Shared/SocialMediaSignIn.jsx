@@ -4,8 +4,9 @@ import useAuth from "../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import PropTypes from 'prop-types';
 
-const SocialMediaSignIn = () => {
+const SocialMediaSignIn = ({ location }) => {
     const navigate = useNavigate();
     const {  googleSignIn, githubSignIn } = useAuth();
     const axiosPublic = useAxiosPublic();
@@ -25,7 +26,7 @@ const SocialMediaSignIn = () => {
             const  userData = { name, email, role, image };
             axiosPublic.post("/users", userData );
 
-            navigate('/');
+            navigate(location?.state || '/');
 
         })
 
@@ -43,5 +44,9 @@ const SocialMediaSignIn = () => {
         </div>
     );
 };
+
+SocialMediaSignIn.propTypes ={
+    location: PropTypes.object.isRequired,
+}
 
 export default SocialMediaSignIn;

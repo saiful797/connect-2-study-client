@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-import useAuth from '../Hooks/useAuth/useAuth';
 import { Navigate, useLocation } from 'react-router-dom';
 import { RingLoader } from 'react-spinners';
+import useAuth from '../Hooks/useAuth';
 
 const PrivateRoute = ({children}) => {
     const { user, loading } = useAuth();
     const location = useLocation();
 
-    // console.log(location);
+    console.log('From Private Route page: ', location);
 
     if(loading){
         return <RingLoader className='mx-auto' color="black" size={200} />

@@ -1,20 +1,27 @@
 import { Helmet } from "react-helmet-async";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import SocialMediaSignIn from "../../Shared/SocialMediaSignIn";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 
 const SignIn = () => {
-  const { register, handleSubmit, reset } = useForm();
+  const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
+  const location = useLocation();
   const { userSignIn } = useAuth();
 
+  console.log('From sign in page: ', location);
+
   const onSubmit = ( result ) =>{
+
     userSignIn( result.email, result.password )
-    .then(() => {
-      toast.success("Sign in successful!");
-      navigate('/');
+    .then((res) => {
+      if(res.user){
+        toast.success("Sign in successful!");
+      }
+      console.log("From sign in: ",res.user)
+      navigate(location?.state? location?.state : '/');
     })
     .catch(error => {
       if(error.message){
@@ -42,7 +49,7 @@ const SignIn = () => {
           </div>
 
           {/* Social Media Sign In */}
-          <SocialMediaSignIn />
+          <SocialMediaSignIn location={location}/>
 
           <div className='flex mb-3 items-center space-x-1'>
             <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
