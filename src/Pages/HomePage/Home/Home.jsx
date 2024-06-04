@@ -9,9 +9,10 @@ const Home = () => {
     const [studySession, setStudySession] = useState();
 
     useEffect(()=>{
-        fetch('/sessions.json')
+        fetch(`${import.meta.env.VITE_SERVER_API}/study-session`)
         .then(res => res.json())
         .then(data => {
+            console.log("Session: ", data)
             setStudySession(data);
         })
     },[])
@@ -22,7 +23,6 @@ const Home = () => {
         fetch(`${import.meta.env.VITE_SERVER_API}/tutors`)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             setTutors(data);
         })
         
@@ -36,8 +36,10 @@ const Home = () => {
             <div className="">
                 <Banner />
             </div>
-           <div className="p-2">
-                <StudySessions />
+           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 p-2">
+                {
+                    studySession?.map( session => <StudySessions key = { session._id } session = { session }/>)
+                }
            </div>
            
            <div className="bg-cyan-100 p-10 mt-6">

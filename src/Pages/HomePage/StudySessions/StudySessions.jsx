@@ -1,71 +1,20 @@
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
-const StudySessions = () => {
+const StudySessions = ( { session } ) => {
+    const { description, status, title } = session;
     return (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
-            <div className="mt-10 bg-white p-10 space-y-4 shadow-md">
-                <h1 className="text-xl font-bold">Introduction to Data Science</h1>
+        <div className="">
+            <div className="mt-10 p-10 space-y-4 shadow-md">
+                <h1 className="text-xl font-bold">{ title }</h1>
                 <p>
-                    Understand the principles and methods used in data science.
+                    { description }
                 </p>
                 <div>
                     <Link className="cursor-pointer bg-green-300 text-white p-2">
-                        ongoing
-                    </Link>
-                </div>
-            </div>
-            <div className="mt-10 bg-white p-10 space-y-4 shadow-md">
-                <h1 className="text-xl font-bold">Introduction to Data Science</h1>
-                <p>
-                    Understand the principles and methods used in data science.
-                </p>
-                <div>
-                    <Link className="cursor-pointer bg-green-300 text-white p-2">
-                        ongoing
-                    </Link>
-                </div>
-            </div>
-            <div className="mt-10 bg-white p-10 space-y-4 shadow-md">
-                <h1 className="text-xl font-bold">Introduction to Data Science</h1>
-                <p>
-                    Understand the principles and methods used in data science.
-                </p>
-                <div>
-                    <Link className="cursor-pointer bg-green-300 text-white p-2">
-                        ongoing
-                    </Link>
-                </div>
-            </div>
-            <div className="mt-10 bg-white p-10 space-y-4 shadow-md">
-                <h1 className="text-xl font-bold">Introduction to Data Science</h1>
-                <p>
-                    Understand the principles and methods used in data science.
-                </p>
-                <div>
-                    <Link className="cursor-pointer bg-green-300 text-white p-2">
-                        ongoing
-                    </Link>
-                </div>
-            </div>
-            <div className="mt-10 bg-white p-10 space-y-4 shadow-md">
-                <h1 className="text-xl font-bold">Introduction to Data Science</h1>
-                <p>
-                    Understand the principles and methods used in data science.
-                </p>
-                <div>
-                    <Link className="cursor-pointer bg-green-300 text-white p-2">
-                        ongoing
-                    </Link>
-                </div>
-            </div>
-            <div className="mt-10 bg-white p-10 space-y-4 shadow-md">
-                <h1 className="text-xl font-bold">Introduction to Data Science</h1>
-                <p>
-                    Understand the principles and methods used in data science.
-                </p>
-                <div>
-                    <Link className="cursor-pointer bg-green-300 text-white p-2">
-                        ongoing
+                        {
+                            status === 'ongoing'? "Ongoing" : "Closed"
+                        }
                     </Link>
                 </div>
             </div>
@@ -73,4 +22,7 @@ const StudySessions = () => {
     );
 };
 
+StudySessions.propTypes = {
+    session: PropTypes.object.isRequired,
+}
 export default StudySessions;
