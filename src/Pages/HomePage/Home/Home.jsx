@@ -12,7 +12,6 @@ const Home = () => {
         fetch(`${import.meta.env.VITE_SERVER_API}/study-session`)
         .then(res => res.json())
         .then(data => {
-            console.log("Session: ", data);
             setStudySession(data);
         })
     },[])
