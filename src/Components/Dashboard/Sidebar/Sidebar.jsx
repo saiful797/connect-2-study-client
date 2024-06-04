@@ -10,16 +10,24 @@ import { Link } from 'react-router-dom'
 import useAuth from '../../../Hooks/useAuth'
 import { FaBookReader } from 'react-icons/fa'
 import { GiHamburgerMenu } from "react-icons/gi";
+import { RiLogoutCircleRLine } from "react-icons/ri";
 
 const Sidebar = () => {
-  const { logOut } = useAuth()
-  const [isActive, setActive] = useState(false)
+    const { logOut } = useAuth()
+    const [isActive, setActive] = useState(false)
 
-  // Sidebar Responsive Handler
-  const handleToggle = () => {
-    setActive(!isActive)
-  }
-  return (
+    // Sidebar Responsive Handler
+    const handleToggle = () => {
+        setActive(!isActive)
+    }
+
+    // Handle logout
+    const handleLogOut = () => {
+        logOut()
+        toast.success('Logout Successful!!');
+        navigate('/');
+    }  
+    return (
     <>
       {/* Small Screen Navbar */}
       <div className='bg-teal-50 text-gray-800 flex justify-between md:hidden'>
@@ -136,9 +144,9 @@ const Sidebar = () => {
             onClick={logOut}
             className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
           >
-            {/* <GrLogout className='w-5 h-5' /> */}
+            <RiLogoutCircleRLine className='w-5 h-5'/>
 
-            <span className='mx-4 font-medium'>Logout</span>
+            <span onClick={handleLogOut} className='mx-4 font-medium'>Logout</span>
           </button>
         </div>
       </div>
