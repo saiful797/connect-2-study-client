@@ -20,7 +20,6 @@ const SignIn = () => {
       if(res.user){
         toast.success("Sign in successful!");
       }
-      console.log("From sign in: ",res.user)
       navigate(location?.state? location?.state : '/');
     })
     .catch(error => {

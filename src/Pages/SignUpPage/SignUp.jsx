@@ -1,7 +1,7 @@
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth"
 import toast from "react-hot-toast";
 import SocialMediaSignIn from "../../Shared/SocialMediaSignIn";
@@ -12,6 +12,7 @@ const SignUp = () => {
     const { createUser, updateUserProfile } = useAuth();
     const axiosPublic = useAxiosPublic();
     const navigate = useNavigate();
+    const location = useLocation();
     
 
     const onSubmit = async ( result ) => {
@@ -193,7 +194,7 @@ const SignUp = () => {
         </div>
 
         {/* Social Media Sign In */}
-        <SocialMediaSignIn />
+        <SocialMediaSignIn location={ location }/>
 
         <p className='px-6 text-sm text-center text-gray-500'>
           Already have an account?{' '}

@@ -23,7 +23,7 @@ const Sidebar = () => {
 
     // Handle logout
     const handleLogOut = () => {
-        logOut()
+        logOut();
         toast.success('Logout Successful!!');
         navigate('/');
     }  
@@ -76,9 +76,7 @@ const Sidebar = () => {
 
           {/* Nav Items */}
           <div className='flex flex-col justify-between flex-1 mt-6'>
-            {/* Conditional toggle button here.. */}
-
-            {/*  Menu Items */}
+            
             <nav>
               {/* Statistics */}
               <NavLink
