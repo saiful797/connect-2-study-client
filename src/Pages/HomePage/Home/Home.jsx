@@ -12,7 +12,7 @@ const Home = () => {
         fetch(`${import.meta.env.VITE_SERVER_API}/study-session`)
         .then(res => res.json())
         .then(data => {
-            console.log("Session: ", data)
+            console.log("Session: ", data);
             setStudySession(data);
         })
     },[])
@@ -42,9 +42,9 @@ const Home = () => {
                 }
            </div>
            
-           <div className="bg-cyan-100 p-10 mt-6">
-                <h1 className="text-6xl font-bold text-center">Our Tutors</h1>
-                <div className=" flex justify-center gap-5 items-center">
+           <div className="shadow shadow-black p-10 mt-5 mb-5">
+                <h1 className="text-6xl font-bold text-center mb-3 w-1/3 mx-auto border-4 border-[#34a87a] ">Our Tutors</h1>
+                <div className=" grid md:grid-cols-2 lg:grid-cols-4">
                     {
                         tutors?.map( tutor => <AllTutor key={tutor._id} tutor = { tutor } />)
                     }
