@@ -89,23 +89,37 @@ const Sidebar = () => {
               {/* Admin Routes --->This routes only access Admin */}
               {
                 role === 'admin'? <>
-                    {/* all users */}
-                    <NavLink
-                      to='allUsers'
-                      className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                          isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                      }`}
-                    >
-                      <TbUsersGroup className='w-5 h-5'/>
-                      <span className='mx-4 font-medium'>All Users</span>
-                    </NavLink>
+                  {/* all users */}
+                  <NavLink
+                    to='allUsers'
+                    className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
+                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
+                    }`}
+                  >
+                    <TbUsersGroup className='w-5 h-5'/>
+                    <span className='mx-4 font-medium'>All Users</span>
+                  </NavLink>
+
+                  {/* all study sessions */}
+                  <NavLink
+                    to='all-study-sessions'
+                    className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
+                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
+                    }`}
+                  >
+                    <TbUsersGroup className='w-5 h-5'/>
+                    <span className='mx-4 font-medium'>All Study Sessions</span>
+                  </NavLink>
                 </>
                 :
                 <>
                   {
                     role === 'tutor'? <>
+                    
                         {/* Tutor Routes --->This routes only access Tutor */}
+
                         {/* Add Session */}
                         <NavLink
                           to='add-session'
@@ -120,7 +134,7 @@ const Sidebar = () => {
                           <span className='mx-4 font-medium'>Add Session</span>
                         </NavLink>
                         <NavLink
-                          to='all-sessions'
+                          to='all-study-sessions'
                           className={({ isActive }) =>
                           `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
                               isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
@@ -129,7 +143,7 @@ const Sidebar = () => {
                         >
                           <FaMagnifyingGlassArrowRight className='w-5 h-5'/>
 
-                          <span className='mx-4 font-medium'>All Sessions</span>
+                          <span className='mx-4 font-medium'>All Study Sessions</span>
                         </NavLink>
                     </>
                     :

@@ -9,6 +9,7 @@ import PrivateRoute from "../Routes/PrivateRoute";
 import AllUser from "../Components/Dashboard/Admin/AllUser/AllUser";
 import AddSession from "../Components/Dashboard/Tutor/AddSession/AddSession";
 import AllSessions from "../Components/Dashboard/Tutor/AllSessions/AllSessions";
+import AllStudySessions from "../Components/Dashboard/Admin/AllStudySessions/AllStudySessions";
 
 
 export const router = createBrowserRouter([
@@ -34,13 +35,17 @@ export const router = createBrowserRouter([
           path: 'allUsers',
           element: <AllUser />
         },
+        {
+          path: 'all-study-sessions',
+          element: <AllStudySessions />
+        },
         // tutor related route
         {
           path: 'add-session',
           element:<AddSession />
         },
         {
-          path: 'all-sessions',
+          path: 'all-study-sessions',
           element: <AllSessions />
         }
       ]
