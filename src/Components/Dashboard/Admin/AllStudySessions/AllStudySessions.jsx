@@ -4,6 +4,7 @@ import 'react-tabs/style/react-tabs.css';
 import SectionTitle from '../../../Shared/SectionTitle';
 import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import StudySession from './StudySession/StudySession';
+import { MdOutlineNotificationsActive } from "react-icons/md";
 
 const AllStudySessions = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -27,14 +28,22 @@ const AllStudySessions = () => {
             
             <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
                 <TabList>
-                    <Tab>PENDING</Tab>
+                    <Tab>
+                        <div className='flex'>
+                            PENDING
+                            <div className='relative ml-2'>
+                                <MdOutlineNotificationsActive  className='w-5 h-5'/>
+                                <p className='absolute -top-2 -right-2 text-red-600'>{pending.length}</p>
+                            </div>
+                        </div>
+                    </Tab>
                     <Tab>APPROVED</Tab>
                     <Tab>REJECTED</Tab>
                 </TabList>
 
                 {/* pending sessions */}
-                <TabPanel>
-                    <div>
+                <TabPanel className={`p-10`}>
+                    <div className='grid lg:grid-cols-2 gap-5 mt-5'>
                         {
                             pending.map(studySession => <StudySession 
                                 key={studySession._id} 
