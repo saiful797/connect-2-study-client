@@ -4,12 +4,7 @@ import toast from 'react-hot-toast';
 
 const StudySession = ({ studySession }) => {
     const axiosPublic = useAxiosPublic();
-
-    const {_id, name , email, title,regStart, regEnd, status, regFee, classStart, classEnd, duration} = studySession;
-
-    const handleStudySessionApproved = () => {
-
-    }
+    const {_id, name , email, title,regStart, regEnd, regFee, classStart, classEnd, duration} = studySession;
 
     const handleStudySessionReject = async () => {
         const res = await axiosPublic.patch(`/study-session-reject/${_id}`);
@@ -52,18 +47,10 @@ const StudySession = ({ studySession }) => {
                     }
                 </div>
                 <div className='flex justify-evenly mt-5'>
-                    {/* <p>
-                        {
-                            status === 'pending'? <p className='bg-yellow-100 text-stone-700 pl-2 pr-2'>
-                                pending
-                            </p>
-                            :
-                            <div>
-                               
-                            </div>
-                        }
-                    </p> */}
-                    <p onClick={handleStudySessionApproved} className='cursor-pointer bg-teal-50 text-green-600 pl-2 pr-2'>Approve</p>
+
+                    <p className='cursor-pointer bg-teal-50 text-green-700 pl-2 pr-2'>Approve</p>
+                    
+                    {/*study session reject button*/}
                     <p onClick={handleStudySessionReject} className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'>Reject</p>
                     
                 </div>
