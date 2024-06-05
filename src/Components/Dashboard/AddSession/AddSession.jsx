@@ -1,15 +1,17 @@
 import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import toast from "react-hot-toast";
 
 const AddSession = () => {
     const { user } = useAuth();
+    const axiosPublic = useAxiosPublic();
+    const { register, handleSubmit, reset } = useForm();
+
     const name = user.displayName;
     const email = user.email;
 
-    const { register, handleSubmit } = useForm();
-
-    const onSubmit = ( data ) => {
-
+    const onSubmit = async( data ) => {
         const sessionInfo = {
             ...data,
             name, 
@@ -17,7 +19,13 @@ const AddSession = () => {
             status: 'pending',
             "reg-fee": 0,
         }
-        console.log("Session Info: ", sessionInfo);
+        const res = await axiosPublic.post('/study-session', sessionInfo );
+        if(res.data.insertedId){
+            toast.success("Your Session Post Successfully!! Wait For Admin approved");
+            reset()
+        }
+        
+        
     }
 
     return (
@@ -53,7 +61,7 @@ const AddSession = () => {
                                 name='duration'
                                 id='duration'
                                 type='text'
-                                placeholder='Enter course duration here. ex.: 60 days'
+                                placeholder='Enter course duration here. ex.: 2 months'
                                 {...register("duration", { required: true })}
                                 required
                             />
