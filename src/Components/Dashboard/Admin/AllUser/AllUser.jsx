@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 
 const AllUser = () => {

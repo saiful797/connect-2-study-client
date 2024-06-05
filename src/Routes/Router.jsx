@@ -6,9 +6,9 @@ import SignIn from "../Pages/SignInPage/SignIn";
 import SignUp from "../Pages/SignUpPage/SignUp";
 import DashboardLayout from "../Layout/DashboardLayout";
 import PrivateRoute from "../Routes/PrivateRoute";
-import AllUser from "../Components/Dashboard/AllUser/AllUser";
-import AddSession from "../Components/Dashboard/AddSession/AddSession";
-import AllSessions from "../Components/Dashboard/AllSessions/AllSessions";
+import AllUser from "../Components/Dashboard/Admin/AllUser/AllUser";
+import AddSession from "../Components/Dashboard/Tutor/AddSession/AddSession";
+import AllSessions from "../Components/Dashboard/Tutor/AllSessions/AllSessions";
 
 
 export const router = createBrowserRouter([

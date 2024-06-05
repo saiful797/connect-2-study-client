@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
-import useAuth from "../../../Hooks/useAuth";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
+import useAuth from "../../../../Hooks/useAuth";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import moment from "moment";
 

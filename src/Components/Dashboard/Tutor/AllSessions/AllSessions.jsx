@@ -1,7 +1,8 @@
 import { useState } from "react";
-import useAuth from "../../../Hooks/useAuth";
-import useAxiosPublic from "../../../Hooks/useAxiosPublic";
-import { FaRegShareSquare, FaTrashAlt } from "react-icons/fa";
+import useAuth from "../../../../Hooks/useAuth";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import { LuGitPullRequestDraft } from "react-icons/lu";
+
 
 const AllSessions = () => {
     const { user } = useAuth();
@@ -43,8 +44,7 @@ const AllSessions = () => {
                                     <td>{session.status}</td>
                                     <td>
                                         <button onClick={() => handleDeleteSession(session._id)} className="btn btn-ghost btn-outline btn-sm">
-                                            <FaRegShareSquare />
-
+                                            <LuGitPullRequestDraft />
                                         </button>
                                     </td>
                                 </tr> )
