@@ -31,6 +31,7 @@ const Sidebar = () => {
         axiosPublic.get(`/role/${email}`)
         .then(res => {
             setRole(res.data.role);
+            console.log("user role: ", res.data.role);
         })
     },[])
 
@@ -111,9 +112,9 @@ const Sidebar = () => {
                         {
                             role === 'tutor'? <>
                                 {/* Tutor Routes --->This routes only access Tutor */}
-                                {/* Add Room */}
+                                {/* Add Session */}
                                 <NavLink
-                                    to='add-room'
+                                    to='add-session'
                                     className={({ isActive }) =>
                                     `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
                                         isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
@@ -122,20 +123,7 @@ const Sidebar = () => {
                                 >
                                     <BsFillHouseAddFill className='w-5 h-5' />
 
-                                    <span className='mx-4 font-medium'>Add Room</span>
-                                </NavLink>
-                                {/* My Listing */}
-                                <NavLink
-                                    to='my-listings'
-                                    className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                                    }`
-                                    }
-                                >
-                                    {/* <MdHomeWork className='w-5 h-5' /> */}
-
-                                    <span className='mx-4 font-medium'>My Listings</span>
+                                    <span className='mx-4 font-medium'>Add Session</span>
                                 </NavLink>
                             </>
                             :

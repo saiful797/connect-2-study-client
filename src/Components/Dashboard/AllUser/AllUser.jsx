@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 
-const AllUsers = () => {
+const AllUser = () => {
     const [ users, setUsers ] = useState();
     const axiosPublic = useAxiosPublic();
 
@@ -63,4 +63,4 @@ const AllUsers = () => {
     );
 };
 
-export default AllUsers;
+export default AllUser;

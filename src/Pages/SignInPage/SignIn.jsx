@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet-async";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import SocialMediaSignIn from "../../Shared/SocialMediaSignIn";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import SocialMediaSignIn from "../../Components/Shared/SocialMediaSignIn";
 
 const SignIn = () => {
   const { register, handleSubmit } = useForm();

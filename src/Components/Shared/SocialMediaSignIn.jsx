@@ -1,10 +1,10 @@
 import { FcGoogle } from "react-icons/fc";
 import { SiGithub } from "react-icons/si";
-import useAuth from "../Hooks/useAuth";
 import { useNavigate } from "react-router-dom";
-import useAxiosPublic from "../Hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import PropTypes from 'prop-types';
+import useAuth from "../../Hooks/useAuth";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const SocialMediaSignIn = ({ location }) => {
     const navigate = useNavigate();

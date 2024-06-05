@@ -2,10 +2,10 @@ import { useEffect, useState } from "react";
 import { FaBookReader } from "react-icons/fa";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
-import useAuth from "../Hooks/useAuth";
 import { RxHamburgerMenu } from "react-icons/rx";
 import toast from "react-hot-toast";
 import 'react-tooltip/dist/react-tooltip.css';
+import useAuth from "../../Hooks/useAuth";
 
 const Navbar = () => {
     const { user, logOut } = useAuth();

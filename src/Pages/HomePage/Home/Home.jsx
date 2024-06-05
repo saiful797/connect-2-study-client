@@ -1,9 +1,9 @@
 import { Helmet } from "react-helmet-async";
-import ScrollToTop from "../../../Shared/ScrollToTop";
 import Banner from "../Banner/Banner";
 import { useEffect, useState } from "react";
 import StudySessions from "../StudySessions/StudySessions";
 import AllTutor from "../AllTutor/AllTutor";
+import ScrollToTop from '../../../Components/Shared/ScrollToTop';
 
 const Home = () => {
     const [studySession, setStudySession] = useState();
