@@ -11,8 +11,6 @@ const SignIn = () => {
   const location = useLocation();
   const { userSignIn } = useAuth();
 
-  console.log('From sign in page: ', location);
-
   const onSubmit = ( result ) =>{
 
     userSignIn( result.email, result.password )

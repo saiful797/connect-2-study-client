@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { GrLogout } from 'react-icons/gr'
 import { FcSettings } from 'react-icons/fc'
 import { BsFillHouseAddFill, BsFingerprint } from 'react-icons/bs'
@@ -12,15 +12,27 @@ import { FaBookReader } from 'react-icons/fa'
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { TbUsersGroup } from "react-icons/tb";
+import useAxiosPublic from '../../../Hooks/useAxiosPublic'
 
 const Sidebar = () => {
-    const { logOut } = useAuth()
-    const [isActive, setActive] = useState(false)
+    const { logOut, user } = useAuth();
+    const [isActive, setActive] = useState(false);
+    const [role, setRole] = useState(null);
+    const axiosPublic = useAxiosPublic();
 
     // Sidebar Responsive Handler
     const handleToggle = () => {
         setActive(!isActive)
     }
+
+    // check user role
+    useEffect(() => {
+        const email = user.email;
+        axiosPublic.get(`/role/${email}`)
+        .then(res => {
+            setRole(res.data.role);
+        })
+    },[])
 
     // Handle logout
     const handleLogOut = () => {
@@ -47,9 +59,8 @@ const Sidebar = () => {
 
         <button
           onClick={handleToggle}
-          className='mobile-menu-button p-4 focus:outline-none focus:bg-gray-200'
+          className='mobile-menu-button p-4 focus:outline-none focus:bg-g#a6f7df'
         >
-          {/* <AiOutlineBars className='h-5 w-5' /> */}
           <GiHamburgerMenu  className='h-5 w-5'/>
 
         </button>
@@ -63,7 +74,7 @@ const Sidebar = () => {
       >
         <div>
           <div>
-            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-[#cdd3d0] mx-auto'>
+            <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center  mx-auto bg-white'>
                 <Link to='/' className="text-2xl font-bold flex">
                     <div className="relative">
                         <h1 className="flex font-sofia text-[#34a87a]">
@@ -79,45 +90,73 @@ const Sidebar = () => {
           <div className='flex flex-col justify-between flex-1 mt-6'>
             
             <nav>
-              {/* Statistics */}
-              <NavLink
-                to='allUsers'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <TbUsersGroup className='w-5 h-5'/>
-                <span className='mx-4 font-medium'>All Users</span>
-              </NavLink>
+                {/* Admin Routes --->This routes only access Admin */}
+                {
+                    role === 'admin'? <>
+                        {/* all users */}
+                        <NavLink
+                            to='allUsers'
+                            className={({ isActive }) =>
+                            `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
+                                isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
+                            }`
+                            }
+                        >
+                            <TbUsersGroup className='w-5 h-5'/>
+                            <span className='mx-4 font-medium'>All Users</span>
+                        </NavLink>
+                    </>
+                    :
+                    <>
+                        {
+                            role === 'tutor'? <>
+                                {/* Tutor Routes --->This routes only access Tutor */}
+                                {/* Add Room */}
+                                <NavLink
+                                    to='add-room'
+                                    className={({ isActive }) =>
+                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
+                                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
+                                    }`
+                                    }
+                                >
+                                    <BsFillHouseAddFill className='w-5 h-5' />
 
-              {/* Add Room */}
-              <NavLink
-                to='add-room'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                <BsFillHouseAddFill className='w-5 h-5' />
+                                    <span className='mx-4 font-medium'>Add Room</span>
+                                </NavLink>
+                                {/* My Listing */}
+                                <NavLink
+                                    to='my-listings'
+                                    className={({ isActive }) =>
+                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
+                                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
+                                    }`
+                                    }
+                                >
+                                    {/* <MdHomeWork className='w-5 h-5' /> */}
 
-                <span className='mx-4 font-medium'>Add Room</span>
-              </NavLink>
-              {/* My Listing */}
-              <NavLink
-                to='my-listings'
-                className={({ isActive }) =>
-                  `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                    isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
-                  }`
-                }
-              >
-                {/* <MdHomeWork className='w-5 h-5' /> */}
+                                    <span className='mx-4 font-medium'>My Listings</span>
+                                </NavLink>
+                            </>
+                            :
+                            <>
+                                {/* Student Routes --->This routes only access Student */}
+                                <NavLink
+                                    to='my-listings'
+                                    className={({ isActive }) =>
+                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
+                                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
+                                    }`
+                                    }
+                                >
+                                    {/* <MdHomeWork className='w-5 h-5' /> */}
 
-                <span className='mx-4 font-medium'>My Listings</span>
-              </NavLink>
+                                    <span className='mx-4 font-medium'>My Listings</span>
+                                </NavLink>
+                            </>
+                        }
+                    </>
+                }
             </nav>
           </div>
         </div>
@@ -129,8 +168,8 @@ const Sidebar = () => {
           <NavLink
             to='/dashboard/profile'
             className={({ isActive }) =>
-              `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
-                isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
+              `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
+                isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
               }`
             }
           >
@@ -140,7 +179,7 @@ const Sidebar = () => {
           </NavLink>
           <button
             onClick={logOut}
-            className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
+            className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-[#a6f7df]   hover:text-gray-700 transition-colors duration-300 transform'
           >
             <RiLogoutCircleRLine className='w-5 h-5'/>
 
