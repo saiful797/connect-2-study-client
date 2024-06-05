@@ -13,6 +13,7 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { TbUsersGroup } from "react-icons/tb";
 import useAxiosPublic from '../../../Hooks/useAxiosPublic'
+import { SiStudyverse } from 'react-icons/si'
 
 const Sidebar = () => {
     const { logOut, user } = useAuth();
@@ -44,7 +45,7 @@ const Sidebar = () => {
     return (
     <>
       {/* Small Screen Navbar */}
-      <div className='bg-teal-50 text-gray-800 flex justify-between md:hidden'>
+      <div className='bg-teal-100 text-gray-800 flex justify-between md:hidden'>
         <div>
             <div className='block cursor-pointer p-4 font-bold'>
                 <Link to='/' className="text-2xl font-bold flex">
@@ -69,7 +70,7 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-teal-50 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-teal-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && '-translate-x-full'
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
@@ -89,62 +90,60 @@ const Sidebar = () => {
 
           {/* Nav Items */}
           <div className='flex flex-col justify-between flex-1 mt-6'>
-            
             <nav>
-                {/* Admin Routes --->This routes only access Admin */}
-                {
-                    role === 'admin'? <>
-                        {/* all users */}
+              {/* Admin Routes --->This routes only access Admin */}
+              {
+                role === 'admin'? <>
+                    {/* all users */}
+                    <NavLink
+                      to='allUsers'
+                      className={({ isActive }) =>
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
+                          isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
+                      }`}
+                    >
+                      <TbUsersGroup className='w-5 h-5'/>
+                      <span className='mx-4 font-medium'>All Users</span>
+                    </NavLink>
+                </>
+                :
+                <>
+                  {
+                    role === 'tutor'? <>
+                        {/* Tutor Routes --->This routes only access Tutor */}
+                        {/* Add Session */}
                         <NavLink
-                            to='allUsers'
+                          to='add-session'
+                          className={({ isActive }) =>
+                          `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
+                              isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
+                          }`
+                          }
+                        >
+                          <SiStudyverse className='w-5 h-5'/>
+
+                          <span className='mx-4 font-medium'>Add Session</span>
+                        </NavLink>
+                    </>
+                    :
+                    <>
+                        {/* Student Routes --->This routes only access Student */}
+                        <NavLink
+                            to='my-listings'
                             className={({ isActive }) =>
                             `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
                                 isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
                             }`
                             }
                         >
-                            <TbUsersGroup className='w-5 h-5'/>
-                            <span className='mx-4 font-medium'>All Users</span>
+                            {/* <MdHomeWork className='w-5 h-5' /> */}
+
+                            <span className='mx-4 font-medium'>My Listings</span>
                         </NavLink>
                     </>
-                    :
-                    <>
-                        {
-                            role === 'tutor'? <>
-                                {/* Tutor Routes --->This routes only access Tutor */}
-                                {/* Add Session */}
-                                <NavLink
-                                    to='add-session'
-                                    className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                                    }`
-                                    }
-                                >
-                                    <BsFillHouseAddFill className='w-5 h-5' />
-
-                                    <span className='mx-4 font-medium'>Add Session</span>
-                                </NavLink>
-                            </>
-                            :
-                            <>
-                                {/* Student Routes --->This routes only access Student */}
-                                <NavLink
-                                    to='my-listings'
-                                    className={({ isActive }) =>
-                                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                                    }`
-                                    }
-                                >
-                                    {/* <MdHomeWork className='w-5 h-5' /> */}
-
-                                    <span className='mx-4 font-medium'>My Listings</span>
-                                </NavLink>
-                            </>
-                        }
-                    </>
-                }
+                  }
+                </>
+              }
             </nav>
           </div>
         </div>

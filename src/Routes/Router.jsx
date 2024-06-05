@@ -7,6 +7,7 @@ import SignUp from "../Pages/SignUpPage/SignUp";
 import DashboardLayout from "../Layout/DashboardLayout";
 import PrivateRoute from "../Routes/PrivateRoute";
 import AllUser from "../Components/Dashboard/AllUser/AllUser";
+import AddSession from "../Components/Dashboard/AddSession/AddSession";
 
 
 export const router = createBrowserRouter([
@@ -33,7 +34,7 @@ export const router = createBrowserRouter([
         },
         {
           path: 'add-session',
-          element:''
+          element:<AddSession />
         }
       ]
     },
