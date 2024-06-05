@@ -72,14 +72,14 @@ const Sidebar = () => {
         <div>
           <div>
             <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center  mx-auto bg-white'>
-                <Link to='/' className="text-2xl font-bold flex">
-                    <div className="relative">
-                        <h1 className="flex font-sofia text-[#34a87a]">
-                            <FaBookReader  />
-                            Connect2Study
-                        </h1>
-                    </div>
-                </Link>
+              <Link to='/' className="text-2xl font-bold flex">
+                <div className="relative">
+                  <h1 className="flex font-sofia text-[#34a87a]">
+                    <FaBookReader  />
+                    Connect2Study
+                  </h1>
+                </div>
+              </Link>
             </div>
           </div>
 
@@ -88,7 +88,7 @@ const Sidebar = () => {
             <nav>
               {/* Admin Routes --->This routes only access Admin */}
               {
-                role === 'admin'? <>
+                role === 'admin' && <>
                   {/* all users */}
                   <NavLink
                     to='allUsers'
@@ -113,41 +113,40 @@ const Sidebar = () => {
                     <span className='mx-4 font-medium'>All Study Sessions</span>
                   </NavLink>
                 </>
-                :
-                <>
-                  {
-                    role === 'tutor'? <>
-                    
-                        {/* Tutor Routes --->This routes only access Tutor */}
+              }
 
-                        {/* Add Session */}
-                        <NavLink
-                          to='add-session'
-                          className={({ isActive }) =>
-                          `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                              isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                          }`
-                          }
-                        >
-                          <SiStudyverse className='w-5 h-5'/>
+              {/* Tutor Routes --->This routes only access Tutor */}
+              {  
+                role === 'tutor' && <>
+                  {/* Add Session */}
+                  <NavLink
+                    to='add-session'
+                    className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
+                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
+                    }`
+                    }
+                  >
+                    <SiStudyverse className='w-5 h-5'/>
 
-                          <span className='mx-4 font-medium'>Add Session</span>
-                        </NavLink>
-                        <NavLink
-                          to='all-study-sessions'
-                          className={({ isActive }) =>
-                          `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                              isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                          }`
-                          }
-                        >
-                          <FaMagnifyingGlassArrowRight className='w-5 h-5'/>
+                    <span className='mx-4 font-medium'>Add Session</span>
+                  </NavLink>
+                  <NavLink
+                    to='all-study-sessions'
+                    className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
+                      isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
+                    }`
+                    }
+                  >
+                    <FaMagnifyingGlassArrowRight className='w-5 h-5'/>
 
-                          <span className='mx-4 font-medium'>All Study Sessions</span>
-                        </NavLink>
-                    </>
-                    :
-                    <>
+                    <span className='mx-4 font-medium'>All Study Sessions</span>
+                  </NavLink>
+                </>
+              }
+              { 
+                role === 'student'  && <>
                         {/* Student Routes --->This routes only access Student */}
                         <NavLink
                             to='my-listings'
@@ -162,8 +161,6 @@ const Sidebar = () => {
                             <span className='mx-4 font-medium'>My Listings</span>
                         </NavLink>
                     </>
-                  }
-                </>
               }
             </nav>
           </div>

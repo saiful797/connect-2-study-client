@@ -2,6 +2,11 @@ import PropTypes from  'prop-types';
 
 const StudySession = ({ studySession }) => {
     const {name , email, title,regStart, regEnd, status, regFee, classStart, classEnd, duration} = studySession;
+
+    const handleStudySessionApproved = () => {
+
+    }
+
     return (
         <div>
             <div className='p-5 shadow-md relative'>
@@ -35,19 +40,19 @@ const StudySession = ({ studySession }) => {
                     }
                 </div>
                 <div className='flex justify-evenly mt-5'>
-                    <p>
+                    {/* <p>
                         {
                             status === 'pending'? <p className='bg-yellow-100 text-stone-700 pl-2 pr-2'>
                                 pending
                             </p>
                             :
                             <div>
-                                {/* TODO: manage session by admin */}
+                               
                             </div>
                         }
-                    </p>
-                    <p className='cursor-pointer bg-teal-100 text-gray-400 pl-2 pr-2'>Approve</p>
-                    <p className='cursor-pointer bg-teal-100 text-red-500 pl-2 pr-2'>Reject</p>
+                    </p> */}
+                    <p onClick={handleStudySessionApproved} className='cursor-pointer bg-teal-50 text-green-600 pl-2 pr-2'>Approve</p>
+                    <p className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'>Reject</p>
                     
                 </div>
             </div>
