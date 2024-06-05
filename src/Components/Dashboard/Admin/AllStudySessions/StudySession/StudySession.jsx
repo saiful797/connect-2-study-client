@@ -1,10 +1,22 @@
 import PropTypes from  'prop-types';
+import useAxiosPublic from '../../../../../Hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
 
 const StudySession = ({ studySession }) => {
-    const {name , email, title,regStart, regEnd, status, regFee, classStart, classEnd, duration} = studySession;
+    const axiosPublic = useAxiosPublic();
+
+    const {_id, name , email, title,regStart, regEnd, status, regFee, classStart, classEnd, duration} = studySession;
 
     const handleStudySessionApproved = () => {
 
+    }
+
+    const handleStudySessionReject = async () => {
+        const res = await axiosPublic.patch(`/study-session-reject/${_id}`);
+        if(res.data.modifiedCount > 0){
+            toast.success("Session reject successfully!");
+        }
+    
     }
 
     return (
@@ -52,7 +64,7 @@ const StudySession = ({ studySession }) => {
                         }
                     </p> */}
                     <p onClick={handleStudySessionApproved} className='cursor-pointer bg-teal-50 text-green-600 pl-2 pr-2'>Approve</p>
-                    <p className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'>Reject</p>
+                    <p onClick={handleStudySessionReject} className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'>Reject</p>
                     
                 </div>
             </div>
