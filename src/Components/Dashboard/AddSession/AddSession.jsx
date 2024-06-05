@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import moment from "moment";
 
 const AddSession = () => {
     const { user } = useAuth();
@@ -16,13 +17,14 @@ const AddSession = () => {
             ...data,
             name, 
             email,
+            postDate: moment().format('L'),
             status: 'pending',
             "reg-fee": 0,
         }
         const res = await axiosPublic.post('/study-session', sessionInfo );
         if(res.data.insertedId){
             toast.success("Your Session Post Successfully!! Wait For Admin approved");
-            reset()
+            reset();
         }
         
         
@@ -75,10 +77,10 @@ const AddSession = () => {
                                 </label>
                                 <input
                                 className='w-full px-4 py-3 text-gray-800 border border-teal-200 focus:outline-[#34a87a] rounded-md '
-                                name='reg-start'
-                                id='reg-start'
+                                name='regStart'
+                                id='regStart'
                                 type='date'
-                                {...register("reg-start", { required: true })}
+                                {...register("regStart", { required: true })}
                                 required
                                 />
                             </div>
@@ -89,10 +91,10 @@ const AddSession = () => {
                                 </label>
                                 <input
                                 className='w-full px-4 py-3 text-gray-800 border border-teal-200 focus:outline-[#34a87a] rounded-md '
-                                name='reg-end'
-                                id='reg-end'
+                                name='regEnd'
+                                id='regEnd'
                                 type='date'
-                                {...register("reg-end", { required: true })}
+                                {...register("regEnd", { required: true })}
                                 required
                                 />
                             </div>
@@ -105,10 +107,10 @@ const AddSession = () => {
                                 </label>
                                 <input
                                 className='w-full px-4 py-3 text-gray-800 border border-teal-200 focus:outline-[#34a87a] rounded-md '
-                                name='class-start'
-                                id='class-start'
+                                name='classStart'
+                                id='classStart'
                                 type='date'
-                                {...register("class-start", { required: true })}
+                                {...register("classStart", { required: true })}
                                 required
                                 />
                             </div>
@@ -118,10 +120,10 @@ const AddSession = () => {
                                 </label>
                                 <input
                                 className='w-full px-4 py-3 text-gray-800 border border-teal-200 focus:outline-[#34a87a] rounded-md '
-                                name='class-end'
-                                id='class-end'
+                                name='classEnd'
+                                id='classEnd'
                                 type='date'
-                                {...register("class-end", { required: true })}
+                                {...register("classEnd", { required: true })}
                                 required
                                 />
                             </div>

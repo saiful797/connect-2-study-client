@@ -8,6 +8,7 @@ import DashboardLayout from "../Layout/DashboardLayout";
 import PrivateRoute from "../Routes/PrivateRoute";
 import AllUser from "../Components/Dashboard/AllUser/AllUser";
 import AddSession from "../Components/Dashboard/AddSession/AddSession";
+import AllSessions from "../Components/Dashboard/AllSessions/AllSessions";
 
 
 export const router = createBrowserRouter([
@@ -28,13 +29,19 @@ export const router = createBrowserRouter([
         <DashboardLayout />
       </PrivateRoute>,
       children:[
+        // admin related route
         {
           path: 'allUsers',
           element: <AllUser />
         },
+        // tutor related route
         {
           path: 'add-session',
           element:<AddSession />
+        },
+        {
+          path: 'all-sessions',
+          element: <AllSessions />
         }
       ]
     },
