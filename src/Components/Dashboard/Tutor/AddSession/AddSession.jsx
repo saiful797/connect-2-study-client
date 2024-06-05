@@ -11,6 +11,7 @@ const AddSession = () => {
 
     const name = user.displayName;
     const email = user.email;
+    const fee = parseFloat(0);
 
     const onSubmit = async( data ) => {
         const sessionInfo = {
@@ -19,7 +20,7 @@ const AddSession = () => {
             email,
             postDate: moment().format('L'),
             status: 'pending',
-            "reg-fee": 0,
+            regFee: fee,
         }
         const res = await axiosPublic.post('/study-session', sessionInfo );
         if(res.data.insertedId){
