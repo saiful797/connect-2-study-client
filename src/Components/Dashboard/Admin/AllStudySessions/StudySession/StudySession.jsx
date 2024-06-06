@@ -5,7 +5,7 @@ import StudySessionConfirmModal from '../StudySessionConfirmModal/StudySessionCo
 
 const StudySession = ({ studySession }) => {
     const axiosPublic = useAxiosPublic();
-    const {_id, name , email, title,regStart, regEnd, regFee, classStart, classEnd, duration} = studySession;
+    const {_id, name , email, title,regStart, regEnd, regFee, classStart, classEnd, duration, status} = studySession;
 
     const handleStudySessionReject = async () => {
         const res = await axiosPublic.patch(`/study-session-reject/${_id}`);
@@ -47,13 +47,29 @@ const StudySession = ({ studySession }) => {
                         </p>
                     }
                 </div>
-                <div className='flex justify-evenly mt-5'>
-
-                    {/* <p className='cursor-pointer bg-teal-50 text-green-700 pl-2 pr-2'>Approve</p> */}
-                    <StudySessionConfirmModal id = { _id }/>
+                <div>
                     
-                    {/*study session reject button*/}
-                    <p onClick={handleStudySessionReject} className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'>Reject</p>
+                    {/*study session approved and reject button*/}
+                    {
+                       status === 'pending' && <div className='flex justify-evenly mt-5'>
+                            {/*Study Session Confirm Modal*/}
+                            <StudySessionConfirmModal id = { _id }/>
+                            <p onClick={handleStudySessionReject} className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'>Reject</p>
+                       </div>
+                    }
+                    {/*study session update and Delete button*/}
+                    {
+                        status === 'approved' && <div className='flex justify-evenly mt-5'>
+                            <p className='cursor-pointer bg-teal-50 text-green-700 pl-2 pr-2'>Update</p>
+                            <p className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'>Delete</p>
+                        </div>
+                    }
+                    {/*study session rejected*/}
+                    {
+                        status === 'reject' && <div>
+                            <p >Course Type: <span className='bg-red-50 text-red-500 pl-2 pr-2'>Rejected</span></p>
+                        </div>
+                    }
                     
                 </div>
             </div>

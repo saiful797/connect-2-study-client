@@ -43,7 +43,7 @@ const AllStudySessions = () => {
                 </TabList>
 
                 {/* pending sessions */}
-                <TabPanel className={`p-10`}>
+                <TabPanel>
                     <div className='grid lg:grid-cols-2 gap-5 mt-5'>
                         {
                             pending.map(studySession => <StudySession 
@@ -56,12 +56,26 @@ const AllStudySessions = () => {
 
                 {/* approved sessions */}
                 <TabPanel>
-                    
+                    <div className='grid lg:grid-cols-2 gap-5 mt-5'>
+                        {
+                            approved.map(studySession => <StudySession 
+                                key={studySession._id} 
+                                studySession = {studySession} 
+                            />)
+                        }
+                    </div>
                 </TabPanel>   
 
                 {/* rejected sessions */}
                 <TabPanel>
-                    
+                    <div className='grid lg:grid-cols-2 gap-5 mt-5'>
+                        {
+                            reject.map(studySession => <StudySession 
+                                key={studySession._id} 
+                                studySession = {studySession} 
+                            />)
+                        }
+                    </div>
                 </TabPanel>
             </Tabs>
         </div>
