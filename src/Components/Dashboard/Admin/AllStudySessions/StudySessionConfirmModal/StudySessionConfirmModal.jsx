@@ -16,8 +16,8 @@ const StudySessionConfirmModal = ({ id }) => {
         if(res.data.modifiedCount > 0){
 
             toast.success("Session Approved successfully!");
-
             reset();
+            location.reload();
         }
     }
 
