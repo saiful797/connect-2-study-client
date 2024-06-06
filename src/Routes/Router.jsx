@@ -45,7 +45,7 @@ export const router = createBrowserRouter([
         element:<AddSession />
         },
         {
-          path: 'all-study-sessions',
+          path: 'all-sessions',
           element: <AllSessions />
         }
       ]
