@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { LuGitPullRequestDraft } from "react-icons/lu";
 import SectionTitle from "../../../Shared/SectionTitle";
 import { Tooltip } from "react-tooltip";
+import toast from "react-hot-toast";
 
 
 const AllSessions = () => {
@@ -11,11 +12,22 @@ const AllSessions = () => {
     const axiosPublic = useAxiosPublic();
     const [ allSession, setAllSession ] = useState([]);
 
-    axiosPublic.get(`/all-sessions/${user.email}`)
-    .then(res => {
-        // console.log(res.data)
-        setAllSession(res.data);
-    })
+    useEffect(() => {
+        axiosPublic.get(`/all-sessions/${user.email}`)
+        .then(res => {
+            // console.log(res.data)
+            setAllSession(res.data);
+        })
+    }, [])
+
+    const handleApprovalRequest = async ( id ) => {
+        const data = { status: "pending" }
+        const res = await axiosPublic.patch(`/study-session-rejected/${id}`, data );
+        if(res.data.modifiedCount > 0){
+            toast.success("Pending request delivered successfully!");
+        }
+    }
+
     return (
         <div>
            
@@ -29,6 +41,8 @@ const AllSessions = () => {
                             <tr className="text-lg bg-slate-100">
                                 <th>#</th>
                                 <th>Title</th>
+                                <th>Course Fee</th>
+                                <th>Duration</th>
                                 <th>Post Date</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -38,7 +52,20 @@ const AllSessions = () => {
                             {
                                 allSession?.map((session, index) => <tr key={session._id}>
                                     <th>{index+1}</th>
-                                    <td>{session.title}</td>
+                                    <td>
+                                        {session.title}
+                                    </td>
+                                    <td>
+                                        {
+                                            session.regFee === 0 && <p>Free</p>
+                                        }
+                                        {
+                                            session.regFee > 0 && <p>${session.regFee}</p>
+                                        }
+                                    </td>
+                                    <td>
+                                        {session.duration}
+                                    </td>
                                     <td>
                                         {session.postDate}
                                     </td>
@@ -62,10 +89,10 @@ const AllSessions = () => {
                                             </p>
                                         }
                                         {
-                                            session.status === 'reject' && <p
+                                            session.status === 'rejected' && <p
                                                 className="bg-red-50 text-red-600 pl-2 pr-2 w-16 text-center"
                                                 data-tooltip-id="my-tooltip"
-                                                 data-tooltip-content={'Rejected by Admin'}
+                                                data-tooltip-content={'Rejected by Admin'}
                                             >
                                                 Rejected
                                             </p>
@@ -73,7 +100,23 @@ const AllSessions = () => {
                                     </td>
                                     <td>
                                         {
-                                            session.status === 'reject' && <p>Rejected</p>
+                                            session.status === 'rejected' && <p 
+                                                className="cursor-pointer bg-green-100 text-stone-700 pl-2 pr-2 w-16 text-center"
+                                                data-tooltip-id="my-tooltip"
+                                                data-tooltip-content={'Request For Approval'}
+                                                onClick={() => handleApprovalRequest (session._id)}
+                                            >
+                                                Request
+                                            </p>
+                                        }
+                                        {
+                                            session.status !== 'rejected' && <p 
+                                                className="disabled bg-slate-50 text-stone-400 pl-2 pr-2 w-16 text-center cursor-not-allowed"
+                                                data-tooltip-id="my-tooltip"
+                                                data-tooltip-content={'Button disable'}
+                                            >
+                                                Request
+                                            </p>
                                         }
                                     </td>
                                 </tr> )

@@ -8,7 +8,8 @@ const StudySession = ({ studySession }) => {
     const {_id, name , email, title,regStart, regEnd, regFee, classStart, classEnd, duration, status} = studySession;
 
     const handleStudySessionReject = async () => {
-        const res = await axiosPublic.patch(`/study-session-reject/${_id}`);
+        const data = { status: "rejected"}
+        const res = await axiosPublic.patch(`/study-session-rejected/${_id}`, data );
         if(res.data.modifiedCount > 0){
             toast.success("Session reject successfully!");
         }
@@ -66,7 +67,7 @@ const StudySession = ({ studySession }) => {
                     }
                     {/*study session rejected*/}
                     {
-                        status === 'reject' && <div>
+                        status === 'rejected' && <div>
                             <p >Course Type: <span className='bg-red-50 text-red-500 pl-2 pr-2'>Rejected</span></p>
                         </div>
                     }

@@ -20,7 +20,7 @@ const AllStudySessions = () => {
 
     const pending = studySessions.filter(session => session.status === 'pending');
     const approved = studySessions.filter(session => session.status === 'approved');
-    const reject = studySessions.filter(session => session.status === 'reject');
+    const rejected = studySessions.filter(session => session.status === 'rejected');
 
     return (
         <div className='mb-10 mt-5'>
@@ -70,7 +70,7 @@ const AllStudySessions = () => {
                 <TabPanel>
                     <div className='grid lg:grid-cols-2 gap-5 mt-5'>
                         {
-                            reject.map(studySession => <StudySession 
+                            rejected.map(studySession => <StudySession 
                                 key={studySession._id} 
                                 studySession = {studySession} 
                             />)
