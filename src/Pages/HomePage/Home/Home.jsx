@@ -1,12 +1,12 @@
 import { Helmet } from "react-helmet-async";
 import Banner from "../Banner/Banner";
 import { useEffect, useState } from "react";
-import StudySessions from "../StudySessions/StudySessions";
 import AllTutor from "../AllTutor/AllTutor";
 import ScrollToTop from '../../../Components/Shared/ScrollToTop';
 
 const Home = () => {
     const [studySession, setStudySession] = useState();
+    const [ tutors, setTutors ] = useState();
 
     useEffect(()=>{
         fetch(`${import.meta.env.VITE_SERVER_API}/study-session`)
@@ -15,8 +15,6 @@ const Home = () => {
             setStudySession(data);
         })
     },[])
-
-    const [ tutors, setTutors ] = useState();
 
     useEffect( () => {
         fetch(`${import.meta.env.VITE_SERVER_API}/tutors`)
@@ -35,12 +33,9 @@ const Home = () => {
             <div className="">
                 <Banner />
             </div>
-           {/* <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 p-2">
-                {
-                    studySession?.map( session => <StudySessions key = { session._id } session = { session }/>)
-                }
-           </div> */}
-           
+           <div>
+             Approved
+           </div>
            <div className="shadow shadow-black p-10 mt-5 mb-5">
                 <h1 className="text-6xl font-bold text-center mb-3 w-1/3 mx-auto border-4 border-[#34a87a] ">Our Tutors</h1>
                 <div className=" grid md:grid-cols-2 lg:grid-cols-4">

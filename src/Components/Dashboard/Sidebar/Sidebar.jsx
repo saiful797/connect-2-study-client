@@ -7,14 +7,13 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { FaMagnifyingGlassArrowRight } from "react-icons/fa6";
 import { TbUsersGroup } from "react-icons/tb";
-import useAxiosPublic from '../../../Hooks/useAxiosPublic';
 import { SiStudyverse } from 'react-icons/si';
+import useRole from '../../../Hooks/useRole';
 
 const Sidebar = () => {
     const { logOut, user } = useAuth();
     const [isActive, setActive] = useState(false);
-    const [role, setRole] = useState(null);
-    const axiosPublic = useAxiosPublic();
+    
 
     // Sidebar Responsive Handler
     const handleToggle = () => {
@@ -22,14 +21,8 @@ const Sidebar = () => {
     }
 
     // check user role
-    useEffect(() => {
-        const email = user.email;
-        axiosPublic.get(`/role/${email}`)
-        .then(res => {
-            setRole(res.data.role);
-            console.log("user role: ", res.data.role);
-        })
-    },[])
+    const { role } = useRole();
+    console.log('User Role: ', role)
 
     // Handle logout
     const handleLogOut = () => {
