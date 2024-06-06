@@ -2,6 +2,8 @@ import { useState } from "react";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { LuGitPullRequestDraft } from "react-icons/lu";
+import SectionTitle from "../../../Shared/SectionTitle";
+import { Tooltip } from "react-tooltip";
 
 
 const AllSessions = () => {
@@ -16,10 +18,9 @@ const AllSessions = () => {
     })
     return (
         <div>
-            <div className="flex justify-evenly py-4">
-                <h2 className="text-2xl">All Sessions</h2>
-                {/* <h2 className="text-2xl">Total Sessions: {sessions.length}</h2> */}
-            </div>
+           
+            {/* section title */}
+            <SectionTitle title ={'All Sessions'}/>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra">
@@ -41,11 +42,39 @@ const AllSessions = () => {
                                     <td>
                                         {session.postDate}
                                     </td>
-                                    <td>{session.status}</td>
                                     <td>
-                                        <button onClick={() => handleDeleteSession(session._id)} className="btn btn-ghost btn-outline btn-sm">
-                                            <LuGitPullRequestDraft />
-                                        </button>
+                                        {
+                                            session.status === 'pending' && <p 
+                                                className="bg-amber-50 text-amber-400 pl-2 pr-2 w-16 text-center"
+                                                data-tooltip-id="my-tooltip" 
+                                                data-tooltip-content={'Wait for Admin approval'}
+                                            >
+                                                Pending
+                                            </p>
+                                        }
+                                        {
+                                            session.status === 'approved' && <p
+                                                className="bg-green-50 text-green-600 pl-2 pr-2 w-16 text-center"
+                                                data-tooltip-id="my-tooltip" 
+                                                data-tooltip-content={'Approved by Admin'}
+                                            >
+                                                Approved
+                                            </p>
+                                        }
+                                        {
+                                            session.status === 'reject' && <p
+                                                className="bg-red-50 text-red-600 pl-2 pr-2 w-16 text-center"
+                                                data-tooltip-id="my-tooltip"
+                                                 data-tooltip-content={'Rejected by Admin'}
+                                            >
+                                                Rejected
+                                            </p>
+                                        }
+                                    </td>
+                                    <td>
+                                        {
+                                            session.status === 'reject' && <p>Rejected</p>
+                                        }
                                     </td>
                                 </tr> )
                             }
@@ -53,6 +82,7 @@ const AllSessions = () => {
                     </table>
                 </div>
             </div>
+            <Tooltip id="my-tooltip" />
         </div>
     );
 };
