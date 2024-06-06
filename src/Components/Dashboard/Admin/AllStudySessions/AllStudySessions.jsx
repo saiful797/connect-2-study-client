@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import SectionTitle from '../../../Shared/SectionTitle';
@@ -11,11 +11,12 @@ const AllStudySessions = () => {
     const axiosPublic = useAxiosPublic();
     const [ studySessions, setStudySessions ] = useState([]);
 
-    axiosPublic.get('/allStudySessions')
-    .then(res => {
-        // console.log(res.data);
-        setStudySessions(res.data);
-    })
+    useEffect( () => {
+        axiosPublic.get('/allStudySessions')
+        .then(res => {
+            setStudySessions(res.data);
+        })
+    }, [])
 
     const pending = studySessions.filter(session => session.status === 'pending');
     const approved = studySessions.filter(session => session.status === 'approved');

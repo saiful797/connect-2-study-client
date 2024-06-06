@@ -1,6 +1,7 @@
 import PropTypes from  'prop-types';
 import useAxiosPublic from '../../../../../Hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
+import StudySessionConfirmModal from '../StudySessionConfirmModal/StudySessionConfirmModal';
 
 const StudySession = ({ studySession }) => {
     const axiosPublic = useAxiosPublic();
@@ -48,7 +49,8 @@ const StudySession = ({ studySession }) => {
                 </div>
                 <div className='flex justify-evenly mt-5'>
 
-                    <p className='cursor-pointer bg-teal-50 text-green-700 pl-2 pr-2'>Approve</p>
+                    {/* <p className='cursor-pointer bg-teal-50 text-green-700 pl-2 pr-2'>Approve</p> */}
+                    <StudySessionConfirmModal id = { _id }/>
                     
                     {/*study session reject button*/}
                     <p onClick={handleStudySessionReject} className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'>Reject</p>
@@ -60,7 +62,7 @@ const StudySession = ({ studySession }) => {
 };
 
 StudySession.propTypes ={
-    studySessions: PropTypes.object.isRequired,
+    studySession: PropTypes.object.isRequired,
 }
 
 export default StudySession;
