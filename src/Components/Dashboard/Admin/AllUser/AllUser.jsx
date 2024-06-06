@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
+import SectionTitle from "../../../Shared/SectionTitle";
 
 const AllUser = () => {
     const [ users, setUsers ] = useState();
@@ -16,10 +17,8 @@ const AllUser = () => {
 
     return (
         <div>
-            <div className="flex justify-evenly py-4">
-                <h2 className="text-2xl">All Users</h2>
-                {/* <h2 className="text-2xl">Total Users: {users.length}</h2> */}
-            </div>
+            {/* Section Title */}
+            <SectionTitle title={"All Users"}/>
             <div>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra">

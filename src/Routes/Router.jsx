@@ -42,7 +42,7 @@ export const router = createBrowserRouter([
         // tutor related route
         {
           path: 'add-session',
-          element:<AddSession />
+        element:<AddSession />
         },
         {
           path: 'all-study-sessions',
