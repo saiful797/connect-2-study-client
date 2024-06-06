@@ -101,7 +101,7 @@ const AllSessions = () => {
                                     <td>
                                         {
                                             session.status === 'rejected' && <p 
-                                                className="cursor-pointer bg-green-100 text-stone-700 pl-2 pr-2 w-16 text-center"
+                                                className="border-2 hover:border-zinc-600 bg-green-100 text-stone-700 pl-2 pr-2 w-16 text-center cursor-pointer"
                                                 data-tooltip-id="my-tooltip"
                                                 data-tooltip-content={'Request For Approval'}
                                                 onClick={() => handleApprovalRequest (session._id)}
@@ -111,7 +111,7 @@ const AllSessions = () => {
                                         }
                                         {
                                             session.status !== 'rejected' && <p 
-                                                className="disabled bg-slate-50 text-stone-400 pl-2 pr-2 w-16 text-center cursor-not-allowed"
+                                                className="disabled border-2 bg-slate-50 text-stone-400 pl-2 pr-2 w-16 text-center cursor-not-allowed"
                                                 data-tooltip-id="my-tooltip"
                                                 data-tooltip-content={'Button disable'}
                                             >
