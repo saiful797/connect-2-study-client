@@ -22,7 +22,6 @@ const StudySessionUpdateModal = ({ updateData }) => {
 
             toast.success("Session Updated successfully!");
             reset();
-            location.reload();
         }
     }
 
