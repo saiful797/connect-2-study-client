@@ -9,8 +9,9 @@ import useAuth from '../../Hooks/useAuth';
 import toast from 'react-hot-toast';
 
 const StudySessionDetails = () => {
-    const [session, setSession] = useState( {} );
+    const [ session, setSession ] = useState( {} );
     const [ remainingDays, setRemainingDays ] = useState(0);
+    const [ sessionBooked, setSessionBooked ] = useState( {} );
     const {  id } = useParams();
     const axiosPublic = useAxiosPublic();
     const { role } = useRole();
@@ -23,7 +24,6 @@ const StudySessionDetails = () => {
             const remainingDay = parseInt(res.data.regEnd.split('-')[2]) - parseInt(moment().format('L').split('/')[1]) + 1;
             // console.log("Remaining Days: ", remainingDay);
             setRemainingDays(remainingDay);
-
         })
     },[])
 
@@ -31,8 +31,6 @@ const StudySessionDetails = () => {
     
     const endMonth = parseInt(regEnd?.split('-')[1]);
     const thisMonth = parseInt(moment().format('L').split('/')[0]);
-
-    // console.log("End date: ", regEnd, "Today's Date: ", moment().format('L'), "Remaining Days: ", remainingDays)
 
     const handleBookedSession = async ( id ) => {
         const bookedInfo = {

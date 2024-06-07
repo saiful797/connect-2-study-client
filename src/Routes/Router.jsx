@@ -28,7 +28,9 @@ export const router = createBrowserRouter([
         },
         {
           path:'/study-session-details/:id',
-          element: <StudySessionDetails />
+          element: <PrivateRoute>
+            <StudySessionDetails />
+          </PrivateRoute>
         }
       ]
     },
