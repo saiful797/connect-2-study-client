@@ -19,7 +19,7 @@ const AddStudentNotes = () => {
         const res = await axiosPublic.post( '/student-note', noteInfo );
         // console.log( res );
         if(res.data.insertedId){
-            toast.success('Note add successfully!');
+            toast.success('Note added successfully!');
             reset();
         }
     }
@@ -71,7 +71,7 @@ const AddStudentNotes = () => {
                         type='submit'
                         className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#2db880]'
                     >
-                        Save & Continue
+                        Add Note
                     </button>
                 </form>
             </div>
