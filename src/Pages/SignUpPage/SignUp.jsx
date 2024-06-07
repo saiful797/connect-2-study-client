@@ -86,8 +86,16 @@ const SignUp = () => {
           <Helmet>
               <title>Connect2Study | Sign up</title>
           </Helmet>
-        <div className='relative flex flex-col max-w-md p-5 rounded-md sm:p-10 bg-green-50 text-gray-900'>
-        <div className='text-center'>
+        <div className='flex flex-col max-w-md p-5 rounded-md sm:p-10 bg-green-50 text-gray-900'>
+        <div className='text-center grid place-content-center'>
+          <Link 
+            data-tooltip-id="my-tooltip"
+            data-tooltip-content={'Back Home'}
+            to = '/'
+            className="flex justify-center items-center"
+          >
+            <IoHome className="w-7 h-7 text-[#00b16e]"/>
+          </Link>
           <h1 className='mb-2 text-4xl font-bold'>Sign up</h1>
           <p className='text-sm text-gray-400'>Welcome to <span className="text-[#00b16e]">Connect2Study</span></p>
         </div>
@@ -129,7 +137,7 @@ const SignUp = () => {
             </div>
             <div>
                 <label className="form-control w-full">
-                    <label htmlFor='image' className='block mb-2 text-sm'>
+                    <label htmlFor='role' className='block mb-2 text-sm'>
                         Role:
                     </label>
                     <select 
@@ -209,15 +217,6 @@ const SignUp = () => {
           .
         </p>
       </div>
-      <Link 
-        data-tooltip-id="my-tooltip"
-        data-tooltip-content={'Back Home'}
-        to = '/'
-        className="absolute top-12 left-[40%]"
-      >
-        <IoHome className="w-7 h-7 text-[#00b16e]"/>
-      </Link>
-
       <Tooltip id="my-tooltip" />
 
     </div>
