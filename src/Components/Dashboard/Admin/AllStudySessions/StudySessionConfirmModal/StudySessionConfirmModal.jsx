@@ -36,7 +36,7 @@ const StudySessionConfirmModal = ({ id }) => {
                             <div className='space-y-1 text-sm'>
                                 <div className="mt-5 mb-5">
                                     <h1 className="text-center text-xl font-bold text-[#34a87a]">The session free or paid?</h1>
-                                    <h1 className="text-center text-sm font-bold text-gray-400">If the session is free input 0 or input specific amount.</h1>
+                                    <h1 className="text-center text-sm font-bold text-gray-500">If the session is free input 0 or the session is paid input specific amount.</h1>
                                 </div>
                                 <label htmlFor='title' className='block text-gray-800'>
                                     Course Fee: 
