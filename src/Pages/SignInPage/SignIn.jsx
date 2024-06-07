@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import SocialMediaSignIn from "../../Components/Shared/SocialMediaSignIn";
+import { IoHome } from "react-icons/io5";
+import { Tooltip } from "react-tooltip";
 
 const SignIn = () => {
   const { register, handleSubmit } = useForm();
@@ -32,7 +34,7 @@ const SignIn = () => {
         <Helmet>
             <title>Connect2Study | Sign in</title>
         </Helmet>
-        <div className='flex flex-col max-w-lg p-6 rounded-md sm:p-10 bg-green-50 text-gray-900'>
+        <div className='relative flex flex-col max-w-lg p-6 rounded-md sm:p-10 bg-green-50 text-gray-900'>
           <div className='mb-3 text-center'>
             <h1 className='my-3 text-4xl font-bold'>Sign in</h1>
             <p className='text-sm text-gray-400'>Welcome to <span className="text-[#00b16e]">Connect2Study</span></p>
@@ -100,9 +102,9 @@ const SignIn = () => {
             <div>
               <button
                 type='submit'
-                className='bg-[#00b16e] text-lg font-medium w-full rounded-md py-3 text-white'
+                className='bg-[#00b16e] text-lg font-medium w-full rounded-md py-2 text-white'
               >
-                Continue
+                Sign in
               </button>
             </div>
           </form>
@@ -123,6 +125,16 @@ const SignIn = () => {
             .
           </p>
         </div>
+        <Link 
+          data-tooltip-id="my-tooltip"
+          data-tooltip-content={'Back Home'}
+          to = '/'
+          className="absolute top-14 left-[40%]"
+        >
+          <IoHome className="w-7 h-7 text-[#00b16e]"/>
+        </Link>
+
+      <Tooltip id="my-tooltip" />
     </div>
   );
 };
