@@ -15,6 +15,7 @@ import AddStudentNotes from "../Components/Dashboard/Student/AddStudentNotes/Add
 import StudentPersonalNotes from "../Components/Dashboard/Student/StudentPersonalNotes/StudentPersonalNotes";
 import UpdateNote from "../Components/Dashboard/Student/UpdateNote/UpdateNote";
 import AboutPage from "../Pages/AboutPage/AboutPage";
+import ContactPage from "../Pages/ContactPage/ContactPage";
 
 
 export const router = createBrowserRouter([
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
         {
             path: '/about',
             element: <AboutPage />
+        },
+        {
+            path: '/contactUs',
+            element: <ContactPage />
         },
         {
           path:'/study-session-details/:id',
