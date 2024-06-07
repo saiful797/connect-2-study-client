@@ -35,7 +35,7 @@ const StudySessionDetails = () => {
         <div className="w-full mb-5 p-3 bg-teal-50 rounded-xl">
             <div className='mt-16 p-3'>
                 {/* section title */}
-                <SectionTitle title={'Course Details'}/>
+                <SectionTitle title={'Session Details'}/>
 
                 <div className="lg:w-2/3 p-3 md:p-5 mx-auto bg-green-100">
                     <h1 className="text-3xl font-bold text-center mb-5">Course Name: <span className='text-[#00b16e]'>{title}</span></h1>
