@@ -14,7 +14,7 @@ const Home = () => {
         fetch(`${import.meta.env.VITE_SERVER_API}/approved-study-session`)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
+            // console.log(data)
             setApprovedSessions(data);
         })
     },[])
