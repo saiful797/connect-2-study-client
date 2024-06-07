@@ -12,6 +12,7 @@ import AllSessions from "../Components/Dashboard/Tutor/AllSessions/AllSessions";
 import AllStudySessions from "../Components/Dashboard/Admin/AllStudySessions/AllStudySessions";
 import StudySessionDetails from "../Components/StudySessionDetails/StudySessionDetails";
 import AddStudentNotes from "../Components/Dashboard/Student/AddStudentNotes/AddStudentNotes";
+import StudentPersonalNotes from "../Components/Dashboard/Student/StudentPersonalNotes/StudentPersonalNotes";
 
 
 export const router = createBrowserRouter([
@@ -58,7 +59,11 @@ export const router = createBrowserRouter([
         {
           path: 'add-student-notes',
           element: <AddStudentNotes />
-        }
+        },
+        {
+          path: 'student-personal-notes',
+          element: <StudentPersonalNotes />
+        },
       ]
     },
     {
