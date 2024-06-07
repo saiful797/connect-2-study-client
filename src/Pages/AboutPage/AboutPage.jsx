@@ -1,9 +1,10 @@
 import React from 'react';
+import SectionTitle from '../../Components/Shared/SectionTitle';
 
 const AboutPage = () => {
     return (
-        <div>
-            
+        <div className='pt-16 min-h-screen'>
+            <SectionTitle title = {'About'}/>
         </div>
     );
 };
