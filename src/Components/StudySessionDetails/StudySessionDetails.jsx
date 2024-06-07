@@ -5,6 +5,7 @@ import SectionTitle from '../Shared/SectionTitle';
 import moment from 'moment';
 import useRole from '../../Hooks/useRole';
 import { Tooltip } from 'react-tooltip';
+import useAuth from '../../Hooks/useAuth';
 
 const StudySessionDetails = () => {
     const [session, setSession] = useState( {} );
@@ -12,6 +13,7 @@ const StudySessionDetails = () => {
     const {  id } = useParams();
     const axiosPublic = useAxiosPublic();
     const { role } = useRole();
+    const { user } = useAuth();
     
     useEffect(() => {
         axiosPublic.get(`/specific-session/${id}`)
@@ -24,12 +26,22 @@ const StudySessionDetails = () => {
         })
     },[])
 
-    const { title, name, duration, regStart, regEnd, classStart, classEnd, regFee, description } = session;
+    const {_id, title, name, duration, regStart, regEnd, classStart, classEnd, regFee, description } = session;
     
     const endMonth = parseInt(regEnd?.split('-')[1]);
     const thisMonth = parseInt(moment().format('L').split('/')[0]);
 
     // console.log("End date: ", regEnd, "Today's Date: ", moment().format('L'), "Remaining Days: ", remainingDays)
+
+    const handleBookedSession = async ( id ) => {
+        const bookedInfo = {
+            sessionId: id,
+            name: user.displayName,
+            email: user.email,
+        }
+        // const res = axiosPublic.post('/student-session-booked',)
+        console.log(bookedInfo);
+    }
 
     return (
         <div className="w-full mb-5 p-3 bg-teal-50 rounded-xl">
@@ -104,7 +116,8 @@ const StudySessionDetails = () => {
                     <div>
                         {
                            (role === 'student') && ( remainingDays > 0 ) && ( endMonth <= thisMonth ) && <p 
-                                className="text-lg font-bold cursor-pointer border border-zinc-800 w-1/2 mx-auto flex justify-center items-center mt-5 mb-1 pt-2 pb-2"
+                                className="text-lg font-bold cursor-pointer border border-zinc-800 w-1/2 mx-auto flex justify-center items-center mt-5 mb-1 pt-2 pb-2 hover:bg-green-200 text-[#00b16e]"
+                                onClick={() => handleBookedSession( _id )}
                             >
                                 Book Now
                             </p>
