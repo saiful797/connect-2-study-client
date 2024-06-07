@@ -10,6 +10,7 @@ import AllUser from "../Components/Dashboard/Admin/AllUser/AllUser";
 import AddSession from "../Components/Dashboard/Tutor/AddSession/AddSession";
 import AllSessions from "../Components/Dashboard/Tutor/AllSessions/AllSessions";
 import AllStudySessions from "../Components/Dashboard/Admin/AllStudySessions/AllStudySessions";
+import StudySessionDetails from "../Components/StudySessionDetails/StudySessionDetails";
 
 
 export const router = createBrowserRouter([
@@ -21,6 +22,10 @@ export const router = createBrowserRouter([
         {
             path: '/',
             element: <Home />
+        },
+        {
+          path:'/study-session-details/:id',
+          element: <StudySessionDetails />
         }
       ]
     },

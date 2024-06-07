@@ -23,7 +23,6 @@ const Sidebar = () => {
     // check user role
     const { role } = useRole();
 
-
     // Handle logout
     const handleLogOut = () => {
         logOut();
