@@ -12,7 +12,7 @@ const UpdateNote = () => {
     const axiosPublic = useAxiosPublic();
     const data = useParams();
     const [ note, setNote ] = useState( { } );
-
+    
     useEffect(() => {
         axiosPublic.get(`/specific-student-notes/${data.id}`)
         .then( res => {
