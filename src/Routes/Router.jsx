@@ -14,6 +14,7 @@ import StudySessionDetails from "../Components/StudySessionDetails/StudySessionD
 import AddStudentNotes from "../Components/Dashboard/Student/AddStudentNotes/AddStudentNotes";
 import StudentPersonalNotes from "../Components/Dashboard/Student/StudentPersonalNotes/StudentPersonalNotes";
 import UpdateNote from "../Components/Dashboard/Student/UpdateNote/UpdateNote";
+import AboutPage from "../Pages/AboutPage/AboutPage";
 
 
 export const router = createBrowserRouter([
@@ -25,6 +26,10 @@ export const router = createBrowserRouter([
         {
             path: '/',
             element: <Home />
+        },
+        {
+            path: '/abou',
+            element: <AboutPage />
         },
         {
           path:'/study-session-details/:id',
