@@ -13,6 +13,7 @@ import AllStudySessions from "../Components/Dashboard/Admin/AllStudySessions/All
 import StudySessionDetails from "../Components/StudySessionDetails/StudySessionDetails";
 import AddStudentNotes from "../Components/Dashboard/Student/AddStudentNotes/AddStudentNotes";
 import StudentPersonalNotes from "../Components/Dashboard/Student/StudentPersonalNotes/StudentPersonalNotes";
+import UpdateNote from "../Components/Dashboard/Student/UpdateNote/UpdateNote";
 
 
 export const router = createBrowserRouter([
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
         {
           path: 'student-personal-notes',
           element: <StudentPersonalNotes />
+        },
+        {
+          path: 'student-personal-notes/update-note/:id',
+          element: <UpdateNote />
         },
       ]
     },

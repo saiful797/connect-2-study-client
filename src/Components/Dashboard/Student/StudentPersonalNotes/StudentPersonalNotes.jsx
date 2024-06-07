@@ -3,6 +3,7 @@ import SectionTitle from '../../../Shared/SectionTitle';
 import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import useAuth from '../../../../Hooks/useAuth';
 import { Tooltip } from 'react-tooltip';
+import { Link } from 'react-router-dom';
 
 const StudentPersonalNotes = () => {
     const axiosPublic = useAxiosPublic();
@@ -37,22 +38,23 @@ const StudentPersonalNotes = () => {
                             <div className="card-body">
                                 <h2 className="card-title">{note.title}</h2>
                                 <p>{note.description}</p>
-                                <div className="card-actions justify-end">
-                                    <p
-                                        className="bg-green-50 text-green-600 pl-2 pr-2 w-16 text-center"
+                                <div className="card-actions justify-between gap-5">
+                                    <Link
+                                        className="py-1 bg-green-50 text-green-600 pl-2 pr-2 w-16 text-center"
                                         data-tooltip-id="my-tooltip" 
-                                        data-tooltip-content={'Approved by Admin'}
+                                        data-tooltip-content={'Update your note.'}
+                                        to={`update-note/${note._id}`}
                                     >
                                         Update
-                                    </p>
-                                    <p
-                                        className="bg-red-50 text-red-500 pl-2 pr-2 w-16 text-center cursor-pointer"
+                                    </Link>
+                                    <Link
+                                        className="py-1 bg-red-50 text-red-500 pl-2 pr-2 w-16 text-center cursor-pointer"
                                         data-tooltip-id="my-tooltip" 
                                         data-tooltip-content={'Click for delete'}
                                         onClick={ () => handleNoteDelete (note._id)}
                                     >
                                         Delete
-                                    </p>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
