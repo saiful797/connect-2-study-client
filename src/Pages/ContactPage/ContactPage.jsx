@@ -1,4 +1,5 @@
 import React from 'react';
+import SectionTitle from '../../Components/Shared/SectionTitle';
 
 const ContactPage = () => {
   const handleSubmit = (e) => {
@@ -8,10 +9,10 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="contact-page min-h-screen pt-20 bg-green-50 flex flex-col">
+    <div className="contact-page min-h-screen pt-10 bg-green-50 flex flex-col">
       <header className="py-10">
         <div className="container mx-auto text-center">
-          <h1 className="text-4xl font-bold">Contact Us</h1>
+          <SectionTitle title={"Contact Us"}/>
           <p className="mt-2 text-lg">We would love to hear from you! Please fill out the form below and we will get in touch with you shortly.</p>
         </div>
       </header>
