@@ -6,16 +6,22 @@ import StudySessionConfirmModal from '../StudySessionConfirmModal/StudySessionCo
 const StudySession = ({ studySession }) => {
     const axiosPublic = useAxiosPublic();
     const {_id, name , email, title,regStart, regEnd, regFee, classStart, classEnd, duration, status} = studySession;
-
+    // handle Study Session Rejected
     const handleStudySessionReject = async () => {
         const data = { status: "rejected"}
         const res = await axiosPublic.patch(`/study-session-rejected/${_id}`, data );
         if(res.data.modifiedCount > 0){
             toast.success("Session reject successfully!");
         }
-    
     }
-
+    //handle study session deleted
+    const handleStudySessionDelete = async () => {
+        const res = await axiosPublic.delete(`/study-session-deleted/${_id}`);
+        console.log(res.data);
+        if(res.data.deletedCount > 0){
+            toast.success('Session deleted successfully!');
+        }
+    }
     return (
         <div>
             <div className='p-5 shadow-md relative'>
@@ -62,7 +68,12 @@ const StudySession = ({ studySession }) => {
                     {
                         status === 'approved' && <div className='flex justify-evenly mt-5'>
                             <p className='cursor-pointer bg-teal-50 text-green-700 pl-2 pr-2'>Update</p>
-                            <p className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'>Delete</p>
+                            <p 
+                                className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'
+                                onClick={handleStudySessionDelete}
+                            >
+                                Delete
+                            </p>
                         </div>
                     }
                     {/*study session rejected*/}
