@@ -103,7 +103,7 @@ const AllSessions = () => {
                                             session.status === 'rejected' && <p 
                                                 className="border-2 hover:border-zinc-600 bg-green-100 text-stone-700 pl-2 pr-2 w-16 text-center cursor-pointer"
                                                 data-tooltip-id="my-tooltip"
-                                                data-tooltip-content={'Request For Approval'}
+                                                data-tooltip-content={'Again Request For Approval'}
                                                 onClick={() => handleApprovalRequest (session._id)}
                                             >
                                                 Request
