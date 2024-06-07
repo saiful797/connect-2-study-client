@@ -2,6 +2,7 @@ import PropTypes from  'prop-types';
 import useAxiosPublic from '../../../../../Hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 import StudySessionConfirmModal from '../StudySessionConfirmModal/StudySessionConfirmModal';
+import StudySessionUpdateModal from '../StudySessionUpdateModal/StudySessionUpdateModal';
 
 const StudySession = ({ studySession }) => {
     const axiosPublic = useAxiosPublic();
@@ -67,9 +68,10 @@ const StudySession = ({ studySession }) => {
                     {/*study session update and Delete button*/}
                     {
                         status === 'approved' && <div className='flex justify-evenly mt-5'>
-                            <p className='cursor-pointer bg-teal-50 text-green-700 pl-2 pr-2'>Update</p>
+                            {/* update session */}
+                            <StudySessionUpdateModal updateData = { [_id, regFee ]}/>
                             <p 
-                                className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'
+                                className='cursor-pointer bg-red-50 text-red-500 py-1 pl-2 pr-2'
                                 onClick={handleStudySessionDelete}
                             >
                                 Delete
