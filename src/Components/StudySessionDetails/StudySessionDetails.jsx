@@ -6,6 +6,7 @@ import moment from 'moment';
 import useRole from '../../Hooks/useRole';
 import { Tooltip } from 'react-tooltip';
 import useAuth from '../../Hooks/useAuth';
+import toast from 'react-hot-toast';
 
 const StudySessionDetails = () => {
     const [session, setSession] = useState( {} );
@@ -39,8 +40,11 @@ const StudySessionDetails = () => {
             name: user.displayName,
             email: user.email,
         }
-        // const res = axiosPublic.post('/student-session-booked',)
-        console.log(bookedInfo);
+        const res = await axiosPublic.post('/study-session-booked', bookedInfo)
+        if( res.data.insertedId ){
+            toast.success('Session booked successfully!');
+        }
+        console.log(res.data);
     }
 
     return (
