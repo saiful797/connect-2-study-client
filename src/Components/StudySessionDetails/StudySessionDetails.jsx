@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { PiBookOpenTextBold } from 'react-icons/pi';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import SectionTitle from '../Shared/SectionTitle';
+import moment from 'moment';
 
 const StudySessionDetails = () => {
     const [session, setSession] = useState( {} );
+
     const {  id } = useParams();
     const axiosPublic = useAxiosPublic();
     
@@ -13,10 +14,20 @@ const StudySessionDetails = () => {
         axiosPublic.get(`/specific-session/${id}`)
         .then( res => {
             setSession( res.data );
+            const remainingDay = parseInt(res.data.regEnd.split('-')[2]) - parseInt(moment().format('L').split('/')[1]) + 1;
+
+            console.log("Remaining Days: ", remainingDay);
+
         })
     },[])
 
-    const {title, name, duration, regStart, regEnd, classStart, classEnd, regFee, description } = session;
+    const { title, name, duration, regStart, regEnd, classStart, classEnd, regFee, description } = session;
+    
+    const endMonth = parseInt(regEnd?.split('-')[1]);
+    const thisMonth = parseInt(moment().format('L').split('/')[0]);
+
+    console.log("End date: ", regEnd, "Today's Date: ", moment().format('L'))
+
     return (
         <div className="w-full mb-5 p-3 bg-teal-50 rounded-xl">
             <div className='mt-16 p-3'>
@@ -47,7 +58,9 @@ const StudySessionDetails = () => {
                             <p className="text-lg text-slate-600 text-justify"><span className='text-slate-400'>Session Details:</span> { description  }</p>
                         </div>
                     </div>
-                    
+                    <div>
+                        
+                    </div>
                 </div>
             </div>
         </div>
