@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
-import { LuGitPullRequestDraft } from "react-icons/lu";
 import SectionTitle from "../../../Shared/SectionTitle";
 import { Tooltip } from "react-tooltip";
 import toast from "react-hot-toast";
@@ -26,6 +25,10 @@ const AllSessions = () => {
         if(res.data.modifiedCount > 0){
             toast.success("Pending request delivered successfully!");
         }
+    }
+
+    const handleUploadMaterials = ( id ) => {
+        console.log(id)
     }
 
     return (
@@ -70,6 +73,8 @@ const AllSessions = () => {
                                     <td>
                                         {session.postDate}
                                     </td>
+
+                                    {/* Session Status */}
                                     <td>
                                         {
                                             session.status === 'pending' && <p 
@@ -99,12 +104,14 @@ const AllSessions = () => {
                                             </p>
                                         }
                                     </td>
+                                    {/* Upload Materials */}
                                     <td className="flex justify-center items-center">
                                         {
                                             session.status === 'approved' && <p
                                                 className="bg-orange-50 border-2 border-zinc-400 hover:border-orange-400 text-orange-500 pl-2 pr-2 w-16 text-center cursor-pointer"
                                                 data-tooltip-id="my-tooltip" 
                                                 data-tooltip-content={'Upload materials'}
+                                                onClick={() => handleUploadMaterials (session._id)}
                                             >
                                                 Upload
                                             </p>
@@ -119,6 +126,7 @@ const AllSessions = () => {
                                             </p>
                                         }
                                     </td>
+                                    {/* Action */}
                                     <td>
                                         {
                                             session.status === 'rejected' && <p 
