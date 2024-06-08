@@ -3,11 +3,14 @@ import SectionTitle from "../../../Shared/SectionTitle";
 import useAuth from "../../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import toast from "react-hot-toast";
 
 const UploadMaterials = () => {
     const { id } = useParams();
     const { user } = useAuth();
     const { register, handleSubmit, reset} = useForm();
+    const axiosPublic = useAxiosPublic();
 
     const onSubmit = async ( result ) => {
         
@@ -30,11 +33,17 @@ const UploadMaterials = () => {
           const link = result.link;
   
           const materialData = { title, email, image, sessionID, link };
+        //   console.log( materialData )
 
-          console.log( materialData )
-        
+          const res = await axiosPublic.post('/study-session-material', materialData );
+        if(res.data.insertedId){
+            toast.success('Materials Uploaded Successfully!');
+            reset();
+        }
+
         }catch( err ){
-          console.log( err.message );
+        //   console.log( err.message );
+           toast.error(err.message);
         }
       }
 
@@ -65,7 +74,7 @@ const UploadMaterials = () => {
                         name="title" 
                         required 
                         {...register("title", { required: true })}
-                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-[#00b16e]" 
+                        className="mt-1 block w-full p-1 border border-gray-300 rounded-md focus:outline-[#00b16e]" 
                     />
                 </div>
                 <div>
@@ -73,7 +82,7 @@ const UploadMaterials = () => {
                         htmlFor="link" 
                         className="block "
                     >
-                        Upload Link
+                        Upload Link<span className="text-sm ml-1 text-zinc-400">(google drive)</span>
                     </label>
                     <input 
                         type="url" 
@@ -81,7 +90,7 @@ const UploadMaterials = () => {
                         name="link" 
                         required 
                         {...register("link", { required: true })}
-                        className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-[#00b16e]" 
+                        className="mt-1 block w-full p-1 border border-gray-300 rounded-md focus:outline-[#00b16e]" 
                     />
                 </div>
                 <div className="space-y-1">
@@ -97,7 +106,7 @@ const UploadMaterials = () => {
                         name="image"  
                         required
                         {...register("image", { required: true })}
-                        className="mt-1 block file-input file-input-bordered w-full focus:outline-none"
+                        className="mt-1 block file-input file-input-bordered w-full file-input-sm file-input-warning focus:outline-none"
                     />
                 </div>
                 
