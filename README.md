@@ -1,10 +1,10 @@
- ***Website Name**: [Connect 2 Study](https://connect-2-study.web.app)
+ **Website Name**: [Connect 2 Study](https://connect-2-study.web.app)
 
 **Admin Email**: connect2study@gmail.com
 
 **Admin password**: @#&Study7
 
-**Client**: [ Live site ](https://connect-2-study.web.app)
+**Client**: [ Live ite ](https://connect-2-study.web.app)
 
 ### Here are ten bullet points about the Connect 2 Study website:
 
