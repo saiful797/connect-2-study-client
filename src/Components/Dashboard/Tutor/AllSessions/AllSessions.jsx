@@ -28,10 +28,6 @@ const AllSessions = () => {
         }
     }
 
-    // const handleUploadMaterials = ( id ) => {
-    //     console.log(id)
-    // }
-
     return (
         <div>
            
@@ -112,7 +108,6 @@ const AllSessions = () => {
                                                 className="bg-orange-50 border-2 border-zinc-400 hover:border-orange-400 text-orange-500 pl-2 pr-2 w-16 text-center cursor-pointer"
                                                 data-tooltip-id="my-tooltip" 
                                                 data-tooltip-content={'Upload materials'}
-                                                // onClick={() => handleUploadMaterials (session._id)}
                                                 to={`upload-materials/${session._id}`}
                                             >
                                                 Upload
