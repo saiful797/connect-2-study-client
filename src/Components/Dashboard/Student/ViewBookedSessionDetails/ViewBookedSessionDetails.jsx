@@ -90,6 +90,8 @@ const ViewBookedSessionDetails = () => {
                     <div>
                     <p 
                         className="text-lg font-bold cursor-pointer w-40 mx-auto flex justify-center items-center mt-5 mb-1 pt-1 pb-1 bg-green-200 text-[#00b16e]"
+                        data-tooltip-id="my-tooltip"
+                        data-tooltip-content={'Add your review.'}
                     >
                         Add Review
                     </p>
