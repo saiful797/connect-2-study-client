@@ -8,7 +8,12 @@ const AddReviewModal = ({ id }) => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = async ( data ) => {
-       
+        const rating = parseFloat(data.rating);
+
+        if(rating > 5 || rating < 0 ){
+            toast.error('Rating must be 0 to 5');
+            return;
+        }
         console.log(data)
 
     }
@@ -60,6 +65,7 @@ const AddReviewModal = ({ id }) => {
                                         name='rating'
                                         id='rating'
                                         type='number'
+                                        step="0.01"
                                         placeholder='Enter your rating here.'
                                         {...register("rating", { required: true })}
                                         required
