@@ -17,7 +17,7 @@ const ViewBookedSessionDetails = () => {
         })
     },[])
 
-    const {title, name, duration, regStart, regEnd, classStart, classEnd, regFee, description } = session;
+    const {_id, title, name, duration, regStart, regEnd, classStart, classEnd, regFee, description } = session;
 
     return (
         <div>
@@ -89,7 +89,7 @@ const ViewBookedSessionDetails = () => {
                         </div>
                     </div>
                     <div>
-                        <AddReviewModal />
+                        <AddReviewModal id = {_id }/>
                     </div>
                 </div>
             </div>

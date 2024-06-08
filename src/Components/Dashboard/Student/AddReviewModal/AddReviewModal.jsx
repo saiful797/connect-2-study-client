@@ -10,11 +10,12 @@ const AddReviewModal = ({ id }) => {
     const onSubmit = async ( data ) => {
         const rating = parseFloat(data.rating);
 
-        if(rating > 5 || rating < 0 ){
+        if(rating > 5 || 0 > rating  ){
             toast.error('Rating must be 0 to 5');
             return;
         }
-        console.log(data)
+        
+        const res = await axiosPublic.post('/student-review',)
 
     }
 
