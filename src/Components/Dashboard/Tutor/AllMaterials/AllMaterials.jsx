@@ -5,6 +5,7 @@ import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import { saveAs } from 'file-saver';
 import toast from 'react-hot-toast';
 import { Tooltip } from 'react-tooltip';
+import { Link } from 'react-router-dom';
 
 const AllMaterials = () => {
     const { user } = useAuth();
@@ -22,6 +23,10 @@ const AllMaterials = () => {
     const handleDownload = (material) => {
         saveAs(material.image, 'download.jpg');
     };
+
+    const handleLinkClick = ( material ) => {
+        window.open(material.link , '_blank', 'noopener,noreferrer');
+    }
 
     const handleMaterialDelete = async ( id ) => {
         const res = await axiosPublic.delete(`/session-material/${ id }`);
@@ -43,31 +48,35 @@ const AllMaterials = () => {
                             <img 
                             className='h-56 w-full rounded-lg'
                                 src={material.image}
-                                alt="Shoes" 
+                                alt="material image"
                             />
                         </figure>
                         <div className="p-5 relative">
-                            <h1>Title: {material.title}</h1>
+                            <h1><span className='text-xl text-gray-500'>Title:</span> <span className='link-warning'>{material.title}</span></h1>
+                            <p>
+                                <span className='text-lg text-gray-500'>Important Resource:</span> <Link className='link link-warning' onClick={() => handleLinkClick(material)}> Google Drive Link </Link>
+                            </p>
                             <p className='absolute -top-5 left-3'>
                                 <p
                                     onClick={()=>handleDownload(material)}
-                                    className="cursor-pointer bg-black text-white hover:text-yellow-500 px-2 rounded"
+                                    className="cursor-pointer bg-green-700 text-white hover:text-orange-300 px-2 rounded"
                                 >
-                                    Download Image
+                                    Download image
                                 </p>
                             </p>
                             <h2 className="card-title ">
                             
                             </h2>
                             <p></p>
-                            <div className="card-actions justify-end">
-                                <div 
+                            <div className="card-actions justify-end mt-5">
+                                <Link 
                                     className="badge badge-outline text-green-600 cursor-pointer"
                                     data-tooltip-id="my-tooltip" 
                                     data-tooltip-content="click for update"
+                                    
                                 >
                                     Update
-                                </div> 
+                                </Link> 
                                 <div 
                                     className="badge badge-outline text-red-600 cursor-pointer"
                                     onClick={() => handleMaterialDelete(material._id)}
