@@ -8,7 +8,7 @@ const AllSessionMaterials = () => {
     const axiosPublic = useAxiosPublic();
 
     useEffect(() => {
-        axiosPublic.get('/specific-session-material')
+        axiosPublic.get('/all-session-material')
         .then( res => {
             // console.log(res.data);
             setMaterials( res.data );
