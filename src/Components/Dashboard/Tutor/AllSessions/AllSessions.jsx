@@ -45,6 +45,7 @@ const AllSessions = () => {
                                 <th>Duration</th>
                                 <th>Post Date</th>
                                 <th>Status</th>
+                                <th>Upload Materials</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -57,7 +58,7 @@ const AllSessions = () => {
                                     </td>
                                     <td>
                                         {
-                                            session.regFee === 0 && <p>Free</p>
+                                            session.regFee === 0 && <p>$0</p>
                                         }
                                         {
                                             session.regFee > 0 && <p>${session.regFee}</p>
@@ -98,10 +99,30 @@ const AllSessions = () => {
                                             </p>
                                         }
                                     </td>
+                                    <td className="flex justify-center items-center">
+                                        {
+                                            session.status === 'approved' && <p
+                                                className="bg-orange-50 border-2 border-zinc-400 hover:border-orange-400 text-orange-500 pl-2 pr-2 w-16 text-center cursor-pointer"
+                                                data-tooltip-id="my-tooltip" 
+                                                data-tooltip-content={'Upload materials'}
+                                            >
+                                                Upload
+                                            </p>
+                                        }
+                                        {
+                                            (session.status === 'rejected' || session.status ==='pending') && <p
+                                                className="bg-orange-50 border-2 text-orange-300 pl-2 pr-2 w-16 text-center disabled cursor-not-allowed"
+                                                data-tooltip-id="my-tooltip" 
+                                                data-tooltip-content={'Button disable'}
+                                            >
+                                                Upload
+                                            </p>
+                                        }
+                                    </td>
                                     <td>
                                         {
                                             session.status === 'rejected' && <p 
-                                                className="border-2 hover:border-zinc-600 bg-green-100 text-stone-700 pl-2 pr-2 w-16 text-center cursor-pointer"
+                                                className="border-2 border-zinc-400 hover:border-green-600 bg-green-100 text-green-600 pl-2 pr-2 w-16 text-center cursor-pointer"
                                                 data-tooltip-id="my-tooltip"
                                                 data-tooltip-content={'Again Request For Approval'}
                                                 onClick={() => handleApprovalRequest (session._id)}
