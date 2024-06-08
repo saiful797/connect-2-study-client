@@ -15,7 +15,10 @@ const AddReviewModal = ({ id }) => {
             return;
         }
         const res = await axiosPublic.post('/student-review', data);
-        console.log( res.data );
+        if(res.data.insertedId){
+            toast.success("Review added successfully!");
+            reset();
+        }
     }
 
     return (
@@ -75,9 +78,9 @@ const AddReviewModal = ({ id }) => {
     
                             <button
                                 type='submit'
-                                className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#2db880]'
+                                className='w-full p-2 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#000000]'
                             >
-                                Confirm
+                                Add Review
                             </button>
                         </form>
                     </div>
