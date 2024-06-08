@@ -36,6 +36,9 @@ const StudySessionDetails = () => {
     const handleBookedSession = async ( id ) => {
         const bookedInfo = {
             sessionId: id,
+            title,
+            classStart,
+            booked_date: moment().format('L'),
             name: user.displayName,
             student_email: user.email,
             tutor_email: email
