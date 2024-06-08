@@ -4,6 +4,8 @@ import { useParams } from 'react-router-dom';
 import useAuth from '../../../../../Hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import useAxiosPublic from '../../../../../Hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
+import axios from 'axios';
 
 const UpdateMaterial = () => {
     const [ material, setMaterial ] = useState({});
@@ -33,24 +35,27 @@ const UpdateMaterial = () => {
             }`,
             formData
           )
-  
           const title = result.title;
           const email = user.email;
           const image = data.data.display_url;
           const sessionID = id;
           const link = result.link;
-  
           const materialData = { title, email, image, sessionID, link };
-        //   console.log( materialData )
+           console.log("ID: ", id, materialData )
 
-        // const res = await axiosPublic.post('/study-session-material', materialData );
-        // if(res.data.insertedId){
-        //     toast.success('Materials Uploaded Successfully!');
-        //     reset();
-        // }
+        const res = await axiosPublic.patch(`/study-material/${id}`, materialData );
+        console.log(res.data)
+        if(res.data.modifiedCount > 0){
+            toast.success('Materials Uploaded Successfully!');
+            reset();
+        }
+        if(res.data.modifiedCount === 0){
+            toast.error('Materials data not modified!');
+            reset();
+        }
 
         }catch( err ){
-        //   console.log( err.message );
+           //console.log( err.message );
            toast.error(err.message);
         }
     }
