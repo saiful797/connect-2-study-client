@@ -20,6 +20,7 @@ import MyBookedSession from "../Components/Dashboard/Student/MyBookedSessions/My
 import ViewBookedSessionDetails from "../Components/Dashboard/Student/ViewBookedSessionDetails/ViewBookedSessionDetails";
 import AllMaterials from "../Components/Dashboard/Tutor/AllMaterials/AllMaterials";
 import UploadMaterials from "../Components/Dashboard/Tutor/UploadMaterials/UploadMaterials";
+import UpdateMaterial from "../Components/Dashboard/Tutor/AllMaterials/UpdateMaterial/UpdateMaterial";
 
 
 export const router = createBrowserRouter([
@@ -79,6 +80,10 @@ export const router = createBrowserRouter([
         {
           path: 'all-materials',
           element: <AllMaterials />
+        },
+        {
+          path: 'all-materials/update-material/:id',
+          element: <UpdateMaterial />
         },
         // student related route
         {

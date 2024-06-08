@@ -73,7 +73,7 @@ const AllMaterials = () => {
                                     className="badge badge-outline text-green-600 cursor-pointer"
                                     data-tooltip-id="my-tooltip" 
                                     data-tooltip-content="click for update"
-                                    
+                                    to={`update-material/${material._id}`}
                                 >
                                     Update
                                 </Link> 
