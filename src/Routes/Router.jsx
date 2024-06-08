@@ -19,6 +19,7 @@ import ContactPage from "../Pages/ContactPage/ContactPage";
 import MyBookedSession from "../Components/Dashboard/Student/MyBookedSessions/MyBookedSession";
 import ViewBookedSessionDetails from "../Components/Dashboard/Student/ViewBookedSessionDetails/ViewBookedSessionDetails";
 import AllMaterials from "../Components/Dashboard/Tutor/AllMaterials/AllMaterials";
+import UploadMaterials from "../Components/Dashboard/Tutor/UploadMaterials/UploadMaterials";
 
 
 export const router = createBrowserRouter([
@@ -70,6 +71,10 @@ export const router = createBrowserRouter([
         {
           path: 'all-sessions',
           element: <AllSessions />
+        },
+        {
+          path: 'all-sessions/upload-materials/:id',
+          element: <UploadMaterials />
         },
         {
           path: 'all-materials',

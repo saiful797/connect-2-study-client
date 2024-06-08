@@ -4,6 +4,7 @@ import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import SectionTitle from "../../../Shared/SectionTitle";
 import { Tooltip } from "react-tooltip";
 import toast from "react-hot-toast";
+import { Link } from "react-router-dom";
 
 
 const AllSessions = () => {
@@ -27,9 +28,9 @@ const AllSessions = () => {
         }
     }
 
-    const handleUploadMaterials = ( id ) => {
-        console.log(id)
-    }
+    // const handleUploadMaterials = ( id ) => {
+    //     console.log(id)
+    // }
 
     return (
         <div>
@@ -107,14 +108,15 @@ const AllSessions = () => {
                                     {/* Upload Materials */}
                                     <td className="flex justify-center items-center">
                                         {
-                                            session.status === 'approved' && <p
+                                            session.status === 'approved' && <Link
                                                 className="bg-orange-50 border-2 border-zinc-400 hover:border-orange-400 text-orange-500 pl-2 pr-2 w-16 text-center cursor-pointer"
                                                 data-tooltip-id="my-tooltip" 
                                                 data-tooltip-content={'Upload materials'}
-                                                onClick={() => handleUploadMaterials (session._id)}
+                                                // onClick={() => handleUploadMaterials (session._id)}
+                                                to={`upload-materials/${session._id}`}
                                             >
                                                 Upload
-                                            </p>
+                                            </Link>
                                         }
                                         {
                                             (session.status === 'rejected' || session.status ==='pending') && <p
