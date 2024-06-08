@@ -20,6 +20,19 @@ const AllUser = () => {
             {/* Section Title */}
             <SectionTitle title={"All Users"}/>
             <div>
+                <div className='space-y-1 text-sm flex justify-center items-center mb-5'>
+                    <label htmlFor='title' className='block text-lg font-bold text-gray-500'>
+                        Search Bar:
+                    </label>
+                    <input
+                        className='w-3/4 md:w-1/2 lg:w-1/3 px-2 py-2 text-gray-800 border focus:outline-[#34a87a] rounded-md '
+                        name='duration'
+                        id='duration'
+                        type='text'
+                        placeholder='Enter name or email here'
+                        required
+                    />
+                </div>
                 <div className="overflow-x-auto">
                     <table className="table table-zebra">
                         {/* head */}
