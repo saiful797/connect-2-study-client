@@ -1,9 +1,12 @@
-### Website Name: Connect 2 Study
+ ***Website Name**: [Connect 2 Study](https://connect-2-study.web.app)
+
 **Admin Email**: connect2study@gmail.com
+
 **Admin password**: @#&Study7
+
 **Client**: [ Live site ](https://connect-2-study.web.app)
 
-**Here are ten bullet points about the Connect 2 Study website**:
+### Here are ten bullet points about the Connect 2 Study website:
 
 1. **Platform Purpose**: Connects students for study group formation and study partner matching.
 2. **User Registration**: Users can create accounts to access the platform's features.
