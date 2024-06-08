@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 
 
-const AddReview = ({ id }) => {
+const AddReviewModal = ({ id }) => {
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset } = useForm();
 
@@ -34,8 +34,9 @@ const AddReview = ({ id }) => {
                         <form onSubmit={ handleSubmit(onSubmit) }>
                             <div className='space-y-1 text-sm'>
                                 <div className="mt-5 mb-5">
-                                    <h1 className="text-center text-xl font-bold text-[#34a87a]">The session free or paid?</h1>
-                                    <h1 className="text-center text-sm font-bold text-gray-500">If the session is free input 0 or the session is paid input specific amount.</h1>
+                                    <h1 className="text-center text-xl font-bold text-[#34a87a]">
+                                        The session free or paid?
+                                    </h1>
                                 </div>
                                 <label htmlFor='title' className='block text-gray-800'>
                                     Course Fee: 
@@ -64,4 +65,4 @@ const AddReview = ({ id }) => {
     );
 };
 
-export default AddReview;
+export default AddReviewModal;

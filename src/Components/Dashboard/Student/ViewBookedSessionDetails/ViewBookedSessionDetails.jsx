@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../Shared/SectionTitle';
 import { useParams } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
-import AddReview from '../AddReview/AddReview';
 import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
+import AddReviewModal from '../AddReviewModal/AddReviewModal'
 
 const ViewBookedSessionDetails = () => {
     const [ session, setSession ] = useState( {} );
@@ -89,7 +89,7 @@ const ViewBookedSessionDetails = () => {
                         </div>
                     </div>
                     <div>
-                        <AddReview />
+                        <AddReviewModal />
                     </div>
                 </div>
             </div>
