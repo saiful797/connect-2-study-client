@@ -4,7 +4,7 @@
 
 **Admin password**: @#&Study7
 
-**Client**: [ Live ite ](https://connect-2-study.web.app)
+**Client**: [ Live Site ](https://connect-2-study.web.app)
 
 ### Here are ten bullet points about the Connect 2 Study website:
 

@@ -38,7 +38,7 @@ const AllMaterials = () => {
     return (
         <div>
             <SectionTitle title='Uploaded Materials'/>
-            <div className=''>
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {
                     materials?.map(material => <div 
                         key = { material._id }

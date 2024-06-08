@@ -26,7 +26,7 @@ const AllSessionMaterials = () => {
     return (
         <div>
             <SectionTitle title='Session Materials'/>
-            <div className=''>
+            <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {
                     materials?.map(material => <div 
                         key = { material._id }
