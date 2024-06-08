@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../Shared/SectionTitle';
-import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import { useParams } from 'react-router-dom';
 import { Tooltip } from 'react-tooltip';
+import AddReview from '../AddReview/AddReview';
+import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 
 const ViewBookedSessionDetails = () => {
     const [ session, setSession ] = useState( {} );
@@ -88,13 +89,7 @@ const ViewBookedSessionDetails = () => {
                         </div>
                     </div>
                     <div>
-                    <p 
-                        className="text-lg font-bold cursor-pointer w-40 mx-auto flex justify-center items-center mt-5 mb-1 pt-1 pb-1 bg-green-200 text-[#00b16e]"
-                        data-tooltip-id="my-tooltip"
-                        data-tooltip-content={'Add your review.'}
-                    >
-                        Add Review
-                    </p>
+                        <AddReview />
                     </div>
                 </div>
             </div>
