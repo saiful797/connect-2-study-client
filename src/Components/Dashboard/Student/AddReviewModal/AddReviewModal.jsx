@@ -35,22 +35,38 @@ const AddReviewModal = ({ id }) => {
                             <div className='space-y-1 text-sm'>
                                 <div className="mt-5 mb-5">
                                     <h1 className="text-center text-xl font-bold text-[#34a87a]">
-                                        The session free or paid?
+                                        Add Your Review.
                                     </h1>
                                 </div>
-                                <label htmlFor='title' className='block text-gray-800'>
-                                    Course Fee: 
-                                </label>
-                                <input
-                                    className='w-full px-4 py-3 text-gray-800 border border-teal-200 focus:outline-[#34a87a] rounded-md '
-                                    name='regFee'
-                                    id='regFee'
-                                    type='number'
-                                    placeholder='Enter course fee here.'
-                                    {...register("regFee", { required: true })}
-                                    required
-                                />
+                                <div className='space-y-1 text-sm'>
+                                    <label htmlFor='review' className='block text-gray-600'>
+                                        Review
+                                    </label>
+
+                                    <textarea
+                                        className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-teal-200 focus:outline-[#34a87a] '
+                                        name='review'
+                                        id='review'
+                                        placeholder="Enter your review here."
+                                        {...register("review", { required: true })}
+                                    ></textarea>
+                                </div>
+                                <div className='space-y-1 text-sm'>
+                                    <label htmlFor='title' className='block text-gray-800'>
+                                        Rating 
+                                    </label>
+                                    <input
+                                        className='w-full px-4 py-3 text-gray-800 border border-teal-200 focus:outline-[#34a87a] rounded-md '
+                                        name='rating'
+                                        id='rating'
+                                        type='number'
+                                        placeholder='Enter your rating here.'
+                                        {...register("rating", { required: true })}
+                                        required
+                                    />
+                                </div>
                             </div>
+    
                             <button
                                 type='submit'
                                 className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#2db880]'
