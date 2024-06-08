@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import SectionTitle from '../Shared/SectionTitle';
 import moment from 'moment';
@@ -16,6 +16,7 @@ const StudySessionDetails = () => {
     const axiosPublic = useAxiosPublic();
     const { role } = useRole();
     const { user } = useAuth();
+    const navigate = useNavigate();
     
     useEffect(() => {
         axiosPublic.get(`/specific-session/${id}`)
@@ -27,7 +28,7 @@ const StudySessionDetails = () => {
         })
     },[])
 
-    const {_id, title, name, duration, regStart, regEnd, classStart, classEnd, regFee, description } = session;
+    const {_id, title,email, name, duration, regStart, regEnd, classStart, classEnd, regFee, description } = session;
     
     const endMonth = parseInt(regEnd?.split('-')[1]);
     const thisMonth = parseInt(moment().format('L').split('/')[0]);
@@ -36,13 +37,14 @@ const StudySessionDetails = () => {
         const bookedInfo = {
             sessionId: id,
             name: user.displayName,
-            email: user.email,
+            student_email: user.email,
+            tutor_email: email
         }
         const res = await axiosPublic.post('/study-session-booked', bookedInfo)
         if( res.data.insertedId ){
             toast.success('Session booked successfully!');
+            navigate('/');
         }
-        console.log(res.data);
     }
 
     return (
@@ -89,9 +91,8 @@ const StudySessionDetails = () => {
                                 {
                                     regFee === 0 && <p className="flex gap-5 text-lg text-slate-600 text-justify">
 
-                                        <span className='text-slate-400'>Registration Fee:</span> Free
-
-                                    </p>
+                                        <span className='text-slate-400'>Registration Fee:</span> $0
+                                    s</p>
                                 }
                                 {
                                     regFee > 0 && <p className="flex gap-5 text-lg text-slate-600 text-justify">
