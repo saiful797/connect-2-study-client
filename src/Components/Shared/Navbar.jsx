@@ -87,7 +87,7 @@ const Navbar = () => {
             <div className="flex justify-center items-center gap-2 mr-3">
                 <div className="dropdown dropdown-end">
                     <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar hover:bg-[#34a87a]">
-                        <div data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName? user.displayName : 'Click here for Sign in'} className="w-11 rounded-full">
+                        <div data-tooltip-id="my-tooltip" data-tooltip-content={user?.displayName? user.displayName : 'Click here.'} className="w-11 rounded-full">
                             {
                                 user? <img alt="user image" src={user.photoURL} />
                                 :

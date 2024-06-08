@@ -24,7 +24,14 @@ const StudySessionConfirmModal = ({ id }) => {
     return (
         <div>
             {/* You can open the modal using document.getElementById('ID').showModal() method */}
-            <button className="cursor-pointer bg-teal-50 text-green-700 pl-2 pr-2" onClick={()=>document.getElementById('my_modal_3').showModal()}>Approve</button>
+            <button 
+                className="cursor-pointer bg-teal-50 text-green-700 pl-2 pr-2" 
+                onClick={()=>document.getElementById('my_modal_3').showModal()}
+                data-tooltip-id="my-tooltip" 
+                data-tooltip-content="Are you sure? You want to approve it."
+            >
+                Approve
+            </button>
             <dialog id="my_modal_3" className="modal">
                 <div className="modal-box bg-green-50">
                     <form method="dialog">

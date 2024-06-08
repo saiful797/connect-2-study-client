@@ -3,6 +3,7 @@ import useAxiosPublic from '../../../../../Hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 import StudySessionConfirmModal from '../StudySessionConfirmModal/StudySessionConfirmModal';
 import StudySessionUpdateModal from '../StudySessionUpdateModal/StudySessionUpdateModal';
+import { Tooltip } from 'react-tooltip';
 
 const StudySession = ({ studySession }) => {
     const axiosPublic = useAxiosPublic();
@@ -62,7 +63,14 @@ const StudySession = ({ studySession }) => {
                        status === 'pending' && <div className='flex justify-evenly mt-5'>
                             {/*Study Session Confirm Modal*/}
                             <StudySessionConfirmModal id = { _id }/>
-                            <p onClick={handleStudySessionReject} className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'>Reject</p>
+                            <p 
+                                onClick={handleStudySessionReject} 
+                                className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'
+                                data-tooltip-id="my-tooltip" 
+                                data-tooltip-content="Are you sure? You want to reject it."
+                            >
+                                Reject
+                            </p>
                        </div>
                     }
                     {/*study session update and Delete button*/}
@@ -73,6 +81,8 @@ const StudySession = ({ studySession }) => {
                             <p 
                                 className='cursor-pointer bg-red-50 text-red-500 py-1 pl-2 pr-2'
                                 onClick={handleStudySessionDelete}
+                                data-tooltip-id="my-tooltip" 
+                                data-tooltip-content="Are you sure? You want to delete it."
                             >
                                 Delete
                             </p>
@@ -87,6 +97,7 @@ const StudySession = ({ studySession }) => {
                     
                 </div>
             </div>
+            <Tooltip id="my-tooltip" />
         </div>
     );
 };
