@@ -17,6 +17,7 @@ import UpdateNote from "../Components/Dashboard/Student/UpdateNote/UpdateNote";
 import AboutPage from "../Pages/AboutPage/AboutPage";
 import ContactPage from "../Pages/ContactPage/ContactPage";
 import MyBookedSession from "../Components/Dashboard/Student/MyBookedSessions/MyBookedSession";
+import ViewBookedSessionDetails from "../Components/Dashboard/Student/ViewBookedSessionDetails/ViewBookedSessionDetails";
 
 
 export const router = createBrowserRouter([
@@ -73,6 +74,10 @@ export const router = createBrowserRouter([
         {
           path: 'my-booked-sessions',
           element: <MyBookedSession />
+        },
+        {
+          path: 'my-booked-sessions/view-details/:id',
+          element: <ViewBookedSessionDetails />
         },
         {
           path: 'add-student-notes',

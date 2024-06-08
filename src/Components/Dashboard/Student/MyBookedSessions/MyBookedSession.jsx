@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../Shared/SectionTitle';
 import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import useAuth from '../../../../Hooks/useAuth';
+import { Link } from 'react-router-dom';
 
 const MyBookedSession = () => {
     const axiosPublic = useAxiosPublic();
@@ -40,11 +41,12 @@ const MyBookedSession = () => {
                                     <td>{session.sessionId}</td>
                                     <td>{session.classStart}</td>
                                     <td>
-                                        <button 
+                                        <Link 
                                             className="btn btn-ghost btn-outline btn-sm"
+                                            to={`view-details/${session.sessionId}`}
                                         >
                                             View Details
-                                        </button>
+                                        </Link>
                                     </td>
                                 </tr> )
                             }
