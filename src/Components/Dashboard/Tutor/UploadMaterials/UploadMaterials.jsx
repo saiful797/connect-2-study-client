@@ -1,21 +1,31 @@
 import { useParams } from "react-router-dom";
 import SectionTitle from "../../../Shared/SectionTitle";
 import useAuth from "../../../../Hooks/useAuth";
+import { useForm } from "react-hook-form";
 
 const UploadMaterials = () => {
     const { id } = useParams();
     const { user } = useAuth();
+    const { register, handleSubmit, reset} = useForm();
+
+    const onSubmit = data => {
+        console.log(data)
+    };
+
     return (
         <div>
             <SectionTitle title="Upload Materials"/>
-            <div className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-green-50 p-10 rounded-lg">
+            <div className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-green-50 p-10 rounded-lg border-2">
                 <div className="mb-3">
                     Session ID: <span className="text-red-600 ml-3">{ id }</span>
                 </div>
                 <div className="mb-3">
                     Your Email: <span className="text-red-600 ml-3">{ user.email }</span>
                 </div>
-                <form className="space-y-3">
+                <form 
+                    className="space-y-3"
+                    onSubmit={handleSubmit(onSubmit)}
+                >
                 <div>
                     <label 
                         htmlFor="name" 
@@ -28,6 +38,7 @@ const UploadMaterials = () => {
                         id="title" 
                         name="title" 
                         required 
+                        {...register("title", { required: true })}
                         className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-[#00b16e]" 
                     />
                 </div>
@@ -43,6 +54,7 @@ const UploadMaterials = () => {
                         id="link" 
                         name="link" 
                         required 
+                        {...register("link", { required: true })}
                         className="mt-1 block w-full p-2 border border-gray-300 rounded-md focus:outline-[#00b16e]" 
                     />
                 </div>
@@ -58,6 +70,7 @@ const UploadMaterials = () => {
                         id="image" 
                         name="image"  
                         required
+                        {...register("image", { required: true })}
                         className="mt-1 block file-input file-input-bordered w-full focus:outline-none"
                     />
                 </div>
