@@ -8,16 +8,9 @@ const AddReview = ({ id }) => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = async ( data ) => {
-        // console.log( parseFloat(data.regFee) );
+       
+        console.log(data)
 
-        const res = await axiosPublic.patch(`/study-session-approved/${id}`, data);
-
-        // console.log(res)
-        if(res.data.modifiedCount > 0){
-
-            toast.success("Session Approved successfully!");
-            reset();
-        }
     }
 
     return (
