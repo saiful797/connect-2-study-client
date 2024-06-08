@@ -21,6 +21,7 @@ import ViewBookedSessionDetails from "../Components/Dashboard/Student/ViewBooked
 import AllMaterials from "../Components/Dashboard/Tutor/AllMaterials/AllMaterials";
 import UploadMaterials from "../Components/Dashboard/Tutor/UploadMaterials/UploadMaterials";
 import UpdateMaterial from "../Components/Dashboard/Tutor/AllMaterials/UpdateMaterial/UpdateMaterial";
+import AllSessionMaterials from "../Components/Dashboard/Admin/AllSessionMaterials/AllSessionMaterials";
 
 
 export const router = createBrowserRouter([
@@ -63,6 +64,10 @@ export const router = createBrowserRouter([
         {
           path: 'all-study-sessions',
           element: <AllStudySessions />
+        },
+        {
+          path: 'all-session-materials',
+          element: <AllSessionMaterials />
         },
         // tutor related route
         {
