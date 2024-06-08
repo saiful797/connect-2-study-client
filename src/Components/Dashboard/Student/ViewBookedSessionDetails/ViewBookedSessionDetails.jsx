@@ -89,7 +89,7 @@ const ViewBookedSessionDetails = () => {
                         </div>
                     </div>
                     <div>
-                        <AddReviewModal id = {_id }/>
+                        <AddReviewModal id = { _id }/>
                     </div>
                 </div>
             </div>

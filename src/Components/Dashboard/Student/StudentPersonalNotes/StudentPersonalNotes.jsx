@@ -50,7 +50,7 @@ const StudentPersonalNotes = () => {
                                     <Link
                                         className="py-1 bg-red-50 text-red-500 pl-2 pr-2 w-16 text-center cursor-pointer"
                                         data-tooltip-id="my-tooltip" 
-                                        data-tooltip-content={'Click for delete'}
+                                        data-tooltip-content={'Are You sure? You want to delete it.'}
                                         onClick={ () => handleNoteDelete (note._id)}
                                     >
                                         Delete
