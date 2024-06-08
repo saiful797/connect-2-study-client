@@ -47,11 +47,11 @@ const StudySession = ({ studySession }) => {
                 </div>
                 <div className='absolute top-0 right-0'>
                     {
-                        regFee === 0 ? <p className='bg-zinc-500 text-white pl-2 pr-2'>
-                            Free
+                        regFee === 0 ? <p className='bg-zinc-500 w-12 text-center text-white pl-2 pr-2'>
+                            $0
                         </p>
                         :
-                        <p  className='bg-zinc-500 text-white pl-2 pr-2'>
+                        <p  className='bg-zinc-500 w-12 text-center text-white pl-2 pr-2'>
                             ${regFee}
                         </p>
                     }
