@@ -18,6 +18,7 @@ import AboutPage from "../Pages/AboutPage/AboutPage";
 import ContactPage from "../Pages/ContactPage/ContactPage";
 import MyBookedSession from "../Components/Dashboard/Student/MyBookedSessions/MyBookedSession";
 import ViewBookedSessionDetails from "../Components/Dashboard/Student/ViewBookedSessionDetails/ViewBookedSessionDetails";
+import AllMaterials from "../Components/Dashboard/Tutor/AllMaterials/AllMaterials";
 
 
 export const router = createBrowserRouter([
@@ -69,6 +70,10 @@ export const router = createBrowserRouter([
         {
           path: 'all-sessions',
           element: <AllSessions />
+        },
+        {
+          path: 'all-materials',
+          element: <AllMaterials />
         },
         // student related route
         {
