@@ -2,15 +2,41 @@ import { useParams } from "react-router-dom";
 import SectionTitle from "../../../Shared/SectionTitle";
 import useAuth from "../../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
+import axios from "axios";
 
 const UploadMaterials = () => {
     const { id } = useParams();
     const { user } = useAuth();
     const { register, handleSubmit, reset} = useForm();
 
-    const onSubmit = data => {
-        console.log(data)
-    };
+    const onSubmit = async ( result ) => {
+        
+        const formData = new FormData();
+        formData.append( "image", result.image[0] );
+  
+        try{
+          //upload image and get image url
+          const { data } = await axios.post(
+            `https://api.imgbb.com/1/upload?key=${
+                import.meta.env.VITE_IMGBB_API_KEY
+            }`,
+            formData
+          )
+  
+          const title = result.title;
+          const email = user.email;
+          const image = data.data.display_url;
+          const sessionID = id;
+          const link = result.link;
+  
+          const materialData = { title, email, image, sessionID, link };
+
+          console.log( materialData )
+        
+        }catch( err ){
+          console.log( err.message );
+        }
+      }
 
     return (
         <div>
