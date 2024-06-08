@@ -3,6 +3,7 @@ import SectionTitle from '../../../Shared/SectionTitle';
 import { Link, useSearchParams } from 'react-router-dom';
 import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import { Tooltip } from 'react-tooltip';
+import toast from 'react-hot-toast';
 
 const AllSessionMaterials = () => {
     const [ materials, setMaterials ] = useState( [] );
