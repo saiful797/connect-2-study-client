@@ -14,9 +14,8 @@ const AddReviewModal = ({ id }) => {
             toast.error('Rating must be 0 to 5');
             return;
         }
-        
-        const res = await axiosPublic.post('/student-review',)
-
+        const res = await axiosPublic.post('/student-review', data);
+        console.log( res.data );
     }
 
     return (
