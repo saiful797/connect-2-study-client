@@ -10,7 +10,14 @@ const StudySessionRejectModal = ({ sessionInfo }) => {
 
 
     const onSubmit = async ( data ) => {
-        console.log("Reject: ", data)
+        const feedBackDoc = {
+            sessionID: sessionInfo._id,
+            name: sessionInfo.name,
+            email: sessionInfo.email,
+            ...data,
+        }
+
+        console.log("Feedback: ", feedBackDoc);
     }
     return (
         <div>
