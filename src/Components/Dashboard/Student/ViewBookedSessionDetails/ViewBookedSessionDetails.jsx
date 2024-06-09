@@ -5,6 +5,7 @@ import { Tooltip } from 'react-tooltip';
 import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import AddReviewModal from '../AddReviewModal/AddReviewModal'
 import BookedSessionMaterials from './BookedSessionMaterials/BookedSessionMaterials';
+import { parse } from 'postcss';
 
 const ViewBookedSessionDetails = () => {
     const [ session, setSession ] = useState( {} );
@@ -18,7 +19,7 @@ const ViewBookedSessionDetails = () => {
         })
     },[])
 
-    const {_id, title, name, duration, regStart, regEnd, classStart, classEnd, regFee, description } = session;
+    const {_id, title, name, duration, regStart, regEnd, classStart, classEnd, regFee, description, rating } = session;
 
     return (
         <div>
@@ -75,8 +76,7 @@ const ViewBookedSessionDetails = () => {
                                         </p>
                                     }
                                     <p className="flex gap-5 text-lg text-slate-600 text-justify">
-                                        {/* TODO: rating */}
-                                        <span className='text-slate-400'>Average Rating:</span>{ 0 }
+                                        <span className='text-slate-400'>Average Rating:</span>{ parseFloat(rating) }
                                         
                                     </p>
                                 </div>

@@ -20,6 +20,7 @@ const AddSession = () => {
             email,
             postDate: moment().format('L'),
             status: 'pending',
+            rating: parseFloat(0),
             regFee: fee,
         }
         const res = await axiosPublic.post('/study-session', sessionInfo );

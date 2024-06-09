@@ -1,9 +1,11 @@
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import { useEffect, useState } from "react";
 
 
 const AddReviewModal = ({ id }) => {
+    // console.log( id )
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset } = useForm();
 
@@ -14,6 +16,7 @@ const AddReviewModal = ({ id }) => {
             toast.error('Rating must be 0 to 5');
             return;
         }
+
         const res = await axiosPublic.post('/student-review', data);
         if(res.data.insertedId){
             toast.success("Review added successfully!");

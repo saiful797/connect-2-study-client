@@ -7,6 +7,7 @@ import useRole from '../../Hooks/useRole';
 import { Tooltip } from 'react-tooltip';
 import useAuth from '../../Hooks/useAuth';
 import toast from 'react-hot-toast';
+import AllReviews from './AllReviews/AllReviews';
 
 const StudySessionDetails = () => {
     const [ session, setSession ] = useState( {} );
@@ -28,7 +29,7 @@ const StudySessionDetails = () => {
         })
     },[])
 
-    const {_id, title,email, name, duration, regStart, regEnd, classStart, classEnd, regFee, description } = session;
+    const {_id, title,email, name, duration, regStart, regEnd, classStart, classEnd, regFee, rating, description } = session;
     
     const endMonth = parseInt(regEnd?.split('-')[1]);
     const thisMonth = parseInt(moment().format('L').split('/')[0]);
@@ -105,8 +106,7 @@ const StudySessionDetails = () => {
                                     </p>
                                 }
                                 <p className="flex gap-5 text-lg text-slate-600 text-justify">
-                                    {/* TODO: rating */}
-                                    <span className='text-slate-400'>Average Rating:</span>{ 0 }
+                                    <span className='text-slate-400'>Average Rating:</span>{ parseFloat ( rating ) }
                                     
                                 </p>
                             </div>
@@ -145,6 +145,9 @@ const StudySessionDetails = () => {
                             </p>
                         }
                     </div>
+                </div>
+                <div>
+                    <AllReviews />
                 </div>
             </div>
             <Tooltip id="my-tooltip" />
