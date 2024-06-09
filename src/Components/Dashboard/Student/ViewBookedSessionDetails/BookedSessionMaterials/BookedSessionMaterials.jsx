@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../../Shared/SectionTitle';
-import useAxiosPublic from '../../../../../Hooks/useAxiosPublic';
 import { Link } from 'react-router-dom';
+import useAxiosSecure from '../../../../../Hooks/useAxiosSecure';
 
 const BookedSessionMaterials = ({ id }) => {
     const [ materials, setMaterials ] = useState([]);
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        axiosPublic.get(`/booked-session-materials/${id}`)
+        axiosSecure.get(`/booked-session-materials/${id}`)
         .then( res => {
             // console.log( res.data );
             setMaterials( res.data );
