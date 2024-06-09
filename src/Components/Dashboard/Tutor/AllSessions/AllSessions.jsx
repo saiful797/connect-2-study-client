@@ -107,7 +107,7 @@ const AllSessions = () => {
                                     <td className="flex justify-center items-center">
                                         {
                                             session.status === 'approved' && <Link
-                                                className="bg-orange-50 border-2 border-zinc-400 hover:border-orange-400 text-orange-500 pl-2 pr-2 w-16 text-center cursor-pointer"
+                                                className="bg-orange-100 border-2 border-orange-400 text-orange-500 pl-2 pr-2 w-16 text-center cursor-pointer"
                                                 data-tooltip-id="my-tooltip" 
                                                 data-tooltip-content={'Upload materials'}
                                                 to={`upload-materials/${session._id}`}
@@ -129,7 +129,7 @@ const AllSessions = () => {
                                     <td>
                                         {
                                             session.status === 'rejected' && <p 
-                                                className="border-2 border-zinc-400 hover:border-green-600 bg-green-100 text-green-600 pl-2 pr-2 w-16 text-center cursor-pointer"
+                                                className="border-2 border-green-600 bg-green-100 text-green-600 pl-2 pr-2 w-16 text-center cursor-pointer"
                                                 data-tooltip-id="my-tooltip"
                                                 data-tooltip-content={'Again Request For Approval'}
                                                 onClick={() => handleApprovalRequest (session._id)}

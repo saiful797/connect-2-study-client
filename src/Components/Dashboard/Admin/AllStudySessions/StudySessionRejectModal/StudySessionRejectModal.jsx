@@ -3,8 +3,8 @@ import { useForm } from "react-hook-form";
 import useAxiosPublic from '../../../../../Hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 
-const StudySessionRejectModal = ({ document }) => {
-    const [sessionInfo, refetch ] = document;
+const StudySessionRejectModal = ({ sessionItem }) => {
+    const [sessionInfo, refetch ] = sessionItem;
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset } = useForm();
 
@@ -13,6 +13,7 @@ const StudySessionRejectModal = ({ document }) => {
             sessionID: sessionInfo._id,
             name: sessionInfo.name,
             email: sessionInfo.email,
+            title: sessionInfo.title,
             ...data,
         }
 
@@ -21,10 +22,11 @@ const StudySessionRejectModal = ({ document }) => {
         console.log(res.data)
         if(res.data.insertedId){
             const statusDoc = { status: "rejected"}
-            const result = await axiosPublic.patch(`/study-session-rejected/${sessionInfo._id}`, statusDoc );
+            const result = await axiosPublic.patch(`/study-session-rejected/${sessionInfo._id}`, statusDoc )
             if(result.data.modifiedCount > 0){
                 toast.success("Feedback post successfully!");
                 reset();
+                refetch();
             }
         }
 
@@ -97,7 +99,7 @@ const StudySessionRejectModal = ({ document }) => {
 };
 
 StudySessionRejectModal.propTypes ={
-    document: PropTypes.array.isRequired,
+    sessionItem: PropTypes.array.isRequired,
 }
 
 export default StudySessionRejectModal;

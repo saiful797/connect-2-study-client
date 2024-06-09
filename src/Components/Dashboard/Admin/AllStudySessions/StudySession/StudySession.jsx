@@ -17,7 +17,8 @@ const StudySession = ({ studySession }) => {
     const sessionInfo ={
         _id,
         name,
-        email
+        email,
+        title
     }
 
     //handle study session deleted
@@ -68,16 +69,9 @@ const StudySession = ({ studySession }) => {
                        status === 'pending' && <div className='flex justify-evenly mt-5'>
                             {/*Study Session Confirm Modal*/}
                             <StudySessionConfirmModal id = { _id }/>
-                            {/* <p 
-                                // onClick={handleStudySessionReject} 
-                                className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'
-                                data-tooltip-id="my-tooltip" 
-                                data-tooltip-content="Are you sure? You want to reject it."
-                            >
-                                Reject
-                            </p> */}
-                            <StudySessionRejectModal document = { [sessionInfo, refetch ] }/>
-                       </div>
+                            
+                            <StudySessionRejectModal sessionItem = { [sessionInfo, refetch ] }/>
+                        </div>
                     }
                     {/*study session update and Delete button*/}
                     {
