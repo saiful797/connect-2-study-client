@@ -3,21 +3,12 @@ import SectionTitle from "../../../Shared/SectionTitle";
 import { Tooltip } from "react-tooltip";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 
 const AllUser = () => {
     const axiosSecure = useAxiosSecure();
     const [users, setUsers] = useState([]);
     const { register, handleSubmit, reset } = useForm();
-
-    // const { data: users = [] } = useQuery({
-    //     queryKey: ['users'],
-    //     queryFn: async () => {
-    //         const res = await  axiosSecure.get('/allUsers');
-    //         return res.data;
-    //     }
-    // })
 
     useEffect( () => {
         axiosSecure.get('/allUsers')
@@ -29,7 +20,10 @@ const AllUser = () => {
     const onSubmit = async ( data ) => {
         setUsers([]);
         const res = await axiosSecure.get(`/user/${data.email}`)
-        setUsers(res.data);
+        if(res.data){
+            setUsers(res.data);
+        reset()
+        }
     }
 
     return (
