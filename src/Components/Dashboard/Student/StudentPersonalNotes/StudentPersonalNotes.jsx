@@ -1,29 +1,33 @@
-import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../Shared/SectionTitle';
 import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import useAuth from '../../../../Hooks/useAuth';
 import { Tooltip } from 'react-tooltip';
 import { Link } from 'react-router-dom';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
+import toast from 'react-hot-toast';
 
 const StudentPersonalNotes = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
-    const [ notes, setNotes ] = useState( [] );
 
-    useEffect(() => {
-        axiosSecure.get(`/student-notes/${user.email}`)
-        .then( res => {
-            // console.log(res.data);
-            setNotes(res.data)
-        })
+    const{data: notes = [], refetch } = useQuery({
+        queryKey: ['notes'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/student-notes/${user.email}`);
+            return res.data;
+        }
     })
 
     // handle note delete
     const handleNoteDelete = async ( id ) => {
         const res = await axiosPublic.delete(`/student-note/${id}`);
-        console.log(res.data);
+        // console.log(res.data);
+        if(res.data.deletedCount > 0){
+            toast.success("Note deleted successfully!")
+            refetch();
+        }
     }
     return (
         <div>
