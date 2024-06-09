@@ -14,6 +14,7 @@ import { IoDocumentsSharp } from 'react-icons/io5';
 import { MdOutlineNoteAdd } from 'react-icons/md';
 import { SlNotebook } from "react-icons/sl";
 import { LiaUsersSolid } from "react-icons/lia";
+import { VscFeedback } from "react-icons/vsc";
 
 const Sidebar = () => {
     const { logOut, user } = useAuth();
@@ -190,7 +191,7 @@ const Sidebar = () => {
                     }`
                     }
                   >
-                    <IoDocumentsSharp className='w-5 h-5'/>
+                    <VscFeedback className='w-5 h-5' />
                     <span className='mx-4 font-medium'>Rejection Feedback</span>
 
                   </NavLink>

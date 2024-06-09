@@ -29,6 +29,13 @@ const RejectionFeedback = () => {
     return (
         <div>
             <SectionTitle title='Rejection Feedback'/>
+            {
+                rejectFeedbacks.length === 0 && <p
+                    className=' text-center text-xl mt-20 font-bold text-red-500'
+                >
+                    Feedback have not yet.
+                </p>
+            }
             <div className='grid lg:grid-cols-2'>
                 {
                     rejectFeedbacks?.map( feedback => <div
