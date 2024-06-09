@@ -3,18 +3,18 @@ import SectionTitle from "../../../Shared/SectionTitle";
 import { Tooltip } from "react-tooltip";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 
 const AllUser = () => {
-    const [ users, setUsers ] = useState();
     const axiosSecure = useAxiosSecure();
 
-    useEffect(() => {
-        axiosSecure.get('/allUsers')
-        .then(res => {
-            // console.log(res.data);
-            setUsers(res.data);
-        })
-    },[])
+    const { data: users = []} = useQuery({
+        queryKey: ['users'],
+        queryFn: async () => {
+            const res = await  axiosSecure.get('/allUsers');
+            return res.data;
+        }
+    })
 
     return (
         <div>
