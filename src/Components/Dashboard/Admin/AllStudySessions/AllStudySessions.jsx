@@ -2,17 +2,17 @@ import { useEffect, useState } from 'react';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import SectionTitle from '../../../Shared/SectionTitle';
-import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import StudySession from './StudySession/StudySession';
 import { MdOutlineNotificationsActive } from "react-icons/md";
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 
 const AllStudySessions = () => {
     const [tabIndex, setTabIndex] = useState(0);
-    const axiosPublic = useAxiosPublic();
     const [ studySessions, setStudySessions ] = useState([]);
+    const axiosSecure = useAxiosSecure();
 
     useEffect( () => {
-        axiosPublic.get('/allStudySessions')
+        axiosSecure.get('/allStudySessions')
         .then(res => {
             setStudySessions(res.data);
         })

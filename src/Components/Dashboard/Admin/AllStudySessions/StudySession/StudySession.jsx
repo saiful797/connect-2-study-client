@@ -7,6 +7,7 @@ import { Tooltip } from 'react-tooltip';
 
 const StudySession = ({ studySession }) => {
     const axiosPublic = useAxiosPublic();
+    
     const {_id, name , email, title,regStart, regEnd, regFee, classStart, classEnd, duration, status} = studySession;
     // handle Study Session Rejected
     const handleStudySessionReject = async () => {

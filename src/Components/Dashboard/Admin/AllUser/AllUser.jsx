@@ -1,21 +1,15 @@
 import { useEffect, useState } from "react";
-import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
-import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import SectionTitle from "../../../Shared/SectionTitle";
 import { Tooltip } from "react-tooltip";
-import AddUserRole from "./AddUserRole/AddUserRole";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 
 const AllUser = () => {
     const [ users, setUsers ] = useState();
-    const axiosPublic = useAxiosPublic();
-    const [isOpen, setIsOpen] = useState(false);
-
-    const openModal = () => setIsOpen(true);
-    const closeModal = () => setIsOpen(false);
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        axiosPublic.get('/allUsers')
+        axiosSecure.get('/allUsers')
         .then(res => {
             // console.log(res.data);
             setUsers(res.data);

@@ -4,13 +4,15 @@ import { Link, useSearchParams } from 'react-router-dom';
 import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import { Tooltip } from 'react-tooltip';
 import toast from 'react-hot-toast';
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 
 const AllSessionMaterials = () => {
     const [ materials, setMaterials ] = useState( [] );
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     useEffect(() => {
-        axiosPublic.get('/all-session-material')
+        axiosSecure.get('/all-session-material')
         .then( res => {
             // console.log(res.data);
             setMaterials( res.data );

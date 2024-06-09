@@ -31,11 +31,9 @@ const useAxiosSecure = () => {
         if(status === 401 || status === 403){
             await logOut();
             navigate('/signIn');
-
         }
         return Promise.reject(error);
-      })
-
+    })
 
     return axiosSecure ;  
 };
