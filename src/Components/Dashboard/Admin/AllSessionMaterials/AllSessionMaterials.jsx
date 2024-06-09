@@ -1,22 +1,21 @@
-import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../Shared/SectionTitle';
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import { Tooltip } from 'react-tooltip';
 import toast from 'react-hot-toast';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const AllSessionMaterials = () => {
-    const [ materials, setMaterials ] = useState( [] );
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
-    useEffect(() => {
-        axiosSecure.get('/all-session-material')
-        .then( res => {
-            // console.log(res.data);
-            setMaterials( res.data );
-        })
+    const {data: materials = []} = useQuery({
+        queryKey: ['materials'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/all-session-material');
+            return res.data;
+        }
     })
 
     const handleDownload = (material) => {
