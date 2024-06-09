@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import useAuth from "../../../../Hooks/useAuth";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import SectionTitle from "../../../Shared/SectionTitle";
@@ -6,27 +5,28 @@ import { Tooltip } from "react-tooltip";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 
 const AllSessions = () => {
     const axiosSecure = useAxiosSecure();
     const axiosPublic = useAxiosPublic();
     const { user } = useAuth();
-    const [ allSession, setAllSession ] = useState([]);
 
-    useEffect(() => {
-        axiosSecure.get(`/all-sessions/${user.email}`)
-        .then(res => {
-            // console.log(res.data)
-            setAllSession(res.data);
-        })
-    }, [])
+    const {data: allSessions = [], refetch} = useQuery({
+        queryKey: ['all-session'],
+        queryFn: async () => {
+            const res = await  axiosSecure.get(`/all-sessions/${user.email}`);
+            return res.data;
+        }
+    })
 
     const handleApprovalRequest = async ( id ) => {
         const data = { status: "pending" }
         const res = await axiosPublic.patch(`/study-session-rejected/${id}`, data );
         if(res.data.modifiedCount > 0){
             toast.success("Pending request delivered successfully!");
+            refetch();
         }
     }
 
@@ -53,7 +53,7 @@ const AllSessions = () => {
                         </thead>
                         <tbody>
                             {
-                                allSession?.map((session, index) => <tr key={session._id}>
+                                allSessions?.map((session, index) => <tr key={session._id}>
                                     <th>{index+1}</th>
                                     <td>
                                         {session.title}

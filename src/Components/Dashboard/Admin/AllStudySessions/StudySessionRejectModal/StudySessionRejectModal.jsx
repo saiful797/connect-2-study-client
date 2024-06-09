@@ -1,13 +1,12 @@
 import PropTypes from 'prop-types';
 import { useForm } from "react-hook-form";
-import useAxiosPublic from "../../../../../Hooks/useAxiosPublic";
-import toast from "react-hot-toast";
-import StudySessionUpdateModal from '../StudySessionUpdateModal/StudySessionUpdateModal';
+import useAxiosPublic from '../../../../../Hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
 
-const StudySessionRejectModal = ({ sessionInfo }) => {
-
+const StudySessionRejectModal = ({ document }) => {
+    const [sessionInfo, refetch ] = document;
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset } = useForm();
-
 
     const onSubmit = async ( data ) => {
         const feedBackDoc = {
@@ -17,7 +16,18 @@ const StudySessionRejectModal = ({ sessionInfo }) => {
             ...data,
         }
 
-        console.log("Feedback: ", feedBackDoc);
+        const res = await axiosPublic.post('/admin-rejection-feedback', feedBackDoc);
+
+        console.log(res.data)
+        if(res.data.insertedId){
+            const statusDoc = { status: "rejected"}
+            const result = await axiosPublic.patch(`/study-session-rejected/${sessionInfo._id}`, statusDoc );
+            if(result.data.modifiedCount > 0){
+                toast.success("Feedback post successfully!");
+                reset();
+            }
+        }
+
     }
     return (
         <div>
@@ -26,7 +36,7 @@ const StudySessionRejectModal = ({ sessionInfo }) => {
                 className="cursor-pointer bg-red-50 text-red-500 pl-2 pr-2" 
                 onClick={()=>document.getElementById('my_modal_4').showModal()}
                 data-tooltip-id="my-tooltip" 
-                data-tooltip-content="Do you want to update it?"
+                data-tooltip-content="Do you want to reject it?"
             >
                 Reject
             </button>
@@ -86,8 +96,8 @@ const StudySessionRejectModal = ({ sessionInfo }) => {
     );
 };
 
-StudySessionUpdateModal.propTypes ={
-    sessionInfo: PropTypes.object.isRequired,
+StudySessionRejectModal.propTypes ={
+    document: PropTypes.array.isRequired,
 }
 
 export default StudySessionRejectModal;

@@ -19,14 +19,7 @@ const StudySession = ({ studySession }) => {
         name,
         email
     }
-    // handle Study Session Rejected
-    const handleStudySessionReject = async () => {
-        const data = { status: "rejected"}
-        const res = await axiosPublic.patch(`/study-session-rejected/${_id}`, data );
-        if(res.data.modifiedCount > 0){
-            toast.success("Session reject successfully!");
-        }
-    }
+
     //handle study session deleted
     const handleStudySessionDelete = async () => {
         const res = await axiosPublic.delete(`/study-session-deleted/${_id}`);
@@ -83,7 +76,7 @@ const StudySession = ({ studySession }) => {
                             >
                                 Reject
                             </p> */}
-                            <StudySessionRejectModal sessionInfo = { sessionInfo }/>
+                            <StudySessionRejectModal document = { [sessionInfo, refetch ] }/>
                        </div>
                     }
                     {/*study session update and Delete button*/}
