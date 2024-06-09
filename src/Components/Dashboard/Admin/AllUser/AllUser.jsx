@@ -49,6 +49,7 @@ const AllUser = () => {
                                 <th className="text-center">Name</th>
                                 <th className="text-center">Email</th>
                                 <th className="text-center">Role</th>
+                                <th className="text-center">Update Role</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -60,30 +61,44 @@ const AllUser = () => {
                                     <td className="text-center">
                                         {
                                             user.role === 'admin'&& <p
-                                                className="bg-green-100 badge badge-outline py-3 w-16 text-center text-green-600 cursor-not-allowed"
-                                                data-tooltip-id="my-tooltip"
-                                                data-tooltip-content={'You can only change Tutor or Student role.'}
+                                                className="bg-green-100 badge badge-outline py-3 w-16 text-center text-green-600"
                                             >
                                                 Admin
                                             </p>  
                                         }
                                         {
-                                            user.role === 'tutor' && <Link
-                                                className="bg-orange-50 badge badge-outline py-3 w-16 text-center text-orange-500 cursor-pointer"
-                                                data-tooltip-id="my-tooltip"
-                                                data-tooltip-content={'You can change tutor role.'}
-                                                to={`change-user-role/${user._id}`}
+                                            user.role === 'tutor' && <p
+                                                className="bg-orange-50 badge badge-outline py-3 w-16 text-center text-orange-500"
                                             >
                                                 Tutor
+                                            </p>  
+                                        }
+                                        {
+                                            user.role === 'student'&& <p
+                                                className="bg-sky-100 badge badge-outline py-3 text-sky-600 w-16 text-center "
+                                            >
+                                                student
+                                            </p>  
+                                        }
+                                    </td>
+                                    <td className="text-center">
+                                        {
+                                            user.role === 'admin'&& <Link 
+                                                className="bg-green-50 border-2 py-1 w-20 text-center text-green-400 cursor-not-allowed px-4 rounded-3xl"
+                                                data-tooltip-id="my-tooltip"
+                                                data-tooltip-content={'You can only change Tutor or Student role.'}
+                                            >
+                                                Update
                                             </Link>  
                                         }
                                         {
-                                            user.role === 'student'&& <Link
-                                                className="bg-sky-100 badge badge-outline py-3 text-sky-600 w-16 text-center "
+                                           ( user.role === 'tutor' || user.role === 'student') && <Link
+                                                className="bg-green-50 border-2 border-green-600 py-1 w-20 px-4 text-center text-green-600 cursor-pointer rounded-3xl"
                                                 data-tooltip-id="my-tooltip"
-                                                data-tooltip-content={'You can change student role.'}
+                                                data-tooltip-content={'You can change role.'}
+                                                to={`change-user-role/${user._id}`}
                                             >
-                                                student
+                                                Update
                                             </Link>  
                                         }
                                     </td>
