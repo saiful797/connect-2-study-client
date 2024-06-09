@@ -23,7 +23,6 @@ import UploadMaterials from "../Components/Dashboard/Tutor/UploadMaterials/Uploa
 import UpdateMaterial from "../Components/Dashboard/Tutor/AllMaterials/UpdateMaterial/UpdateMaterial";
 import AllSessionMaterials from "../Components/Dashboard/Admin/AllSessionMaterials/AllSessionMaterials";
 import AddUserRole from "../Components/Dashboard/Admin/AllUser/AddUserRole/AddUserRole";
-import SessionMaterials from "../Components/Dashboard/Student/SessionMaterials/SessionMaterials";
 
 
 export const router = createBrowserRouter([
@@ -100,10 +99,6 @@ export const router = createBrowserRouter([
         {
           path: 'my-booked-sessions',
           element: <MyBookedSession />
-        },
-        {
-          path: 'my-booked-session-material',
-          element: <SessionMaterials />
         },
         {
           path: 'my-booked-sessions/view-details/:id',
