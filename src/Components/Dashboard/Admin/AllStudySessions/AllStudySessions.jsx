@@ -5,18 +5,19 @@ import SectionTitle from '../../../Shared/SectionTitle';
 import StudySession from './StudySession/StudySession';
 import { MdOutlineNotificationsActive } from "react-icons/md";
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const AllStudySessions = () => {
     const [tabIndex, setTabIndex] = useState(0);
-    const [ studySessions, setStudySessions ] = useState([]);
     const axiosSecure = useAxiosSecure();
 
-    useEffect( () => {
-        axiosSecure.get('/allStudySessions')
-        .then(res => {
-            setStudySessions(res.data);
-        })
-    }, [])
+    const {data: studySessions = []}= useQuery({
+        queryKey: ['studySessions'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/allStudySessions');
+            return res.data;
+        }
+    })
 
     const pending = studySessions.filter(session => session.status === 'pending');
     const approved = studySessions.filter(session => session.status === 'approved');
