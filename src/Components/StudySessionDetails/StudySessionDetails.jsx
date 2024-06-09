@@ -57,7 +57,7 @@ const StudySessionDetails = () => {
                 {/* section title */}
                 <SectionTitle title={'Session Details'}/>
 
-                <div className="lg:w-2/3 p-3 md:p-5 mx-auto bg-green-100">
+                <div className="lg:w-2/3 p-3 md:p-5 mx-auto border-4">
                     <h1 className="text-3xl font-bold text-center mb-5">Course Name: <span className='text-[#00b16e]'>{title}</span></h1>
                     <div className=' md:flex justify-between mx-auto pl-2 md:pl-5 pr-2 md:pr-5'>
                         <div className=''>
@@ -106,6 +106,7 @@ const StudySessionDetails = () => {
                                     </p>
                                 }
                                 <p className="flex gap-5 text-lg text-slate-600 text-justify">
+
                                     <span className='text-slate-400'>Average Rating:</span>{ parseFloat ( rating ) }
                                     
                                 </p>
@@ -122,7 +123,7 @@ const StudySessionDetails = () => {
                     <div>
                         {
                            (role === 'student') && ( remainingDays > 0 ) && ( endMonth <= thisMonth ) && <p 
-                                className="text-lg font-bold cursor-pointer border border-zinc-800 w-1/2 mx-auto flex justify-center items-center mt-5 mb-1 pt-2 pb-2 hover:bg-green-200 text-[#00b16e]"
+                                className="text-lg font-bold cursor-pointer border border-green-400 bg-green-100 w-1/2 mx-auto flex justify-center items-center mt-5 mb-1 pt-2 pb-2 hover:bg-green-100 text-[#00b16e]"
                                 onClick={() => handleBookedSession( _id )}
                             >
                                 Book Now
@@ -130,7 +131,7 @@ const StudySessionDetails = () => {
                         }
                         {
                            (role === 'tutor' || role === 'admin') && ( remainingDays > 0 ) && ( endMonth <= thisMonth ) && <p 
-                                className="text-lg font-bold border border-zinc-800 w-1/2 mx-auto flex justify-center items-center mt-5 mb-1 pt-2 pb-2 disabled cursor-not-allowed"
+                                className="text-lg font-bold border border-red-400 bg-red-100 text-red-600 w-1/2 mx-auto flex justify-center items-center mt-5 mb-1 pt-2 pb-2 disabled cursor-not-allowed"
                                 data-tooltip-id="my-tooltip"
                                 data-tooltip-content={'You do not allow booking!'}
                             >
