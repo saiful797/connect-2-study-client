@@ -6,9 +6,14 @@ import { FaBookReader } from 'react-icons/fa';
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RiLogoutCircleRLine } from "react-icons/ri";
 import { FaMagnifyingGlassArrowRight } from "react-icons/fa6";
-import { TbUsersGroup } from "react-icons/tb";
-import { SiStudyverse } from 'react-icons/si';
+import { TbBrandBooking, TbUsersGroup } from "react-icons/tb";
 import useRole from '../../../Hooks/useRole';
+import { CgProfile } from "react-icons/cg";
+import { IoMdAdd } from "react-icons/io";
+import { IoDocumentsSharp } from 'react-icons/io5';
+import { MdOutlineNoteAdd } from 'react-icons/md';
+import { SlNotebook } from "react-icons/sl";
+import { LiaUsersSolid } from "react-icons/lia";
 
 const Sidebar = () => {
     const { logOut, user } = useAuth();
@@ -87,8 +92,7 @@ const Sidebar = () => {
                       }`
                     }
                   >
-                    {/* <FcSettings className='w-5 h-5' /> */}
-
+                    <CgProfile  className='w-5 h-5'/>
                     <span className='mx-4 font-medium'>Profile</span>
                   </NavLink>
 
@@ -103,7 +107,8 @@ const Sidebar = () => {
                         isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
                     }`}
                   >
-                    <TbUsersGroup className='w-5 h-5'/>
+                    <LiaUsersSolid className='w-5 h-5'/>
+
                     <span className='mx-4 font-medium'>All Users</span>
                   </NavLink>
 
@@ -115,7 +120,7 @@ const Sidebar = () => {
                         isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
                     }`}
                   >
-                    <TbUsersGroup className='w-5 h-5'/>
+                    <FaMagnifyingGlassArrowRight className='w-5 h-5'/>
                     <span className='mx-4 font-medium'>All Study Sessions</span>
                   </NavLink>
 
@@ -127,7 +132,7 @@ const Sidebar = () => {
                         isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
                     }`}
                   >
-                    <TbUsersGroup className='w-5 h-5'/>
+                    <IoDocumentsSharp className='w-5 h-5'/>
                     <span className='mx-4 font-medium'>All Session Materials</span>
                   </NavLink>
                 </>
@@ -145,9 +150,10 @@ const Sidebar = () => {
                     }`
                     }
                   >
-                    <SiStudyverse className='w-5 h-5'/>
 
+                    <IoMdAdd className='w-5 h-5'/>
                     <span className='mx-4 font-medium'>Add Session</span>
+
                   </NavLink>
 
                   <NavLink
@@ -171,9 +177,9 @@ const Sidebar = () => {
                     }`
                     }
                   >
-                    <FaMagnifyingGlassArrowRight className='w-5 h-5'/>
-
+                    <IoDocumentsSharp className='w-5 h-5'/>
                     <span className='mx-4 font-medium'>All Materials</span>
+
                   </NavLink>
                 </>
               }
@@ -188,7 +194,8 @@ const Sidebar = () => {
                     }`
                     }
                   >
-                    {/* <MdHomeWork className='w-5 h-5' /> */}
+                    <TbBrandBooking className='w-5 h-5'/>
+
                     <span className='mx-4 font-medium'>My Booked Sessions</span>
                   </NavLink>
 
@@ -200,7 +207,8 @@ const Sidebar = () => {
                     }`
                     }
                   >
-                    {/* <MdHomeWork className='w-5 h-5' /> */}
+                    <MdOutlineNoteAdd className='w-5 h-5'/>
+
                     <span className='mx-4 font-medium'>Add Note</span>
                   </NavLink>
 
@@ -212,7 +220,8 @@ const Sidebar = () => {
                     }`
                     }
                   >
-                    {/* <MdHomeWork className='w-5 h-5' /> */}
+                    <SlNotebook className='w-5 h-5'/>
+
                     <span className='mx-4 font-medium'>Personal Notes</span>
                   </NavLink>
                 </>
