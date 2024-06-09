@@ -4,14 +4,21 @@ import toast from 'react-hot-toast';
 import StudySessionConfirmModal from '../StudySessionConfirmModal/StudySessionConfirmModal';
 import StudySessionUpdateModal from '../StudySessionUpdateModal/StudySessionUpdateModal';
 import { Tooltip } from 'react-tooltip';
+import StudySessionRejectModal from '../StudySessionRejectModal/StudySessionRejectModal';
 
 const StudySession = ({ studySession }) => {
-    console.log("Study sessions: ", studySession);
+    // console.log("Study sessions: ", studySession);
 
     const [session, refetch] = studySession;
     const axiosPublic = useAxiosPublic();
     
     const {_id, name , email, title,regStart, regEnd, regFee, classStart, classEnd, duration, status} = session;
+
+    const sessionInfo ={
+        _id,
+        name,
+        email
+    }
     // handle Study Session Rejected
     const handleStudySessionReject = async () => {
         const data = { status: "rejected"}
@@ -63,19 +70,20 @@ const StudySession = ({ studySession }) => {
                 </div>
                 <div>
                     
-                    {/*study session approved and reject button*/}
+                    {/*study session approved and reject button for admin*/}
                     {
                        status === 'pending' && <div className='flex justify-evenly mt-5'>
                             {/*Study Session Confirm Modal*/}
                             <StudySessionConfirmModal id = { _id }/>
-                            <p 
-                                onClick={handleStudySessionReject} 
+                            {/* <p 
+                                // onClick={handleStudySessionReject} 
                                 className='cursor-pointer bg-red-50 text-red-500 pl-2 pr-2'
                                 data-tooltip-id="my-tooltip" 
                                 data-tooltip-content="Are you sure? You want to reject it."
                             >
                                 Reject
-                            </p>
+                            </p> */}
+                            <StudySessionRejectModal sessionInfo = { sessionInfo }/>
                        </div>
                     }
                     {/*study session update and Delete button*/}
