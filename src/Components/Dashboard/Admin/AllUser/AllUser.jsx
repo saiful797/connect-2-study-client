@@ -4,36 +4,70 @@ import { Tooltip } from "react-tooltip";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import { useForm } from "react-hook-form";
 
 const AllUser = () => {
     const axiosSecure = useAxiosSecure();
+    const [users, setUsers] = useState([]);
+    const { register, handleSubmit, reset } = useForm();
 
-    const { data: users = [] } = useQuery({
-        queryKey: ['users'],
-        queryFn: async () => {
-            const res = await  axiosSecure.get('/allUsers');
-            return res.data;
-        }
-    })
+    // const { data: users = [] } = useQuery({
+    //     queryKey: ['users'],
+    //     queryFn: async () => {
+    //         const res = await  axiosSecure.get('/allUsers');
+    //         return res.data;
+    //     }
+    // })
+
+    useEffect( () => {
+        axiosSecure.get('/allUsers')
+        .then(res => {
+            setUsers( res.data );
+        })
+    },[])
+
+    const onSubmit = async ( data ) => {
+        setUsers([]);
+        const res = await axiosSecure.get(`/user/${data.email}`)
+        setUsers(res.data);
+    }
 
     return (
         <div>
             {/* Section Title */}
             <SectionTitle title={"All Users"}/>
             <div>
-                <div className='space-y-1 text-sm flex justify-center items-center mb-5'>
-                    <label htmlFor='title' className='block text-lg font-bold text-gray-500'>
-                        Search Bar:
-                    </label>
-                    <input
-                        className='w-3/4 md:w-1/2 lg:w-1/3 px-2 py-2 text-gray-800 border focus:outline-[#34a87a] rounded-md '
-                        name='duration'
-                        id='duration'
-                        type='text'
-                        placeholder='Enter name or email here'
-                        required
-                    />
+                <div>
+                    <form 
+                        onSubmit={ handleSubmit(onSubmit) }
+                    >
+                        <div className="gap-2">
+                            <div className='space-y-1 text-sm flex justify-center items-center mb-5'>
+                                <label htmlFor='title' className='block text-lg font-bold text-gray-500'>
+                                    Search Bar:
+                                </label>
+                                <input
+                                    className='ml-2 px-2 py-2 w-1/3 text-gray-800 border focus:outline-[#34a87a] rounded-md '
+                                    name='email'
+                                    id='email'
+                                    type='email'
+                                    placeholder='Enter user email here.'
+                                    {...register("email", { required: true })}
+                                    required
+                                />
+                            </div>
+                            <div className="w-full flex justify-center items-center mb-5">
+                                <button
+                                    type='submit'
+                                    className='bg-[#00b16e] text-lg font-medium rounded-md px-4 py-1 text-white'
+                                >
+                                    Search
+                                </button>
+                            </div>
+                        </div>
+                    </form>
                 </div>
+                
                 <div className="overflow-x-auto">
                     <table className="table table-zebra">
                         {/* head */}
