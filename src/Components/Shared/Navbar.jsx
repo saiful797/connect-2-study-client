@@ -98,7 +98,7 @@ const Navbar = () => {
                     {
                         user?<ul tabIndex={0} className="menu menu-sm dropdown-content mt-1 z-[1] p-5 rounded-box w-52 bg-slate-100 text-lg font-bold shadow-md">
                         <li>
-                            <Link to="/dashboard">
+                            <Link to="/dashboard/user-profile">
                                 Dashboard
                             </Link>
                         </li>

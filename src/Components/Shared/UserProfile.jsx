@@ -1,0 +1,36 @@
+import useAuth from "../../Hooks/useAuth";
+import useRole from "../../Hooks/useRole";
+
+const UserProfile = () => {
+    const { user } = useAuth();
+    const { role } = useRole();
+
+    return (
+        <div className="flex items-center justify-center min-h-screen bg-green-50">
+            <div className="max-w-sm bg-white shadow-lg rounded-xl overflow-hidden transform transition-transform duration-300 hover:scale-105">
+                <div className="relative">
+                <img
+                    className="w-full h-48 object-cover"
+                    src="https://i.ibb.co/bPG85fK/profile.jpg"
+                />
+                <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 rounded-full overflow-hidden border-4 border-white shadow-lg transition-transform duration-300 hover:scale-110">
+                    <img
+                    className="w-full h-full object-cover"
+                    src={ user.photoURL }
+                    alt="Profile"
+                    />
+                </div>
+                </div>
+                <div className="text-center p-6">
+                    <h1 className="text-2xl font-semibold text-gray-900">{user.displayName}</h1>
+                    <p className="text-sm text-gray-600 mt-1">{role}</p>
+                    <p className="mt-4 text-gray-700">
+                        Your act as a { role } here. You can only access your page. 
+                    </p>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default UserProfile;
