@@ -25,6 +25,7 @@ import AllSessionMaterials from "../Components/Dashboard/Admin/AllSessionMateria
 import AddUserRole from "../Components/Dashboard/Admin/AllUser/AddUserRole/AddUserRole";
 import UserProfile from "../Components/Shared/UserProfile";
 import AdminRoute from "./AdminRoute";
+import RejectionFeedback from "../Components/Dashboard/Tutor/RejectionFeedback/RejectionFeedback";
 
 
 export const router = createBrowserRouter([
@@ -124,6 +125,12 @@ export const router = createBrowserRouter([
           path: 'all-materials/update-material/:id',
           element: <PrivateRoute>
             <UpdateMaterial />
+          </PrivateRoute>
+        },
+        {
+          path:'rejection-feedback',
+          element: <PrivateRoute>
+            <RejectionFeedback />
           </PrivateRoute>
         },
 
