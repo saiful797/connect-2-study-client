@@ -63,6 +63,7 @@ export const router = createBrowserRouter([
           path: 'user-profile',
           element: <UserProfile />
         },
+
         
         // admin related route
         {
@@ -81,27 +82,31 @@ export const router = createBrowserRouter([
           path: 'all-session-materials',
           element: <AllSessionMaterials />
         },
+
+
         // tutor related route
         {
           path: 'add-session',
-        element:<AddSession />
+          element:<AddSession />
         },
         {
           path: 'all-sessions',
           element: <AllSessions />
         },
         {
-          path: 'all-sessions/upload-materials/:id',
-          element: <UploadMaterials />
-        },
-        {
           path: 'all-materials',
           element: <AllMaterials />
+        },
+        {
+          path: 'all-sessions/upload-materials/:id',
+          element: <UploadMaterials />
         },
         {
           path: 'all-materials/update-material/:id',
           element: <UpdateMaterial />
         },
+
+
         // student related route
         {
           path: 'my-booked-sessions',
