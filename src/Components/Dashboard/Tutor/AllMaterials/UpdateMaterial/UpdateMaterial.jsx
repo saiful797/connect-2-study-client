@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../../Shared/SectionTitle';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import useAuth from '../../../../../Hooks/useAuth';
 import { useForm } from 'react-hook-form';
 import useAxiosPublic from '../../../../../Hooks/useAxiosPublic';
@@ -13,6 +13,7 @@ const UpdateMaterial = () => {
     const { user } = useAuth();
     const { register, handleSubmit, reset} = useForm();
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
 
     useEffect( () => {
         axiosPublic.get(`/specific-session-material/${id}`)
@@ -48,9 +49,11 @@ const UpdateMaterial = () => {
         if(res.data.modifiedCount > 0){
             toast.success('Materials Uploaded Successfully!');
             reset();
+            navigate(-1);
         }
         if(res.data.modifiedCount === 0){
             toast.error('Materials data not modified!');
+            navigate(-1)
             reset();
         }
 

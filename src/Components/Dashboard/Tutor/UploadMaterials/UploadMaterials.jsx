@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import SectionTitle from "../../../Shared/SectionTitle";
 import useAuth from "../../../../Hooks/useAuth";
 import { useForm } from "react-hook-form";
@@ -11,6 +11,7 @@ const UploadMaterials = () => {
     const { user } = useAuth();
     const { register, handleSubmit, reset} = useForm();
     const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
 
     const onSubmit = async ( result ) => {
         
@@ -39,6 +40,7 @@ const UploadMaterials = () => {
         if(res.data.insertedId){
             toast.success('Materials Uploaded Successfully!');
             reset();
+            navigate(-1)
         }
 
         }catch( err ){

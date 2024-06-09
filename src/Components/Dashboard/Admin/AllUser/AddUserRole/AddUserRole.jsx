@@ -22,7 +22,7 @@ const AddUserRole = () => {
             reset();
         }
         if(res.data.modifiedCount === 0){
-            toast.error('You set same role!! Role not changed');
+            toast.error('You set same role!! Role not changed.');
             navigate(-1);
             reset();
         }
