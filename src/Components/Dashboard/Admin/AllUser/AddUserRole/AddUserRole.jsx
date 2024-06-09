@@ -1,13 +1,26 @@
 import React from 'react';
 import SectionTitle from '../../../../Shared/SectionTitle';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import useAxiosPublic from '../../../../../Hooks/useAxiosPublic';
+import toast from 'react-hot-toast';
 
 const AddUserRole = () => {
     const { id } = useParams();
+    const axiosPublic = useAxiosPublic();
+    const navigate = useNavigate();
+
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async ( result ) => {
-        console.log(result)
+        const roleDoc ={
+            role: result.role
+        }
+        const res = await axiosPublic.patch(`/user-role-change/${id}`, roleDoc);
+        if(res.data.modifiedCount > 0){
+            toast.success('User role changed successfully!"');
+            navigate(-1);
+            reset();
+        }
     }
     return (
         <div className="">
