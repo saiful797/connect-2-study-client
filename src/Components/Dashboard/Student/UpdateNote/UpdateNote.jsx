@@ -3,9 +3,9 @@ import useAuth from "../../../../Hooks/useAuth";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import SectionTitle from "../../../Shared/SectionTitle";
 import toast from "react-hot-toast";
-import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
 
 const UpdateNote = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -13,21 +13,20 @@ const UpdateNote = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
     const data = useParams();
-    const [ note, setNote ] = useState( { } );
     const navigate = useNavigate();
-    
-    useEffect(() => {
-        axiosSecure.get(`/specific-student-notes/${data.id}`)
-        .then( res => {
-            // console.log(res.data);
-            setNote(res.data)
-        })
+
+    const {data: note = {}} = useQuery({
+        queryKey: ['note'],
+        queryFn: async () => {
+            const res = await  axiosSecure.get(`/specific-student-notes/${data.id}`);
+            return res.data;
+        }
     })
 
-    const onSubmit = async ( data ) => {
-        console.log(data)
+    const onSubmit = async ( result ) => {
+        // console.log(result)
         const updateDoc = {
-            ...data,
+            ...result,
             email: user.email
         }
 
