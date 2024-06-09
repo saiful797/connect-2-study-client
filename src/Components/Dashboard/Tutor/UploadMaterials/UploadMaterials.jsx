@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const UploadMaterials = () => {
     const { id } = useParams();

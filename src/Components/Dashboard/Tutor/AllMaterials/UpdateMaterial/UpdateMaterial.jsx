@@ -6,21 +6,24 @@ import { useForm } from 'react-hook-form';
 import useAxiosPublic from '../../../../../Hooks/useAxiosPublic';
 import toast from 'react-hot-toast';
 import axios from 'axios';
+import useAxiosSecure from '../../../../../Hooks/useAxiosSecure';
+import { useQuery } from '@tanstack/react-query';
 
 const UpdateMaterial = () => {
-    const [ material, setMaterial ] = useState({});
+    // const [ material, setMaterial ] = useState({});
     const { id } = useParams();
     const { user } = useAuth();
     const { register, handleSubmit, reset} = useForm();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const navigate = useNavigate();
 
-    useEffect( () => {
-        axiosPublic.get(`/specific-session-material/${id}`)
-        .then( res => {
-            // console.log( res.data );
-             setMaterial( res.data );
-        })
+    const {data: material = {} } = useQuery({
+        queryKey: ['specific-material'],
+        queryFn: async () => {
+            const res = await axiosSecure.get(`/material/${id}`);
+            return res.data;
+        }
     })
 
     const onSubmit = async ( result ) => {
@@ -29,33 +32,32 @@ const UpdateMaterial = () => {
         formData.append( "image", result.image[0] );
   
         try{
-          //upload image and get image url
-          const { data } = await axios.post(
-            `https://api.imgbb.com/1/upload?key=${
-                import.meta.env.VITE_IMGBB_API_KEY
-            }`,
-            formData
-          )
-          const title = result.title;
-          const email = user.email;
-          const image = data.data.display_url;
-          const sessionID = id;
-          const link = result.link;
-          const materialData = { title, email, image, sessionID, link };
-           console.log("ID: ", id, materialData )
+            //upload image and get image url
+            const { data } = await axios.post(
+                `https://api.imgbb.com/1/upload?key=${
+                    import.meta.env.VITE_IMGBB_API_KEY
+                }`,
+                formData
+            )
+            const title = result.title;
+            const email = user.email;
+            const image = data.data.display_url;
+            const sessionID = id;
+            const link = result.link;
+            const materialData = { title, email, image, sessionID, link };
 
-        const res = await axiosPublic.patch(`/study-material/${id}`, materialData );
-        console.log(res.data)
-        if(res.data.modifiedCount > 0){
-            toast.success('Materials Uploaded Successfully!');
-            reset();
-            navigate(-1);
-        }
-        if(res.data.modifiedCount === 0){
-            toast.error('Materials data not modified!');
-            navigate(-1)
-            reset();
-        }
+            const res = await axiosPublic.patch(`/study-material/${id}`, materialData );
+            console.log(res.data)
+            if(res.data.modifiedCount > 0){
+                toast.success('Materials Uploaded Successfully!');
+                reset();
+                navigate(-1);
+            }
+            if(res.data.modifiedCount === 0){
+                toast.error('Materials data not modified!');
+                navigate(-1)
+                reset();
+            }
 
         }catch( err ){
            //console.log( err.message );
