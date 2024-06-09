@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../Shared/SectionTitle';
-import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import useAuth from '../../../../Hooks/useAuth';
 import { Link } from 'react-router-dom';
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 
 const MyBookedSession = () => {
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const [ bookedSessions, setBookedSessions ] = useState( [] );
 
     useEffect( () => {
-       axiosPublic.get(`student-booked-sessions/${user.email}`)
+        axiosSecure.get(`student-booked-sessions/${user.email}`)
        .then( res => {
             // console.log(res.data);
             setBookedSessions(res.data);

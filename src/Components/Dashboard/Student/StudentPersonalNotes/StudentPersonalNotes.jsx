@@ -4,14 +4,16 @@ import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import useAuth from '../../../../Hooks/useAuth';
 import { Tooltip } from 'react-tooltip';
 import { Link } from 'react-router-dom';
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 
 const StudentPersonalNotes = () => {
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const { user } = useAuth();
     const [ notes, setNotes ] = useState( [] );
 
     useEffect(() => {
-        axiosPublic.get(`/student-notes/${user.email}`)
+        axiosSecure.get(`/student-notes/${user.email}`)
         .then( res => {
             // console.log(res.data);
             setNotes(res.data)

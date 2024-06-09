@@ -5,16 +5,19 @@ import SectionTitle from "../../../Shared/SectionTitle";
 import toast from "react-hot-toast";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 const UpdateNote = () => {
     const { register, handleSubmit, reset } = useForm();
     const { user } = useAuth();
     const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
     const data = useParams();
     const [ note, setNote ] = useState( { } );
+    const navigate = useNavigate();
     
     useEffect(() => {
-        axiosPublic.get(`/specific-student-notes/${data.id}`)
+        axiosSecure.get(`/specific-student-notes/${data.id}`)
         .then( res => {
             // console.log(res.data);
             setNote(res.data)
@@ -33,23 +36,25 @@ const UpdateNote = () => {
         if(res.data.modifiedCount > 0){
             toast.success('Your note updated successfully!');
             reset();
+            navigate(-1);
         }
         if(res.data.modifiedCount === 0){
             toast.error('You have not change note!');
             reset();
+            navigate(-1);
         }
     }
 
     return (
         <div>
             <SectionTitle title={'Update Note'}/>
-            <div className='md:w-2/3 p-3 mx-auto'>
+            <div className='md:w-2/3 mx-auto bg-green-50 p-5 rounded-lg'>
                 <form 
                     onSubmit={ handleSubmit(onSubmit) }
                 >
                     <div className='gap-10 space-y-4'> 
                         <div className='space-y-1 text-sm'>
-                            Email: {user.email}
+                            Your Email: {user.email}
                         </div>
                         <div className='space-y-1 text-sm'>
                             <label htmlFor='title' className='block text-gray-600'>
@@ -82,13 +87,14 @@ const UpdateNote = () => {
                             />
                         </div>
                     </div>
-
-                    <button
-                        type='submit'
-                        className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#2db880]'
-                    >
-                        Add Note
-                    </button>
+                    <div className="mx-auto w-full flex justify-center items-center">
+                        <button
+                            type='submit'
+                            className='md:w-1/2 p-2 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#2db880]'
+                        >
+                            Add Note
+                        </button>
+                    </div>
                 </form>
             </div>
         </div>
