@@ -10,7 +10,7 @@ const AllSessionMaterials = () => {
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
 
-    const {data: materials = []} = useQuery({
+    const {data: materials = [], refetch} = useQuery({
         queryKey: ['materials'],
         queryFn: async () => {
             const res = await axiosSecure.get('/all-session-material');
@@ -30,6 +30,7 @@ const AllSessionMaterials = () => {
         const res = await axiosPublic.delete(`/specific-study-session-material/${ id }`);
         if(res.data.deletedCount > 0){
             toast.success('Materials deleted successfully!');
+            refetch();
         }
     }
 

@@ -6,9 +6,12 @@ import StudySessionUpdateModal from '../StudySessionUpdateModal/StudySessionUpda
 import { Tooltip } from 'react-tooltip';
 
 const StudySession = ({ studySession }) => {
+    console.log("Study sessions: ", studySession);
+
+    const [session, refetch] = studySession;
     const axiosPublic = useAxiosPublic();
     
-    const {_id, name , email, title,regStart, regEnd, regFee, classStart, classEnd, duration, status} = studySession;
+    const {_id, name , email, title,regStart, regEnd, regFee, classStart, classEnd, duration, status} = session;
     // handle Study Session Rejected
     const handleStudySessionReject = async () => {
         const data = { status: "rejected"}
@@ -23,6 +26,7 @@ const StudySession = ({ studySession }) => {
         console.log(res.data);
         if(res.data.deletedCount > 0){
             toast.success('Session deleted successfully!');
+            refetch();
         }
     }
     return (
@@ -104,7 +108,7 @@ const StudySession = ({ studySession }) => {
 };
 
 StudySession.propTypes ={
-    studySession: PropTypes.object.isRequired,
+    studySession: PropTypes.array.isRequired,
 }
 
 export default StudySession;

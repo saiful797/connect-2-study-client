@@ -11,7 +11,7 @@ const AllStudySessions = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const axiosSecure = useAxiosSecure();
 
-    const {data: studySessions = []}= useQuery({
+    const {data: studySessions = [], refetch}= useQuery({
         queryKey: ['studySessions'],
         queryFn: async () => {
             const res = await axiosSecure.get('/allStudySessions');
@@ -47,9 +47,9 @@ const AllStudySessions = () => {
                 <TabPanel>
                     <div className='grid lg:grid-cols-2 gap-5 mt-5'>
                         {
-                            pending.map(studySession => <StudySession 
-                                key={studySession._id} 
-                                studySession = {studySession} 
+                            pending.map(session => <StudySession 
+                                key={session._id} 
+                                studySession = { [session, refetch] } 
                             />)
                         }
                     </div>
@@ -59,9 +59,9 @@ const AllStudySessions = () => {
                 <TabPanel>
                     <div className='grid lg:grid-cols-2 gap-5 mt-5'>
                         {
-                            approved.map(studySession => <StudySession 
-                                key={studySession._id} 
-                                studySession = {studySession} 
+                            approved.map( session => <StudySession 
+                                key={session._id} 
+                                studySession = { [session, refetch] } 
                             />)
                         }
                     </div>
@@ -71,9 +71,9 @@ const AllStudySessions = () => {
                 <TabPanel>
                     <div className='grid lg:grid-cols-2 gap-5 mt-5'>
                         {
-                            rejected.map(studySession => <StudySession 
-                                key={studySession._id} 
-                                studySession = {studySession} 
+                            rejected.map(session => <StudySession 
+                                key={session._id} 
+                                studySession = { [session, refetch] } 
                             />)
                         }
                     </div>
