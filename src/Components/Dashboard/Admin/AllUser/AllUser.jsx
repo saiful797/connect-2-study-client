@@ -2,10 +2,16 @@ import { useEffect, useState } from "react";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import SectionTitle from "../../../Shared/SectionTitle";
+import { Tooltip } from "react-tooltip";
+import AddUserRole from "./AddUserRole/AddUserRole";
 
 const AllUser = () => {
     const [ users, setUsers ] = useState();
     const axiosPublic = useAxiosPublic();
+    const [isOpen, setIsOpen] = useState(false);
+
+    const openModal = () => setIsOpen(true);
+    const closeModal = () => setIsOpen(false);
 
     useEffect(() => {
         axiosPublic.get('/allUsers')
@@ -38,32 +44,46 @@ const AllUser = () => {
                         {/* head */}
                         <thead>
                             <tr className="text-lg bg-slate-100">
-                                <th>#</th>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Role</th>
-                                <th>Action</th>
+                                <th className="text-center">#</th>
+                                <th className="text-center">Name</th>
+                                <th className="text-center">Email</th>
+                                <th className="text-center">Role</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
                                 users?.map((user, index) => <tr key={user._id}>
-                                    <th>{index+1}</th>
-                                    <td>{user.name}</td>
-                                    <td>{user.email}</td>
-                                    <td>
+                                    <th className="text-center">{index+1}</th>
+                                    <td className="text-center">{user.name}</td>
+                                    <td className="text-center">{user.email}</td>
+                                    <td className="text-center">
                                         {
-                                            user.role === 'admin'? 'Admin'
-                                            :
-                                            <button onClick={() => handleMakeAdmin(user)} className="btn btn-ghost btn-outline btn-sm">
-                                                <FaUsers  className="text-lg text-[#D1A054]"/>
-                                            </button>
+                                            user.role === 'admin'&& <p
+                                                className="bg-green-100 badge badge-outline py-3 w-16 text-center text-green-600 cursor-not-allowed"
+                                                data-tooltip-id="my-tooltip"
+                                                data-tooltip-content={'You can only change Tutor or Student role.'}
+                                            >
+                                                Admin
+                                            </p>  
                                         }
-                                    </td>
-                                    <td>
-                                        <button onClick={() => handleDeleteUser(user._id)} className="btn btn-ghost btn-outline btn-sm">
-                                            <FaTrashAlt  className="text-lg text-red-600"/>
-                                        </button>
+                                        {
+                                            user.role === 'tutor' && <p
+                                                className="bg-orange-50 badge badge-outline py-3 w-16 text-center text-orange-500 cursor-pointer"
+                                                data-tooltip-id="my-tooltip"
+                                                data-tooltip-content={'You can change tutor role.'}
+                                            >
+                                                Tutor
+                                            </p>  
+                                        }
+                                        {
+                                            user.role === 'student'&& <p
+                                                className="bg-sky-100 badge badge-outline py-3 text-sky-600 w-16 text-center "
+                                                data-tooltip-id="my-tooltip"
+                                                data-tooltip-content={'You can change student role.'}
+                                            >
+                                                student
+                                            </p>  
+                                        }
                                     </td>
                                 </tr> )
                             }
@@ -71,6 +91,7 @@ const AllUser = () => {
                     </table>
                 </div>
             </div>
+            <Tooltip id="my-tooltip" />
         </div>
     );
 };
