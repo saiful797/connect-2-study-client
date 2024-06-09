@@ -24,6 +24,7 @@ import UpdateMaterial from "../Components/Dashboard/Tutor/AllMaterials/UpdateMat
 import AllSessionMaterials from "../Components/Dashboard/Admin/AllSessionMaterials/AllSessionMaterials";
 import AddUserRole from "../Components/Dashboard/Admin/AllUser/AddUserRole/AddUserRole";
 import UserProfile from "../Components/Shared/UserProfile";
+import AdminRoute from "./AdminRoute";
 
 
 export const router = createBrowserRouter([
