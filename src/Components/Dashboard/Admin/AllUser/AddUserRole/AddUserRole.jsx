@@ -12,6 +12,10 @@ const AddUserRole = () => {
 
     const { register, handleSubmit, reset } = useForm();
     const onSubmit = async ( result ) => {
+        if(result.role === 'default'){
+            toast.error('Select user role.');
+            return;
+        }
         const roleDoc ={
             role: result.role
         }
