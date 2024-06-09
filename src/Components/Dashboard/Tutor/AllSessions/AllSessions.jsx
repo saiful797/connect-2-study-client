@@ -5,15 +5,17 @@ import SectionTitle from "../../../Shared/SectionTitle";
 import { Tooltip } from "react-tooltip";
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 
 
 const AllSessions = () => {
-    const { user } = useAuth();
+    const axiosSecure = useAxiosSecure();
     const axiosPublic = useAxiosPublic();
+    const { user } = useAuth();
     const [ allSession, setAllSession ] = useState([]);
 
     useEffect(() => {
-        axiosPublic.get(`/all-sessions/${user.email}`)
+        axiosSecure.get(`/all-sessions/${user.email}`)
         .then(res => {
             // console.log(res.data)
             setAllSession(res.data);

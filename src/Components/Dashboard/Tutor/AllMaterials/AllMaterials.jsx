@@ -1,19 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import SectionTitle from '../../../Shared/SectionTitle';
 import useAuth from '../../../../Hooks/useAuth';
-import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import { saveAs } from 'file-saver';
 import toast from 'react-hot-toast';
 import { Tooltip } from 'react-tooltip';
 import { Link } from 'react-router-dom';
+import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 
 const AllMaterials = () => {
     const { user } = useAuth();
     const [ materials, setMaterials ] = useState ( [] );
-    const axiosPublic = useAxiosPublic();
+    const axiosSecure = useAxiosSecure();
 
     useEffect( () => {
-        axiosPublic.get(`/study-session-material/${user.email}`)
+        axiosSecure.get(`/study-session-materials/${user.email}`)
         .then( res => {
             // console.log( res.data );
             setMaterials( res.data);
