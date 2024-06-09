@@ -60,6 +60,7 @@ const UpdateMaterial = () => {
         }catch( err ){
            //console.log( err.message );
            toast.error(err.message);
+           navigate(-1);
         }
     }
     return (
