@@ -1,16 +1,49 @@
 import React from 'react';
+import SectionTitle from '../../../../Shared/SectionTitle';
+import { useParams } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
 const AddUserRole = () => {
+    const { id } = useParams();
+    const { register, handleSubmit, reset } = useForm();
+    const onSubmit = async ( result ) => {
+        console.log(result)
+    }
     return (
-        <div className="fixed inset-0 bg-gray-600 bg-opacity-50 flex justify-center items-center">
-          <div className="bg-white p-5 rounded shadow-lg w-1/3">
-            <div className="flex justify-end">
-              <button onClick={closeModal} className="text-gray-700">&times;</button>
+        <div className="">
+            <SectionTitle title='Change user role'/>
+            <div className='w-1/2 mx-auto bg-slate-100 p-5 rounded-lg'>
+                <form 
+                    onSubmit={ handleSubmit(onSubmit) }
+                    className='space-y-6 ng-untouched ng-pristine ng-valid'
+                >
+                    
+                    <label className="form-control w-full">
+                        <label htmlFor='role' className='block mb-2 text-lg'>
+                            Select Role:
+                        </label>
+                        <select 
+                        defaultValue="default" 
+                        className="select w-full px-3 py-2 border rounded-md border-orange-300 focus:outline-[#00b16e] text-gray-900" 
+                        data-temp-mail-org='0'
+                        {...register("role", {required: true})} 
+                        required
+                        >
+                        <option disabled value="default" className='text-lg'>Select user role.</option>
+                        <option value="student">Student</option>
+                        <option value="tutor">Tutor</option>
+                        </select>
+                    </label>
+                    <div>
+                        <button
+                        type='submit'
+                        className='bg-[#00b16e] text-lg font-medium w-full rounded-md py-2 text-white'
+                        >
+                            Change Role
+                        </button>
+                    </div>
+                </form>
             </div>
-            <div className="mt-2">
-              <p>Some text in the Modal..</p>
-            </div>
-          </div>
         </div>
     );
 };

@@ -4,6 +4,7 @@ import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import SectionTitle from "../../../Shared/SectionTitle";
 import { Tooltip } from "react-tooltip";
 import AddUserRole from "./AddUserRole/AddUserRole";
+import { Link } from "react-router-dom";
 
 const AllUser = () => {
     const [ users, setUsers ] = useState();
@@ -67,22 +68,23 @@ const AllUser = () => {
                                             </p>  
                                         }
                                         {
-                                            user.role === 'tutor' && <p
+                                            user.role === 'tutor' && <Link
                                                 className="bg-orange-50 badge badge-outline py-3 w-16 text-center text-orange-500 cursor-pointer"
                                                 data-tooltip-id="my-tooltip"
                                                 data-tooltip-content={'You can change tutor role.'}
+                                                to={`change-user-role/${user._id}`}
                                             >
                                                 Tutor
-                                            </p>  
+                                            </Link>  
                                         }
                                         {
-                                            user.role === 'student'&& <p
+                                            user.role === 'student'&& <Link
                                                 className="bg-sky-100 badge badge-outline py-3 text-sky-600 w-16 text-center "
                                                 data-tooltip-id="my-tooltip"
                                                 data-tooltip-content={'You can change student role.'}
                                             >
                                                 student
-                                            </p>  
+                                            </Link>  
                                         }
                                     </td>
                                 </tr> )

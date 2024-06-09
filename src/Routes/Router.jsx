@@ -22,6 +22,7 @@ import AllMaterials from "../Components/Dashboard/Tutor/AllMaterials/AllMaterial
 import UploadMaterials from "../Components/Dashboard/Tutor/UploadMaterials/UploadMaterials";
 import UpdateMaterial from "../Components/Dashboard/Tutor/AllMaterials/UpdateMaterial/UpdateMaterial";
 import AllSessionMaterials from "../Components/Dashboard/Admin/AllSessionMaterials/AllSessionMaterials";
+import AddUserRole from "../Components/Dashboard/Admin/AllUser/AddUserRole/AddUserRole";
 
 
 export const router = createBrowserRouter([
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
         {
           path: 'allUsers',
           element: <AllUser />
+        },
+        {
+          path: 'allUsers/change-user-role/:id',
+          element: <AddUserRole />
         },
         {
           path: 'all-study-sessions',
