@@ -17,6 +17,14 @@ const AllSessionMaterials = () => {
         })
     })
 
+    const handleDownload = (material) => {
+        saveAs(material.image, 'download.jpg');
+    };
+
+    const handleLinkClick = ( material ) => {
+        window.open(material.link , '_blank', 'noopener,noreferrer');
+    }
+
     const handleMaterialDelete = async ( id ) => {
         const res = await axiosPublic.delete(`/specific-study-session-material/${ id }`);
         if(res.data.deletedCount > 0){
