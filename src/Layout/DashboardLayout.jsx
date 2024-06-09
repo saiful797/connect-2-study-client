@@ -1,6 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../Components/Dashboard/Sidebar/Sidebar';
+import ScrollToTop from '../Components/Shared/ScrollToTop';
 
 const DashboardLayout = () => {
     return (
@@ -14,6 +15,8 @@ const DashboardLayout = () => {
                     <Outlet />
                 </div>
             </div>
+            {/* Scroll to top of the page */}
+            <ScrollToTop />
         </div>
     );
 };

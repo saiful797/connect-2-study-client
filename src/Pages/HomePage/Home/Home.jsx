@@ -55,7 +55,7 @@ const Home = () => {
                     }
                 </div>
            </div>
-           {/* For scroll to top */}
+           {/* Scroll to top of the page */}
             <ScrollToTop />
         </div>
     );

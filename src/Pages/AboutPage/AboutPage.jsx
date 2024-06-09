@@ -1,5 +1,6 @@
 import React from 'react';
 import SectionTitle from '../../Components/Shared/SectionTitle';
+import ScrollToTop from '../../Components/Shared/ScrollToTop';
 
 const AboutPage = () => {
     return (
@@ -24,6 +25,8 @@ const AboutPage = () => {
                     Connect2Study is committed to continuous improvement and innovation in education. We regularly update our content and incorporate the latest advancements in educational technology to ensure that our users have access to cutting-edge resources and tools. Our adaptive learning algorithms personalize the educational experience, providing recommendations and insights tailored to each student's progress and preferences. With Connect2Study, you are not just enrolling in a course; you are embarking on a personalized educational journey designed to help you succeed in a rapidly evolving world.
                 </p>
             </div>
+            {/* Scroll to top of the page */}
+            <ScrollToTop /> 
         </div>
     );
 };

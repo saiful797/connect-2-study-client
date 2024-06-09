@@ -61,72 +61,102 @@ export const router = createBrowserRouter([
         // Common route
         {
           path: 'user-profile',
-          element: <UserProfile />
+          element: <PrivateRoute>
+            <UserProfile />
+          </PrivateRoute>
         },
 
         
         // admin related route
         {
           path: 'allUsers',
-          element: <AllUser />
+          element: <PrivateRoute>
+            <AllUser />
+          </PrivateRoute>
         },
         {
           path: 'allUsers/change-user-role/:id',
-          element: <AddUserRole />
+          element: <PrivateRoute>
+            <AddUserRole />
+          </PrivateRoute>
         },
         {
           path: 'all-study-sessions',
-          element: <AllStudySessions />
+          element: <PrivateRoute>
+            <AllStudySessions />
+          </PrivateRoute>
         },
         {
           path: 'all-session-materials',
-          element: <AllSessionMaterials />
+          element: <PrivateRoute>
+            <AllSessionMaterials />
+          </PrivateRoute>
         },
 
 
         // tutor related route
         {
           path: 'add-session',
-          element:<AddSession />
+          element:<PrivateRoute>
+            <AddSession />
+          </PrivateRoute>
         },
         {
           path: 'all-sessions',
-          element: <AllSessions />
+          element: <PrivateRoute>
+            <AllSessions />
+          </PrivateRoute>
         },
         {
           path: 'all-materials',
-          element: <AllMaterials />
+          element: <PrivateRoute>
+            <AllMaterials />
+          </PrivateRoute>
         },
         {
           path: 'all-sessions/upload-materials/:id',
-          element: <UploadMaterials />
+          element: <PrivateRoute>
+            <UploadMaterials />
+          </PrivateRoute>
         },
         {
           path: 'all-materials/update-material/:id',
-          element: <UpdateMaterial />
+          element: <PrivateRoute>
+            <UpdateMaterial />
+          </PrivateRoute>
         },
 
 
         // student related route
         {
           path: 'my-booked-sessions',
-          element: <MyBookedSession />
+          element:<PrivateRoute>
+            <MyBookedSession />
+          </PrivateRoute>
         },
         {
           path: 'my-booked-sessions/view-details/:id',
-          element: <ViewBookedSessionDetails />
+          element: <PrivateRoute>
+            <ViewBookedSessionDetails />
+          </PrivateRoute>
         },
         {
           path: 'add-student-notes',
-          element: <AddStudentNotes />
+          element: <PrivateRoute>
+            <AddStudentNotes />
+          </PrivateRoute>
         },
         {
           path: 'student-personal-notes',
-          element: <StudentPersonalNotes />
+          element: <PrivateRoute>
+            <StudentPersonalNotes />
+          </PrivateRoute>
         },
         {
           path: 'student-personal-notes/update-note/:id',
-          element: <UpdateNote />
+          element: <PrivateRoute>
+            <UpdateNote />
+          </PrivateRoute>
         },
       ]
     },
