@@ -119,7 +119,7 @@ const AllSessions = () => {
                                             (session.status === 'rejected' || session.status ==='pending') && <p
                                                 className="bg-orange-50 border-2 text-orange-300 pl-2 pr-2 w-16 text-center disabled cursor-not-allowed"
                                                 data-tooltip-id="my-tooltip" 
-                                                data-tooltip-content={'Button disable'}
+                                                data-tooltip-content={'Wait for Admin approval'}
                                             >
                                                 Upload
                                             </p>
