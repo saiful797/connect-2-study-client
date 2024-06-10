@@ -8,7 +8,9 @@ const PrivateRoute = ({children}) => {
     const location = useLocation();
 
     if(loading){
-        return <RingLoader className='mx-auto' color="black" size={200} />
+        return <div className="flex justify-center items-center">
+            <RingLoader className='mx-auto' color="black" size={200} />
+        </div>
     }
     if(user?.email){
         return children;

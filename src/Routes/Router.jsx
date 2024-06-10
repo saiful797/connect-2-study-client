@@ -73,25 +73,33 @@ export const router = createBrowserRouter([
         {
           path: 'allUsers',
           element: <PrivateRoute>
-            <AllUser />
+            <AdminRoute>
+              <AllUser />
+            </AdminRoute>
           </PrivateRoute>
         },
         {
           path: 'allUsers/change-user-role/:id',
           element: <PrivateRoute>
-            <AddUserRole />
+            <AdminRoute>
+              <AddUserRole />
+            </AdminRoute>
           </PrivateRoute>
         },
         {
           path: 'all-study-sessions',
           element: <PrivateRoute>
-            <AllStudySessions />
+            <AdminRoute>
+              <AllStudySessions />
+            </AdminRoute>
           </PrivateRoute>
         },
         {
           path: 'all-session-materials',
           element: <PrivateRoute>
-            <AllSessionMaterials />
+            <AdminRoute>
+              <AllSessionMaterials />
+            </AdminRoute>
           </PrivateRoute>
         },
 

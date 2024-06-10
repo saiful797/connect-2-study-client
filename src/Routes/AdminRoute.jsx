@@ -1,26 +1,25 @@
-
+import { useLocation } from "react-router-dom";
+import useAdmin from "../Hooks/useAdmin";
+import PropTypes from 'prop-types'
 import useAuth from "../Hooks/useAuth";
-import PropTypes from 'prop-types';
-import { Navigate, useLocation } from "react-router-dom";
-import useRole from "../Hooks/useRole";
 import { RingLoader } from "react-spinners";
 
-const AdminRoute = ({ children }) => {
+const AdminRoute = ({children}) => {
     const { user, loading} = useAuth();
-    const { role } = useRole();
+    const [ isAdmin, isAdminLoading] = useAdmin();
     const location = useLocation();
 
-    if( user && role ==='admin' ){
+    if( user && isAdmin ){
         return children;
     }
 
-    if( loading ){
+    if(loading || isAdminLoading){
         return <div className="flex justify-center items-center">
             <RingLoader className='mx-auto' color="black" size={200} />
         </div>
     }
 
-    return <Navigate to='/signIn' state={ location.pathname || '/'} replace /> 
+    return <Navigate to='/signIn' state={ location.pathname || '/'} replace />
 };
 
 AdminRoute.propTypes ={
