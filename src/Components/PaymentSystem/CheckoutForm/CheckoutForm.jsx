@@ -1,10 +1,11 @@
-import { useElements, useStripe } from "@stripe/react-stripe-js";
+import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const CheckoutForm = ({ price }) => {
     const [ errorMessage, setErrorMessage ] = useState( '' );
+    const [ clientSecret, setClientSecret ] = useState( '' );
     const [ transactionId, setTransactionId ] = useState( '' );
 
     const stripe = useStripe();

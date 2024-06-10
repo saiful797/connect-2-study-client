@@ -1,12 +1,11 @@
 import { loadStripe } from "@stripe/stripe-js";
-import SectionTitle from "../Shared/SectionTitle";
 import CheckoutForm from "./CheckoutForm/CheckoutForm";
+import { Elements } from "@stripe/react-stripe-js";
 
 const PaymentSystem = (  { regFee } ) => {
 
     //TODO: publish able key
-    
-    const stripePromise = loadStripe('')
+    const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_Pk)
     
     return (
         <div>
@@ -25,9 +24,9 @@ const PaymentSystem = (  { regFee } ) => {
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <div>
-                        <Element stripe = { stripePromise }>
-                            <CheckoutForm />
-                        </Element>
+                        <Elements stripe = { stripePromise }>
+                            <CheckoutForm price = { regFee }/>
+                        </Elements>
                     </div>
                 </div>
             </dialog>
