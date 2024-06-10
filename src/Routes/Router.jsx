@@ -27,6 +27,7 @@ import UserProfile from "../Components/Shared/UserProfile";
 import AdminRoute from "./AdminRoute";
 import RejectionFeedback from "../Components/Dashboard/Tutor/RejectionFeedback/RejectionFeedback";
 import TutorRoute from "./TutorRoute";
+import StudentRoute from "./StudentRoute";
 
 
 export const router = createBrowserRouter([
@@ -160,31 +161,41 @@ export const router = createBrowserRouter([
         {
           path: 'my-booked-sessions',
           element:<PrivateRoute>
-            <MyBookedSession />
+            <StudentRoute>
+              <MyBookedSession />
+            </StudentRoute>
           </PrivateRoute>
         },
         {
           path: 'my-booked-sessions/view-details/:id',
           element: <PrivateRoute>
-            <ViewBookedSessionDetails />
+            <StudentRoute>
+              <ViewBookedSessionDetails />
+            </StudentRoute>
           </PrivateRoute>
         },
         {
           path: 'add-student-notes',
           element: <PrivateRoute>
-            <AddStudentNotes />
+            <StudentRoute>
+              <AddStudentNotes />
+            </StudentRoute>
           </PrivateRoute>
         },
         {
           path: 'student-personal-notes',
           element: <PrivateRoute>
-            <StudentPersonalNotes />
+            <StudentRoute>
+              <StudentPersonalNotes />
+            </StudentRoute>
           </PrivateRoute>
         },
         {
           path: 'student-personal-notes/update-note/:id',
           element: <PrivateRoute>
-            <UpdateNote />
+            <StudentRoute>
+              <UpdateNote />
+            </StudentRoute>
           </PrivateRoute>
         },
       ]
