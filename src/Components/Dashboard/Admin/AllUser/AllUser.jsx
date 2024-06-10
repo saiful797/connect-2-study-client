@@ -18,12 +18,29 @@ const AllUser = () => {
     },[])
 
     const onSubmit = async ( data ) => {
-        setUsers([]);
-        const res = await axiosSecure.get(`/user/${data.email}`)
-        if(res.data){
-            setUsers(res.data);
-        reset()
+        const {text} = data;
+        const len = text.split("@").length;
+
+        if(len > 1){
+            const email = text;
+            setUsers([]);
+            const res = await axiosSecure.get(`/user-search-by-email/${email}`);
+            if(res.data){
+                setUsers(res.data);
+                reset();
+            }
         }
+
+        if( len === 1 ){
+            const name = text;
+            setUsers([]);
+            const res = await axiosSecure.get(`/user-search-by-name/${name}`);
+            if(res.data){
+                setUsers(res.data);
+                reset();
+            }
+        }
+        
     }
 
     return (
@@ -42,11 +59,11 @@ const AllUser = () => {
                                 </label>
                                 <input
                                     className='ml-2 px-2 py-2 w-1/3 text-gray-800 border focus:outline-[#34a87a] rounded-md '
-                                    name='email'
-                                    id='email'
-                                    type='email'
-                                    placeholder='Enter user email here.'
-                                    {...register("email", { required: true })}
+                                    name='text'
+                                    id='text'
+                                    type='text'
+                                    placeholder='Enter user name or here.'
+                                    {...register("text", { required: true })}
                                     required
                                 />
                             </div>
@@ -75,6 +92,15 @@ const AllUser = () => {
                             </tr>
                         </thead>
                         <tbody>
+                            {
+                                users.length === 0 && <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th className="text-xl font-bold text-red-500 text-center mt-20">User Not Found</th>
+                                    <th></th>
+                                    <th></th>
+                                </tr>
+                            }
                             {
                                 users?.map((user, index) => <tr key={user._id}>
                                     <th className="text-center">{index+1}</th>
