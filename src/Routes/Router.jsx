@@ -30,6 +30,7 @@ import TutorRoute from "./TutorRoute";
 import StudentRoute from "./StudentRoute";
 import StudySessions from "../Pages/StudySessions/StudySessions";
 import AdminAnnouncement from "../Components/Dashboard/Admin/AdminAnnouncement/AdminAnnouncement";
+import Notice from "../Pages/Announcement/Notice";
 
 
 export const router = createBrowserRouter([
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
         {
             path: '/studySessions',
             element: <StudySessions />
+        },
+        {
+            path: '/allAnnouncements',
+            element: <Notice />
         },
         {
             path: '/about',
