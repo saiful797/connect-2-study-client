@@ -29,6 +29,7 @@ import RejectionFeedback from "../Components/Dashboard/Tutor/RejectionFeedback/R
 import TutorRoute from "./TutorRoute";
 import StudentRoute from "./StudentRoute";
 import StudySessions from "../Pages/StudySessions/StudySessions";
+import AdminAnnouncement from "../Components/Dashboard/Admin/AdminAnnouncement/AdminAnnouncement";
 
 
 export const router = createBrowserRouter([
@@ -106,6 +107,14 @@ export const router = createBrowserRouter([
           element: <PrivateRoute>
             <AdminRoute>
               <AllSessionMaterials />
+            </AdminRoute>
+          </PrivateRoute>
+        },
+        {
+          path: 'admin-announcement',
+          element: <PrivateRoute>
+            <AdminRoute>
+              <AdminAnnouncement />
             </AdminRoute>
           </PrivateRoute>
         },

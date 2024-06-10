@@ -15,6 +15,7 @@ import { MdOutlineNoteAdd } from 'react-icons/md';
 import { SlNotebook } from "react-icons/sl";
 import { LiaUsersSolid } from "react-icons/lia";
 import { VscFeedback } from "react-icons/vsc";
+import { AiOutlineNotification } from "react-icons/ai";
 
 const Sidebar = () => {
     const { logOut, user } = useAuth();
@@ -135,6 +136,19 @@ const Sidebar = () => {
                   >
                     <IoDocumentsSharp className='w-5 h-5'/>
                     <span className='mx-4 font-medium'>All Session Materials</span>
+                  </NavLink>
+
+                  {/* admin announcement */}
+                  <NavLink
+                    to='admin-announcement'
+                    className={({ isActive }) =>
+                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
+                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
+                    }`}
+                  >
+                    <AiOutlineNotification className='w-5 h-5'/>
+
+                    <span className='mx-4 font-medium'>Create Announcement</span>
                   </NavLink>
                 </>
               }
