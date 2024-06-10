@@ -71,26 +71,39 @@ const CheckoutForm = ({ session }) => {
         else{
             console.log(' Payment Intent: ', paymentIntent);
             if(paymentIntent.status === 'succeeded'){
-                // console.log('transaction id: ', paymentIntent.id);
+                console.log('transaction id: ', paymentIntent.id);
                 setTransactionId(paymentIntent.id);
 
-                //now save the payment in the database
-                // const payment ={
-                //     email: user.email,
-                //     price: totalPrice,
-                //     transactionId: paymentIntent.id,
-                //     date: new Date(), //utc date convert. use moment js to
-                //     cartIds: cart.map(item => item._id),
-                //     menuItemIds: cart.map( item => item.menuId),
-                //     status: 'pending'
-                // }
+                // now save the payment in the database
+                const payment ={
+                    email: user.email,
+                    price: session.regFee,
+                    transactionId: paymentIntent.id,
+                    date: new Date(), //utc date convert. use moment js to
+                    title: session.title,
+                    tutor_email: session.email,
+                    sessionID: session._id,
+                }
 
-                // const res = await axiosSecure.post('/payments', payment);
-                // refetch();
-                // console.log('payment saved', res.data.deleteResult.deletedCount);
-                // if(res.data?.deleteResult?.deletedCount > 0){
-                //     toast.success('Payment Successful!!');
-                // }
+                const res = await axiosSecure.post('/payments', payment);
+                console.log('payment saved', res.data.deleteResult.deletedCount);
+                if(res.data?.deleteResult?.deletedCount > 0){
+                    // toast.success('Payment Successful!!');
+                    const bookedInfo = {
+                        sessionId: session._id,
+                        title: session.title,
+                        classStart: session.classStart,
+                        booked_date: moment().format('L'),
+                        name: user?.displayName,
+                        student_email: user?.email,
+                        tutor_email: session.email
+                    }
+                    const res = await axiosPublic.post('/study-session-booked', bookedInfo)
+                    if( res.data.insertedId ){
+                        toast.success('Session booked successfully!');
+                        navigate('/');
+                    }
+                }
             }
         }
 
