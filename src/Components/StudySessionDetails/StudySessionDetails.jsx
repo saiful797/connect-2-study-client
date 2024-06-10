@@ -102,7 +102,7 @@ const StudySessionDetails = () => {
                                     regFee === 0 && <p className="flex gap-5 text-lg text-slate-600 text-justify">
 
                                         <span className='text-slate-400'>Registration Fee:</span> $0
-                                    s</p>
+                                    </p>
                                 }
                                 {
                                     regFee > 0 && <p className="flex gap-5 text-lg text-slate-600 text-justify">
@@ -128,7 +128,7 @@ const StudySessionDetails = () => {
                     </div>
                     <div>
                         {
-                           (role === 'student') && ( remainingDays > 0 ) && ( regStartMonth <= thisMonth ) &&<div>
+                           (role === 'student')&& ( regFee > 0 ) && ( remainingDays > 0 ) && ( regStartMonth <= thisMonth ) &&<div>
                                 <PaymentSystem session = { session }/>
                            </div>
                         }
