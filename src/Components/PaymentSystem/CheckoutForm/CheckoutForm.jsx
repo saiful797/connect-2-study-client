@@ -2,8 +2,9 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import PropTypes from 'prop-types';
 
-const CheckoutForm = ({ price }) => {
+const CheckoutForm = ({ session }) => {
     const [ errorMessage, setErrorMessage ] = useState( '' );
     const [ clientSecret, setClientSecret ] = useState( '' );
     const [ transactionId, setTransactionId ] = useState( '' );
@@ -12,6 +13,7 @@ const CheckoutForm = ({ price }) => {
     const elements = useElements();
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
+    const price = session.regFee;
 
     useEffect(() => {
         if(price > 0){
@@ -73,22 +75,22 @@ const CheckoutForm = ({ price }) => {
                 setTransactionId(paymentIntent.id);
 
                 //now save the payment in the database
-                const payment ={
-                    email: user.email,
-                    price: totalPrice,
-                    transactionId: paymentIntent.id,
-                    date: new Date(), //utc date convert. use moment js to
-                    cartIds: cart.map(item => item._id),
-                    menuItemIds: cart.map( item => item.menuId),
-                    status: 'pending'
-                }
+                // const payment ={
+                //     email: user.email,
+                //     price: totalPrice,
+                //     transactionId: paymentIntent.id,
+                //     date: new Date(), //utc date convert. use moment js to
+                //     cartIds: cart.map(item => item._id),
+                //     menuItemIds: cart.map( item => item.menuId),
+                //     status: 'pending'
+                // }
 
-                const res = await axiosSecure.post('/payments', payment);
-                refetch();
-                console.log('payment saved', res.data.deleteResult.deletedCount);
-                if(res.data?.deleteResult?.deletedCount > 0){
-                    toast.success('Payment Successful!!');
-                }
+                // const res = await axiosSecure.post('/payments', payment);
+                // refetch();
+                // console.log('payment saved', res.data.deleteResult.deletedCount);
+                // if(res.data?.deleteResult?.deletedCount > 0){
+                //     toast.success('Payment Successful!!');
+                // }
             }
         }
 
@@ -111,13 +113,15 @@ const CheckoutForm = ({ price }) => {
                     },
                 }}
             />
-            <button className="btn btn-outline bg-[#d1a054] mt-10" type="submit" disabled={!stripe || !clientSecret}>
-                Pay ${ price }
-            </button>
+            <p className="cursor-pointer w-1/2 py-2 mx-auto bg-[#d1a054] mt-10 text-xl text-white text-center rounded-full" type="submit" disabled={!stripe || !clientSecret}>
+                Pay <span className="ml-4">${ price }</span>
+            </p>
             <p className="text-red-600"> {errorMessage} </p>
             { transactionId && <p className="text-green-600 mt-5">Your Transaction ID: {transactionId}</p>}
         </form>
     );
 };
-
+CheckoutForm.propTypes={
+    session: PropTypes.object.isRequired,
+}
 export default CheckoutForm;

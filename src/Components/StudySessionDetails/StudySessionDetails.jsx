@@ -129,7 +129,7 @@ const StudySessionDetails = () => {
                     <div>
                         {
                            (role === 'student') && ( remainingDays > 0 ) && ( regStartMonth <= thisMonth ) &&<div>
-                                <PaymentSystem regFee = { regFee }/>
+                                <PaymentSystem session = { session }/>
                            </div>
                         }
                         {
