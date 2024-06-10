@@ -112,7 +112,7 @@ const CheckoutForm = ({ price }) => {
                 }}
             />
             <button className="btn btn-outline bg-[#d1a054] mt-10" type="submit" disabled={!stripe || !clientSecret}>
-                Pay
+                Pay ${ price }
             </button>
             <p className="text-red-600"> {errorMessage} </p>
             { transactionId && <p className="text-green-600 mt-5">Your Transaction ID: {transactionId}</p>}
