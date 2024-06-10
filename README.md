@@ -1,4 +1,4 @@
- **Website Name**: [Connect 2 Study](https://connect-2-study.web.app)
+ **Website Name**: [ CONNECT 2 STUDY ](https://connect-2-study.web.app)
 
 **Admin Email**: connect2study@gmail.com
 

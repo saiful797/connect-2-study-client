@@ -2,6 +2,7 @@ import React from 'react';
 import SectionTitle from '../../Components/Shared/SectionTitle';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
+import { Helmet } from 'react-helmet-async';
 
 const Notice = () => {
     const axiosPublic = useAxiosPublic();
@@ -15,6 +16,9 @@ const Notice = () => {
     })
     return (
         <div className='pt-20'>
+            <Helmet>
+                <title>Connect 2 Study | Notices</title>
+            </Helmet>
             <SectionTitle title='Notice Board'/>
             <div className='grid md:grid-cols-3 lg:grid-cols-4 gap-4 p-4'>
                 {
