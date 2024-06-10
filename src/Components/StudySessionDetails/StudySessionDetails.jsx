@@ -33,6 +33,8 @@ const StudySessionDetails = () => {
     
     const endMonth = parseInt(regEnd?.split('-')[1]);
     const thisMonth = parseInt(moment().format('L').split('/')[0]);
+    const regStartDate = parseInt(regStart?.split("-")[2]);
+    console.log("Start Date: ", regStartDate, "Today's Date: ",parseInt(moment().format('L').split('/')[1]) )
 
     const handleBookedSession = async ( id ) => {
         const bookedInfo = {

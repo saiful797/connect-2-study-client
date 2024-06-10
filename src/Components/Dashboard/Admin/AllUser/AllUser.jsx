@@ -58,11 +58,11 @@ const AllUser = () => {
                                     Search Bar:
                                 </label>
                                 <input
-                                    className='ml-2 px-2 py-2 w-1/3 text-gray-800 border focus:outline-[#34a87a] rounded-md '
+                                    className='ml-2 px-2 py-2 w-1/2 md:w-1/3 text-gray-800 border focus:outline-[#34a87a] rounded-md '
                                     name='text'
                                     id='text'
                                     type='text'
-                                    placeholder='Enter user name or here.'
+                                    placeholder='Enter user name or email here.'
                                     {...register("text", { required: true })}
                                     required
                                 />
