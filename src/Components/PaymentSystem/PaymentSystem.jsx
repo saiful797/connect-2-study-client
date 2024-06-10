@@ -1,6 +1,12 @@
+import { loadStripe } from "@stripe/stripe-js";
 import SectionTitle from "../Shared/SectionTitle";
+import CheckoutForm from "./CheckoutForm/CheckoutForm";
 
 const PaymentSystem = (  { regFee } ) => {
+
+    //TODO: publish able key
+    
+    const stripePromise = loadStripe('')
     
     return (
         <div>
@@ -19,30 +25,9 @@ const PaymentSystem = (  { regFee } ) => {
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <div>
-                        <form>
-                            <div className='space-y-1 text-sm'>
-                                <div className="mt-5 mb-5">
-                                    <h1 className="text-center text-xl font-bold text-[#34a87a]">Payment amount ${regFee}</h1>
-                                </div>
-                                <label htmlFor='title' className='block text-gray-800'>
-                                    Course Fee: 
-                                </label>
-                                <input
-                                    className='w-full px-4 py-3 text-gray-800 border border-teal-200 focus:outline-[#34a87a] rounded-md '
-                                    name='regFee'
-                                    id='regFee'
-                                    type='number'
-                                    placeholder='Enter course fee here.'
-                                    required
-                                />
-                            </div>
-                            <button
-                                type='submit'
-                                className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#2db880]'
-                            >
-                                Pay
-                            </button>
-                        </form>
+                        <Element stripe = { stripePromise }>
+                            <CheckoutForm />
+                        </Element>
                     </div>
                 </div>
             </dialog>
