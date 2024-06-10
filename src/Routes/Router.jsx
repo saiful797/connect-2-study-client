@@ -28,6 +28,7 @@ import AdminRoute from "./AdminRoute";
 import RejectionFeedback from "../Components/Dashboard/Tutor/RejectionFeedback/RejectionFeedback";
 import TutorRoute from "./TutorRoute";
 import StudentRoute from "./StudentRoute";
+import StudySessions from "../Pages/StudySessions/StudySessions";
 
 
 export const router = createBrowserRouter([
@@ -39,6 +40,10 @@ export const router = createBrowserRouter([
         {
             path: '/',
             element: <Home />
+        },
+        {
+            path: '/studySessions',
+            element: <StudySessions />
         },
         {
             path: '/about',

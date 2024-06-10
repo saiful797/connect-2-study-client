@@ -5,28 +5,29 @@ import AllTutor from "../AllTutor/AllTutor";
 import ScrollToTop from '../../../Components/Shared/ScrollToTop';
 import SectionTitle from "../../../Components/Shared/SectionTitle";
 import AllApprovedSessions from "../AllApprovedSessions/AllApprovedSessions";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import useAxiosPublic from "../../../Hooks/useAxiosPublic";
 
 const Home = () => {
-    const [approvedSessions, setApprovedSessions] = useState();
-    const [ tutors, setTutors ] = useState();
+    const axiosPublic = useAxiosPublic();
+    // const [ tutors, setTutors ] = useState();
 
-    useEffect(()=>{
-        fetch(`${import.meta.env.VITE_SERVER_API}/approved-study-session`)
-        .then(res => res.json())
-        .then(data => {
-            // console.log(data)
-            setApprovedSessions(data);
-        })
-    },[])
+    const { data: approvedSessions = [] } = useQuery({
+        queryKey: ['approvedSessions'],
+        queryFn: async () => {
+            const res = await axiosPublic.get('/approved-study-session');
+            return res.data;
+        }
+    })
 
-    useEffect( () => {
-        fetch(`${import.meta.env.VITE_SERVER_API}/tutors`)
-        .then(res => res.json())
-        .then(data => {
-            setTutors(data);
-        })
-        
-    },[])
+    const { data: tutors = [] } = useQuery({
+        queryKey: ['allTutors'],
+        queryFn: async () => {
+            const res =await axiosPublic.get('/tutors');
+            return res.data;
+        }
+    })
 
     return (
         <div className="min-h-screen">
