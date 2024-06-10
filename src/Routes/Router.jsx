@@ -26,6 +26,7 @@ import AddUserRole from "../Components/Dashboard/Admin/AllUser/AddUserRole/AddUs
 import UserProfile from "../Components/Shared/UserProfile";
 import AdminRoute from "./AdminRoute";
 import RejectionFeedback from "../Components/Dashboard/Tutor/RejectionFeedback/RejectionFeedback";
+import TutorRoute from "./TutorRoute";
 
 
 export const router = createBrowserRouter([
@@ -108,37 +109,49 @@ export const router = createBrowserRouter([
         {
           path: 'add-session',
           element:<PrivateRoute>
-            <AddSession />
+            <TutorRoute>
+              <AddSession />
+            </TutorRoute>
           </PrivateRoute>
         },
         {
           path: 'all-sessions',
           element: <PrivateRoute>
-            <AllSessions />
+            <TutorRoute>
+              <AllSessions />
+            </TutorRoute>
           </PrivateRoute>
         },
         {
           path: 'all-materials',
           element: <PrivateRoute>
-            <AllMaterials />
+            <TutorRoute>
+              <AllMaterials />
+            </TutorRoute>
           </PrivateRoute>
         },
         {
           path: 'all-sessions/upload-materials/:id',
           element: <PrivateRoute>
-            <UploadMaterials />
+            <TutorRoute>
+              <UploadMaterials />
+            </TutorRoute>
           </PrivateRoute>
         },
         {
           path: 'all-materials/update-material/:id',
           element: <PrivateRoute>
-            <UpdateMaterial />
+            <TutorRoute>
+              <UpdateMaterial />
+            </TutorRoute>
           </PrivateRoute>
         },
         {
           path:'rejection-feedback',
           element: <PrivateRoute>
-            <RejectionFeedback />
+            <TutorRoute>
+              <RejectionFeedback />
+            </TutorRoute>
           </PrivateRoute>
         },
 

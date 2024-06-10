@@ -9,10 +9,10 @@ const useTutor = () => {
         queryKey: [ user?.email, 'isAdmin' ],
         enabled: !loading,
         queryFn: async() =>{
-            const res = await axiosSecure.get(`/users/admin/${user.email}`);
+            const res = await axiosSecure.get(`/users/tutor/${user.email}`);
             // console.log(res.data);
 
-            return res.data?.isAdmin;
+            return res.data?.isTutor;
         },
     })
 

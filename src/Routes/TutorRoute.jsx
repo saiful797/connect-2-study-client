@@ -1,5 +1,4 @@
-import { useLocation } from "react-router-dom";
-import useAdmin from "../Hooks/useAdmin";
+import { Navigate, useLocation } from "react-router-dom";
 import PropTypes from 'prop-types'
 import useAuth from "../Hooks/useAuth";
 import { RingLoader } from "react-spinners";
