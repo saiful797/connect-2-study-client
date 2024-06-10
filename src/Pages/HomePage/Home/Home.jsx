@@ -48,9 +48,10 @@ const Home = () => {
                 } 
              </div>
            </div>
-           <div className="shadow shadow-black p-10 mt-5 mb-5">
-                <h1 className="text-6xl font-bold text-center mb-3 w-1/3 mx-auto border-4 border-[#34a87a] ">Our Tutors</h1>
-                <div className=" grid md:grid-cols-2 lg:grid-cols-4">
+           <div className="shadow-xl border border-zinc-400 mb-5 p-2">
+                {/* <h1 className="text-6xl font-bold text-center mb-3 w-1/3 mx-auto ">Our Tutors</h1> */}
+                <SectionTitle title="Our Tutors"/>
+                <div className=" grid md:grid-cols-2 gap-5 lg:grid-cols-4 mt-5">
                     {
                         tutors?.map( tutor => <AllTutor key={tutor._id} tutor = { tutor } />)
                     }
