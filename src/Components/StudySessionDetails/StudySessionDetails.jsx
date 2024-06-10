@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import SectionTitle from '../Shared/SectionTitle';
 import moment from 'moment';
@@ -8,6 +8,7 @@ import { Tooltip } from 'react-tooltip';
 import useAuth from '../../Hooks/useAuth';
 import toast from 'react-hot-toast';
 import AllReviews from './AllReviews/AllReviews';
+import PaymentSystem from '../PaymentSystem/PaymentSystem';
 
 const StudySessionDetails = () => {
     const [ session, setSession ] = useState( {} );
@@ -33,10 +34,13 @@ const StudySessionDetails = () => {
     
     const endMonth = parseInt(regEnd?.split('-')[1]);
     const thisMonth = parseInt(moment().format('L').split('/')[0]);
-    const regStartDate = parseInt(regStart?.split("-")[2]);
-    console.log("Start Date: ", regStartDate, "Today's Date: ",parseInt(moment().format('L').split('/')[1]) )
 
-    const handleBookedSession = async ( id ) => {
+    const regStartDate = parseInt(regStart?.split("-")[2]);
+    const regStartMonth = parseInt(regStart?.split("-")[1]);
+    const todaysDate = parseInt(moment().format('L').split('/')[1])
+    // console.log("Start Date: ", regStartDate, "Today's Date: ",parseInt(moment().format('L').split('/')[1]) )
+
+    const handleBookedSessionFree = async ( id ) => {
         const bookedInfo = {
             sessionId: id,
             title,
@@ -124,18 +128,23 @@ const StudySessionDetails = () => {
                     </div>
                     <div>
                         {
-                           (role === 'student') && ( remainingDays > 0 ) && ( endMonth <= thisMonth ) && <p 
+                           (role === 'student') && ( remainingDays > 0 ) && ( regStartMonth <= thisMonth ) &&<div>
+                                <PaymentSystem regFee = { regFee }/>
+                           </div>
+                        }
+                        {
+                           (role === 'student') && ( regFee === 0 ) && ( remainingDays > 0 ) && ( regStartMonth <= thisMonth ) && <p
                                 className="text-lg font-bold cursor-pointer border border-green-400 bg-green-100 w-1/2 mx-auto flex justify-center items-center mt-5 mb-1 pt-2 pb-2 hover:bg-green-100 text-[#00b16e]"
-                                onClick={() => handleBookedSession( _id )}
+                                onClick={() => handleBookedSessionFree( _id )}
                             >
                                 Book Now
                             </p>
                         }
                         {
                            (role === 'tutor' || role === 'admin') && ( remainingDays > 0 ) && ( endMonth <= thisMonth ) && <p 
-                                className="text-lg font-bold border border-red-400 bg-red-100 text-red-600 w-1/2 mx-auto flex justify-center items-center mt-5 mb-1 pt-2 pb-2 disabled cursor-not-allowed"
+                                className="text-lg font-bold border border-zinc-500 bg-red-100 text-red-600 w-1/2 mx-auto flex justify-center items-center mt-5 mb-1 pt-2 pb-2 disabled cursor-not-allowed"
                                 data-tooltip-id="my-tooltip"
-                                data-tooltip-content={'You do not allow booking!'}
+                                data-tooltip-content={`You do not allow booking! Your role ${role}`}
                             >
                                 Book Now
                             </p>
