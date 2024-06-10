@@ -7,6 +7,9 @@ const ErrorPage = () => {
   return (
     <section className='bg-white '>
       <div className='container flex items-center min-h-screen px-6 py-12 mx-auto'>
+        <Helmet>
+          <title>Connect2Study | Error</title>
+        </Helmet>
         <div className='flex flex-col items-center max-w-sm mx-auto text-center'>
           <p className='p-3 text-sm font-medium text-red-600 rounded-full bg-blue-50 '>
             <svg

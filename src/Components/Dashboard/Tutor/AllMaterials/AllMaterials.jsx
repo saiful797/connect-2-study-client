@@ -6,6 +6,7 @@ import toast from 'react-hot-toast';
 import { Tooltip } from 'react-tooltip';
 import { Link } from 'react-router-dom';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 
 const AllMaterials = () => {
     const { user } = useAuth();
@@ -37,6 +38,9 @@ const AllMaterials = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Connect2Study | All Materials</title>
+            </Helmet>
             <SectionTitle title='Uploaded Materials'/>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-5'>
                 {

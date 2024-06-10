@@ -1,10 +1,14 @@
 import React from 'react';
 import SectionTitle from '../../Components/Shared/SectionTitle';
 import ScrollToTop from '../../Components/Shared/ScrollToTop';
+import { Helmet } from 'react-helmet-async';
 
 const AboutPage = () => {
     return (
         <div className='pt-16 min-h-screen bg-green-50 p-5 rounded-lg'>
+            <Helmet>
+                <title>Connect2Study | About Us</title>
+            </Helmet>
             <SectionTitle title = {'About'}/>
             <div className='text-zinc-600 space-y-3  lg:w-2/3 mx-auto p-5'>
                 <p>

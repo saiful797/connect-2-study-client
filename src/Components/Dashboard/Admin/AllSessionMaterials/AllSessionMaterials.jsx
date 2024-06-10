@@ -5,6 +5,7 @@ import { Tooltip } from 'react-tooltip';
 import toast from 'react-hot-toast';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 const AllSessionMaterials = () => {
     const axiosPublic = useAxiosPublic();
@@ -36,6 +37,9 @@ const AllSessionMaterials = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Connect2Study | Session Materials</title>
+            </Helmet>
             <SectionTitle title='Session Materials'/>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-4'>
                 {

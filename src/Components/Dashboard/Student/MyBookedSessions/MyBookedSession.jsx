@@ -3,6 +3,7 @@ import SectionTitle from '../../../Shared/SectionTitle';
 import useAuth from '../../../../Hooks/useAuth';
 import { Link } from 'react-router-dom';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
+import { Helmet } from 'react-helmet-async';
 
 const MyBookedSession = () => {
     const axiosSecure = useAxiosSecure();
@@ -19,6 +20,9 @@ const MyBookedSession = () => {
 
     return (
         <div className=''>
+            <Helmet>
+                <title>Connect2Study | My Booked Sessions</title>
+            </Helmet>
             <SectionTitle title='All Booked Sessions'/>
             <div>
                 <div className="overflow-x-auto">

@@ -9,6 +9,7 @@ import useAuth from '../../Hooks/useAuth';
 import toast from 'react-hot-toast';
 import AllReviews from './AllReviews/AllReviews';
 import PaymentSystem from '../PaymentSystem/PaymentSystem';
+import { Helmet } from 'react-helmet-async';
 
 const StudySessionDetails = () => {
     const [ session, setSession ] = useState( {} );
@@ -59,6 +60,9 @@ const StudySessionDetails = () => {
 
     return (
         <div className="w-full mb-5 p-3 bg-teal-50 rounded-xl">
+            <Helmet>
+                <title>Connect2Study | Session Details</title>
+            </Helmet>
             <div className='mt-16 p-3'>
                 {/* section title */}
                 <SectionTitle title={'Session Details'}/>

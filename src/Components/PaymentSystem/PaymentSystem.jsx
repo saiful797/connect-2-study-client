@@ -1,6 +1,7 @@
 import { loadStripe } from "@stripe/stripe-js";
 import CheckoutForm from "./CheckoutForm/CheckoutForm";
 import { Elements } from "@stripe/react-stripe-js";
+import { Helmet } from "react-helmet-async";
 
 const PaymentSystem = (  { session } ) => {
 
@@ -9,6 +10,9 @@ const PaymentSystem = (  { session } ) => {
     
     return (
         <div>
+            <Helmet>
+                <title>Connect2Study | Payment</title>
+            </Helmet>
             <div>
             {/* You can open the modal using document.getElementById('ID').showModal() method */}
             <button 

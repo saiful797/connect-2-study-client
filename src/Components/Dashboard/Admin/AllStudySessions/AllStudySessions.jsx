@@ -6,6 +6,7 @@ import StudySession from './StudySession/StudySession';
 import { MdOutlineNotificationsActive } from "react-icons/md";
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 const AllStudySessions = () => {
     const [tabIndex, setTabIndex] = useState(0);
@@ -25,7 +26,9 @@ const AllStudySessions = () => {
 
     return (
         <div className='mb-10 mt-5'>
-
+            <Helmet>
+                <title>Connect2Study | All Sessions</title>
+            </Helmet>
             <SectionTitle title = {'All Study Sessions'}/>
             
             <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>

@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 
 
 const AddReviewModal = ({ id }) => {
@@ -26,6 +27,9 @@ const AddReviewModal = ({ id }) => {
 
     return (
         <div>
+            <Helmet>
+                <title>Connect2Study | Add Review</title>
+            </Helmet>
             {/* You can open the modal using document.getElementById('ID').showModal() method */}
             <button 
                 className="text-lg font-bold cursor-pointer w-40 mx-auto flex justify-center items-center mt-5 mb-1 pt-1 pb-1 bg-green-200 text-[#00b16e]"

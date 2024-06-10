@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { useNavigate, useParams } from "react-router-dom";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 const UpdateNote = () => {
     const { register, handleSubmit, reset } = useForm();
@@ -46,6 +47,9 @@ const UpdateNote = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Connect2Study | Update Note</title>
+            </Helmet>
             <SectionTitle title={'Update Note'}/>
             <div className='md:w-2/3 mx-auto bg-green-50 p-5 rounded-lg'>
                 <form 

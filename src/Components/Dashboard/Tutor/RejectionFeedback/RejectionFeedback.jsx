@@ -5,6 +5,7 @@ import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import useAuth from '../../../../Hooks/useAuth';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const RejectionFeedback = () => {
     const axiosSecure = useAxiosSecure();
@@ -28,6 +29,9 @@ const RejectionFeedback = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Connect2Study | Feedback</title>
+            </Helmet>
             <SectionTitle title='Rejection Feedback'/>
             {
                 rejectFeedbacks.length === 0 && <p

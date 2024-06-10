@@ -3,6 +3,7 @@ import useAuth from "../../../../Hooks/useAuth";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import moment from "moment";
+import { Helmet } from "react-helmet-async";
 
 const AddSession = () => {
     const { user } = useAuth();
@@ -34,6 +35,9 @@ const AddSession = () => {
 
     return (
         <div className='pt-5 w-full min-h-[calc(100vh-40px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-green-50'>
+            <Helmet>
+                <title>Connect2Study | Add Session</title>
+            </Helmet>
             <div className="mb-10">
                 <h1 className="text-5xl font-bold text-[#34a87a]">Create study session</h1>
             </div>

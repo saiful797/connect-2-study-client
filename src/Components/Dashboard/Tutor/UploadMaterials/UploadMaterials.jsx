@@ -6,6 +6,7 @@ import axios from "axios";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
+import { Helmet } from "react-helmet-async";
 
 const UploadMaterials = () => {
     const { id } = useParams();
@@ -53,6 +54,9 @@ const UploadMaterials = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Connect2Study | Upload Materials</title>
+            </Helmet>
             <SectionTitle title="Upload Materials"/>
             <div className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-green-50 p-10 rounded-lg border-2">
                 <div className="mb-3">

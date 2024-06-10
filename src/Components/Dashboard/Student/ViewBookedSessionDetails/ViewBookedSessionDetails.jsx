@@ -6,6 +6,7 @@ import useAxiosPublic from '../../../../Hooks/useAxiosPublic';
 import AddReviewModal from '../AddReviewModal/AddReviewModal'
 import BookedSessionMaterials from './BookedSessionMaterials/BookedSessionMaterials';
 import { parse } from 'postcss';
+import { Helmet } from 'react-helmet-async';
 
 const ViewBookedSessionDetails = () => {
     const [ session, setSession ] = useState( {} );
@@ -23,6 +24,9 @@ const ViewBookedSessionDetails = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Connect2Study | Session Details</title>
+            </Helmet>
             <SectionTitle title= {'Session Details'}/>
             {/*view session Details */}
             <div className="w-full mb-5 p-3 bg-teal-50 rounded-xl">

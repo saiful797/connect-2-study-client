@@ -6,6 +6,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
+import { Helmet } from "react-helmet-async";
 
 
 const AllSessions = () => {
@@ -32,7 +33,9 @@ const AllSessions = () => {
 
     return (
         <div>
-           
+            <Helmet>
+                <title>Connect2Study | All Sessions</title>
+            </Helmet>
             {/* section title */}
             <SectionTitle title ={'All Sessions'}/>
             <div>

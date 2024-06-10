@@ -8,6 +8,7 @@ import toast from 'react-hot-toast';
 import axios from 'axios';
 import useAxiosSecure from '../../../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
+import { Helmet } from 'react-helmet-async';
 
 const UpdateMaterial = () => {
     // const [ material, setMaterial ] = useState({});
@@ -67,6 +68,9 @@ const UpdateMaterial = () => {
     }
     return (
         <div>
+            <Helmet>
+                <title>Connect2Study | Update Materials</title>
+            </Helmet>
             <SectionTitle title='Update Materials Information'/>
             <div className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-green-50 p-10 rounded-lg border-2">
                 <div className="mb-3">

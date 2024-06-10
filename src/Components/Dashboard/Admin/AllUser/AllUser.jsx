@@ -4,6 +4,7 @@ import { Tooltip } from "react-tooltip";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { Helmet } from "react-helmet-async";
 
 const AllUser = () => {
     const axiosSecure = useAxiosSecure();
@@ -45,6 +46,9 @@ const AllUser = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Connect2Study | All Users</title>
+            </Helmet>
             {/* Section Title */}
             <SectionTitle title={"All Users"}/>
             <div>

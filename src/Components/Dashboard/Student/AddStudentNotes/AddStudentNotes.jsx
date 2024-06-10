@@ -26,6 +26,9 @@ const AddStudentNotes = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>Connect2Study | Student Notes</title>
+            </Helmet>
             <SectionTitle 
                 title='All Notes'
             />

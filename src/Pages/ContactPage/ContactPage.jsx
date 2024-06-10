@@ -1,5 +1,6 @@
 import React from 'react';
 import SectionTitle from '../../Components/Shared/SectionTitle';
+import { Helmet } from 'react-helmet-async';
 
 const ContactPage = () => {
   const handleSubmit = (e) => {
@@ -10,6 +11,9 @@ const ContactPage = () => {
 
   return (
     <div className="contact-page min-h-screen pt-10 bg-green-50 flex flex-col">
+      <Helmet>
+        <title>Connect2Study | Contact Us</title>
+      </Helmet>
       <header className="py-10">
         <div className="container mx-auto text-center">
           <SectionTitle title={"Contact Us"}/>
