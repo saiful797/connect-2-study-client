@@ -28,4 +28,8 @@ const Sessions = ({ session }) => {
     );
 };
 
+Sessions.propTypes = {
+    session: PropTypes.object.isRequired,
+}
+
 export default Sessions;
