@@ -32,10 +32,10 @@ const PaymentSystem = (  { session } ) => {
                     <div className="px-2 border-zinc-500">
                         <div className="flex justify-between mb-2 text-[#d19944]">
                             <p>Enter Card Number:</p>
-                            <div className="flex gap-3 pr-4">
-                                <p>Month</p>
-                                <p>Year</p>
+                            <div className="flex gap-3 pr-10">
+                                <p>Month/Year</p>
                                 <p>CVC</p>
+                                <p>ZIP</p>
                             </div>
                         </div>
                         <Elements stripe = { stripePromise }>

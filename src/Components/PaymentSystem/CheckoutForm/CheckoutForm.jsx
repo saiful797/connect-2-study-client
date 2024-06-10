@@ -86,24 +86,22 @@ const CheckoutForm = ({ session }) => {
                 }
 
                 const res = await axiosSecure.post('/payments', payment);
-                console.log('payment saved', res.data.deleteResult.deletedCount);
-                if(res.data?.deleteResult?.deletedCount > 0){
-                    // toast.success('Payment Successful!!');
-                    const bookedInfo = {
-                        sessionId: session._id,
-                        title: session.title,
-                        classStart: session.classStart,
-                        booked_date: moment().format('L'),
-                        name: user?.displayName,
-                        student_email: user?.email,
-                        tutor_email: session.email
-                    }
-                    const res = await axiosPublic.post('/study-session-booked', bookedInfo)
-                    if( res.data.insertedId ){
-                        toast.success('Session booked successfully!');
-                        navigate('/');
-                    }
+                console.log('payment saved', res.data);
+                const bookedInfo = {
+                    sessionId: session._id,
+                    title: session.title,
+                    classStart: session.classStart,
+                    booked_date: moment().format('L'),
+                    name: user?.displayName,
+                    student_email: user?.email,
+                    tutor_email: session.email
                 }
+                const result = await axiosPublic.post('/study-session-booked', bookedInfo)
+                if( result.data.insertedId ){
+                    toast.success('Session booked successfully!');
+                }
+                
+                
             }
         }
 
