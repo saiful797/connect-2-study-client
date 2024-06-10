@@ -32,7 +32,7 @@ const AllUser = () => {
         }
 
         if( len === 1 ){
-            const name = text;
+            const name = text.toLowerCase();
             setUsers([]);
             const res = await axiosSecure.get(`/user-search-by-name/${name}`);
             if(res.data){
@@ -104,7 +104,7 @@ const AllUser = () => {
                             {
                                 users?.map((user, index) => <tr key={user._id}>
                                     <th className="text-center">{index+1}</th>
-                                    <td className="text-center">{user.name}</td>
+                                    <td className="text-center">{(user?.name).toUpperCase()}</td>
                                     <td className="text-center">{user.email}</td>
                                     <td className="text-center">
                                         {

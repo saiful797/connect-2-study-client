@@ -23,7 +23,7 @@ const SocialMediaSignIn = ({ location }) => {
             const role= 'student';
 
             // post user information in DB
-            const  userData = { name, email, role, image };
+            const  userData = { name: name.toLowerCase, email, role, image };
             axiosPublic.post("/users", userData );
 
             navigate(location?.state || '/');

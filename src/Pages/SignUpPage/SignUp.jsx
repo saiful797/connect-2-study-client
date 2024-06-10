@@ -55,7 +55,7 @@ const SignUp = () => {
         const image = data.data.display_url;
         const role = result.role;
 
-        const userData = { name, email, role, image };
+        const userData = { name:name.toLowerCase(), email, role, image };
 
         createUser( email, password )
         .then(() => {

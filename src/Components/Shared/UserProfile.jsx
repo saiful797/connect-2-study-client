@@ -22,7 +22,7 @@ const UserProfile = () => {
                 </div>
                 </div>
                 <div className="text-center p-6">
-                    <h1 className="text-2xl font-semibold text-gray-900">{user.displayName}</h1>
+                    <h1 className="text-2xl font-semibold text-gray-900">{(user?.displayName).toUpperCase()}</h1>
                     <p 
                         className="text-sm badge badge-outline badge-error text-gray-600 mt-1 "
                     >
