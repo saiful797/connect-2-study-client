@@ -68,7 +68,7 @@ const StudySession = ({ studySession }) => {
                     {
                        status === 'pending' && <div className='flex justify-evenly mt-5'>
                             {/*Study Session Confirm Modal*/}
-                            <StudySessionConfirmModal id = { _id }/>
+                            <StudySessionConfirmModal sessionInfo = {[ _id, refetch] }/>
                             
                             <StudySessionRejectModal sessionItem = { [sessionInfo, refetch ] }/>
                         </div>

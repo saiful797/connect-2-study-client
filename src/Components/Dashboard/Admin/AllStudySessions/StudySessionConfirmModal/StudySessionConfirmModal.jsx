@@ -3,7 +3,9 @@ import useAxiosPublic from "../../../../../Hooks/useAxiosPublic";
 import toast from "react-hot-toast";
 
 
-const StudySessionConfirmModal = ({ id }) => {
+const StudySessionConfirmModal = ( { sessionInfo } ) => {
+    const [ _id, refetch] = sessionInfo;
+    const id = _id;
     const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset } = useForm();
 
@@ -17,6 +19,7 @@ const StudySessionConfirmModal = ({ id }) => {
 
             toast.success("Session Approved successfully!");
             reset();
+            refetch();
         }
     }
 
