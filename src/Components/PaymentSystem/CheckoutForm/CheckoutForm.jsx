@@ -13,7 +13,7 @@ const CheckoutForm = ({ session }) => {
     const elements = useElements();
     const { user } = useAuth();
     const axiosSecure = useAxiosSecure();
-    const price = session.regFee;
+    const price = session?.regFee;
 
     useEffect(() => {
         if(price > 0){
@@ -124,7 +124,11 @@ const CheckoutForm = ({ session }) => {
                     },
                 }}
             />
-            <p className="cursor-pointer w-1/2 py-2 mx-auto bg-[#d1a054] mt-10 text-xl text-white text-center rounded-full" type="submit" disabled={!stripe || !clientSecret}>
+            <p 
+                className="cursor-pointer w-1/2 py-2 mx-auto bg-[#e2ad5e] mt-10 text-xl text-white text-center rounded-full" 
+                type="submit" 
+                disabled={!stripe || !clientSecret}
+            >
                 Pay <span className="ml-4">${ price }</span>
             </p>
             <p className="text-red-600"> {errorMessage} </p>

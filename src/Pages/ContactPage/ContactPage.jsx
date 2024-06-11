@@ -1,6 +1,9 @@
 import React from 'react';
 import SectionTitle from '../../Components/Shared/SectionTitle';
 import { Helmet } from 'react-helmet-async';
+import { FaFacebook, FaLinkedin, FaYoutube } from 'react-icons/fa';
+import { FaXTwitter } from 'react-icons/fa6';
+import { BsInstagram } from 'react-icons/bs';
 
 const ContactPage = () => {
   const handleSubmit = (e) => {
@@ -21,11 +24,11 @@ const ContactPage = () => {
         </div>
       </header>
 
-      <main className="flex-grow container mx-auto p-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+      <main className="flex-grow container mx-auto p-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <section id="contact-form" className="bg-white p-8 rounded-lg shadow-md">
             <h2 className="text-2xl font-bold mb-6">Send Us a Message</h2>
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-2">
               <div>
                 <label htmlFor="name" className="block text-lg font-medium">Full Name</label>
                 <input type="text" id="name" name="name" required className="mt-1 block w-full p-3 border border-gray-300 rounded-md focus:outline-[#00b16e]" />
@@ -56,22 +59,22 @@ const ContactPage = () => {
             <p className="text-lg mb-2"><strong>Phone:</strong> +1 (800) 123-4567</p>
             <p className="text-lg mb-2"><strong>Address:</strong></p>
             <p className="text-lg mb-2">Connect2Study Headquarters,<br /> 123 Learning Lane,<br /> Education City, ED 56789</p>
-            <p className="text-lg mb-2"><strong>Business Hours:</strong></p>
+            <p className="text-lg mb-2"><strong>Office Hours:</strong></p>
             <p className="text-lg mb-2">Monday to Friday: 9:00 AM - 6:00 PM</p>
             <p className="text-lg mb-2">Saturday: 10:00 AM - 4:00 PM</p>
             <p className="text-lg mb-2">Sunday: Closed</p>
+            <section id="social-media" className="mt-10">
+              <h2 className="text-2xl font-bold mb-4">Follow Us</h2>
+              <div className="flex space-x-5">
+                <FaFacebook />
+                <FaXTwitter />
+                <BsInstagram />
+                <FaYoutube />
+                <FaLinkedin />
+              </div>
+            </section>
           </section>
         </div>
-
-        <section id="social-media" className="mt-10">
-          <h2 className="text-2xl font-bold mb-4">Follow Us</h2>
-          <div className="flex space-x-5">
-            <p>Facebook</p>
-            <p>Twitter</p>
-            <p>Linkedin</p>
-            <p>YouTube</p>
-          </div>
-        </section>
       </main>
     </div>
   );

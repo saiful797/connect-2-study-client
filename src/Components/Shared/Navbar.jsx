@@ -39,7 +39,7 @@ const Navbar = () => {
                 }
             >
                 {/* <CgProfile  className='w-5 h-5'/> */}
-                <span className='mx-4 font-medium'>Home</span>
+                <span className='mx-4 text-lg font-medium text-[#34a87a]'>Home</span>
             </NavLink>
         </li>
         <li className=" font-extrabold">
@@ -52,23 +52,10 @@ const Navbar = () => {
                 }
             >
                 {/* <CgProfile  className='w-5 h-5'/> */}
-                <span className='mx-4 font-medium'>Study Sessions</span>
+                <span className='mx-4 text-lg font-medium text-[#34a87a]'>Study Sessions</span>
             </NavLink>
         </li>
-        <li className=" font-extrabold">
-            <NavLink
-                to='/about'
-                className={({ isActive }) =>
-                    `flex items-center px-4 py-2 transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                    isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                    }`
-                }
-            >
-                {/* <CgProfile  className='w-5 h-5'/> */}
-                <span className='mx-4 font-medium'>About Us</span>
-            </NavLink>
-        </li>
-
+    
         <li className=" font-extrabold">
             <NavLink
                 to='/allAnnouncements'
@@ -79,9 +66,24 @@ const Navbar = () => {
                 }
             >
                 {/* <CgProfile  className='w-5 h-5'/> */}
-                <span className='mx-4 font-medium'>Notice</span>
+                <span className='mx-4 text-lg font-medium text-[#34a87a]'>Announcement</span>
             </NavLink>
         </li>
+
+        <li className=" font-extrabold">
+            <NavLink
+                to='/about'
+                className={({ isActive }) =>
+                    `flex items-center px-4 py-2 transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
+                    isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
+                    }`
+                }
+            >
+                {/* <CgProfile  className='w-5 h-5'/> */}
+                <span className='mx-4 text-lg font-medium text-[#34a87a]'>About Us</span>
+            </NavLink>
+        </li>
+
         <li className=" font-extrabold">
             <NavLink
                 to='/contactUs'
@@ -92,7 +94,7 @@ const Navbar = () => {
                 }
             >
                 {/* <CgProfile  className='w-5 h-5'/> */}
-                <span className='mx-4 font-medium'>Contact Us</span>
+                <span className='mx-4 text-lg font-medium text-[#34a87a]'>Contact Us</span>
             </NavLink>
         </li>       
     </>
@@ -125,7 +127,7 @@ const Navbar = () => {
             </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1 gap-2">
+            <ul className="menu menu-horizontal px-1 gap-2 ">
                 {navLinks}
             </ul>
         </div>

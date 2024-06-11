@@ -5,7 +5,7 @@ import { Helmet } from 'react-helmet-async';
 
 const AboutPage = () => {
     return (
-        <div className='pt-16 min-h-screen bg-green-50 p-5 rounded-lg'>
+        <div className='pt-20 min-h-screen bg-green-50 p-5 rounded-lg'>
             <Helmet>
                 <title>Connect2Study | About Us</title>
             </Helmet>

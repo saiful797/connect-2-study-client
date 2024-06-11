@@ -19,22 +19,22 @@ const Footer = () => {
                                 </h1>
                             </div>
                         </Link>
-                        <p className="">
+                        <p className="text-lg">
                             Learn Together, Achieve Together.
                         </p>
                     </div>
                 </aside> 
                 <nav className="mx-auto">
                     <h6 className="footer footer-title text-xl footer-center">Services</h6> 
-                    <a className="link link-hover">Travel Packages</a>
-                    <a className="link link-hover">Travel Blog </a>
-                    <a className="link link-hover">Activities and Tours</a>
-                    <a className="link link-hover">Advertisement</a>
+                    <a className="link link-hover text-md">Study Packages</a>
+                    <a className="link link-hover text-md">Blog </a>
+                    <a className="link link-hover text-md">Activities</a>
+                    <a className="link link-hover text-md">Advertisement</a>
                 </nav> 
                 <nav className="mx-auto">
                     <h6 className="footer footer-title text-xl footer-center">Contact Us</h6> 
-                    <a className="link link-hover">support@connect2study.com</a>
-                    <a className="link link-hover">Phone:  +1 (800) 123-4567</a>
+                    <a className="link link-hover text-md">support@connect2study.com</a>
+                    <a className="link link-hover text-md">Phone:  +1 (800) 123-4567</a>
                     <div className="flex justify-center items-center gap-3 text-2xl">
                         <FaFacebook />
                         <FaXTwitter />

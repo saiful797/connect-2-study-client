@@ -12,7 +12,7 @@ const AllApprovedSessions = ({ session }) => {
     // console.log(remainingDay)
 
     return (
-        <div className="card bg-green-50 shadow-xl">
+        <div className="card bg-white shadow-xl">
             <div className="card-body">
                 <h2 className="card-title">{ title }</h2>
                 <p className=''><span className='text-lg font-medium text-zinc-900'>Course Details: </span>{ description }</p>

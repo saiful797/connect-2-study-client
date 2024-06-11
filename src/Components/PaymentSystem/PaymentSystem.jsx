@@ -22,11 +22,11 @@ const PaymentSystem = (  { session } ) => {
                 Book Now
             </button>
             <dialog id="my_modal_12" className="modal">
-                <div className="modal-box bg-green-50 p-10 border-2 border-[#d19944]">
-                    <h1 className="text-lg text-center font-bold text-[#d19944]">
+                <div className="modal-box bg-green-50 p-10 border-2 border-[#e2ad5e]">
+                    <h1 className="text-lg text-center font-bold text-[#e2ad5e]">
                         PAY AND BOOKED YOUR COURSE
                     </h1>
-                    <div className="p-px bg-[#d19944] mb-4">
+                    <div className="p-px bg-[#e2ad5e] mb-4">
 
                     </div>
                     <form method="dialog">

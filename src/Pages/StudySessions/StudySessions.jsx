@@ -18,7 +18,7 @@ const StudySessions = () => {
             <SectionTitle  title="All Study Sessions"/>
             <div className="grid md:grid-cols-2 gap-5 mt-3 p-2">
                 {
-                    approvedSessions?.map(session => <Sessions session ={ session }/>)
+                    approvedSessions?.map(session => <Sessions key={session._id} session ={ session }/>)
                 }
             </div>
         </div>

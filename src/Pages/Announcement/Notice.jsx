@@ -24,10 +24,14 @@ const Notice = () => {
                 {
                     AllAnnouncements?.map( announcement => <div 
                         key = {announcement._id}
-                        className='p-5 bg-stone-50'
+                        className='p-5 bg-green-50 rounded-xl'
                     >
-                        <h2 className='text-center text-xl font-bold mb-5 text-green-700'>{announcement.title}</h2>
-                        <p className='text-justify'>{announcement.announcement}</p>
+                        <div className='py-1 bg-zinc-800 text-white w-full mb-2'>
+                            <h2 className='text-center text-xl font-bold'>{announcement.title}</h2>
+                        </div>
+                        <div className='p-1 hover:scale-105'>
+                            <p className='text-justify'>{announcement.announcement}</p>
+                        </div>
                     </div>)
                 }
             </div>

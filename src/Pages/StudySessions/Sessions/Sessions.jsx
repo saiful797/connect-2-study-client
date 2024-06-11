@@ -8,7 +8,7 @@ const Sessions = ({ session }) => {
     const endMonth = parseInt(regEnd.split('-')[1]);
     const thisMonth = parseInt(moment().format('L').split('/')[0]);
     return (
-        <div className="card bg-green-50 shadow-xl">
+        <div className="card bg-white shadow-xl">
             <div className="card-body">
                 <h2 className="card-title">{ title }</h2>
                 <p className=''><span className='text-lg font-medium text-zinc-900'>Course Details: </span>{ description }</p>
