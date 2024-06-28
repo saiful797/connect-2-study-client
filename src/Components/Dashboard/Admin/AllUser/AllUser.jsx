@@ -1,22 +1,25 @@
-import { useEffect, useState } from "react";
 import SectionTitle from "../../../Shared/SectionTitle";
 import { Tooltip } from "react-tooltip";
 import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
+import { useQuery } from "@tanstack/react-query";
+import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
+import toast from "react-hot-toast";
 
 const AllUser = () => {
     const axiosSecure = useAxiosSecure();
-    const [users, setUsers] = useState([]);
+    const axiosPublic = useAxiosPublic();
     const { register, handleSubmit, reset } = useForm();
 
-    useEffect( () => {
-        axiosSecure.get('/allUsers')
-        .then(res => {
-            setUsers( res.data );
-        })
-    },[])
+    const {data: users = [], refetch} = useQuery({
+        queryKey:['allUsers'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/allUsers');
+            return res.data;
+        }
+    })
 
     const onSubmit = async ( data ) => {
         const {text} = data;
@@ -42,6 +45,14 @@ const AllUser = () => {
             }
         }
         
+    }
+
+    const  handleUserDelete = async (id, role) => {
+        const res = await axiosPublic.delete(`/delete-a-user/${id}`);
+        if(res.data.deletedCount > 0){
+            toast.success(`${role} deleted successfully!`);
+            refetch();
+        }
     }
 
     return (
@@ -93,6 +104,7 @@ const AllUser = () => {
                                 <th className="text-center">Email</th>
                                 <th className="text-center">Role</th>
                                 <th className="text-center">Update Role</th>
+                                <th className="text-center">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -152,6 +164,28 @@ const AllUser = () => {
                                             >
                                                 Update
                                             </Link>  
+                                        }
+                                    </td>
+                                    <td>
+                                        {
+                                            (user.role === 'tutor' || user.role === 'student') && <Link 
+                                            className="bg-red-50 border-2 border-red-400 py-1 w-20 text-center text-red-500 px-4 rounded-3xl cursor-pointer"
+                                            data-tooltip-id="my-tooltip"
+                                            data-tooltip-content={`Delete this ${user.role}!`}
+
+                                            onClick={() => handleUserDelete(user._id, user.role)}
+                                        >
+                                            Delete
+                                        </Link> 
+                                        }
+                                        {
+                                            user.role === 'admin' && <Link 
+                                            className="bg-red-50 border-2 py-1 w-20 text-center text-red-500 px-4 rounded-3xl cursor-not-allowed"
+                                            data-tooltip-id="my-tooltip"
+                                            data-tooltip-content={`You can not delete ${user.role}!`}
+                                        >
+                                            Delete
+                                        </Link> 
                                         }
                                     </td>
                                 </tr> )
