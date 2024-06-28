@@ -48,7 +48,7 @@ const Home = () => {
                 } 
              </div>
            </div>
-           <div className="shadow-xl border-4 rounded-lg border-zinc-400 mb-5 p-4">
+           <div className="shadow-xl border-4 rounded-lg border-zinc-400 mb-5 p-4 pb-10">
                 <SectionTitle title="Our Tutors"/>
                 <div className="mx-auto grid md:grid-cols-2 gap-5 lg:grid-cols-4 mt-5">
                     {

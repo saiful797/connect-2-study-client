@@ -43,10 +43,10 @@ const Sidebar = () => {
         <div>
             <div className='block cursor-pointer p-4 font-bold'>
               <Link to='/' className="text-2xl font-bold flex">
-                <div className="relative">
-                  <h1 className="flex font-sofia text-[#34a87a]">
-                    <FaBookReader  />
-                    Connect2Study
+                <div className="relative bg-white px-2 py-1 rounded-lg shadow-md shadow-yellow-300">
+                  <h1 className="flex justify-center items-center text-[#D35400]">
+                    <FaBookReader  className="text-yellow-500"/>
+                    <p> <span className="text-4xl font-extralight">C</span>onnect<span className="text-4xl font-extralight text-yellow-500">2</span><span className="text-4xl font-extralight">S</span>tudy</p>
                   </h1>
                 </div>
               </Link>
@@ -55,9 +55,9 @@ const Sidebar = () => {
 
         <button
           onClick={handleToggle}
-          className='mobile-menu-button p-4 focus:outline-none focus:bg-g#a6f7df'
+          className='mobile-menu-button p-4 focus:outline-none'
         >
-          <GiHamburgerMenu  className='h-5 w-5'/>
+          <GiHamburgerMenu  className='h-5 w-5 text-white'/>
 
         </button>
       </div>
@@ -73,10 +73,10 @@ const Sidebar = () => {
             <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center  mx-auto bg-white'>
               <Link to='/' className="text-xl font-bold flex">
                 <div className="relative">
-                <h1 className="flex justify-center items-center text-[#D35400]">
+                  <h1 className="flex justify-center items-center text-[#D35400]">
                     <FaBookReader  className="text-yellow-500"/>
                     <p> <span className="text-4xl font-extralight">C</span>onnect<span className="text-4xl font-extralight text-yellow-500">2</span><span className="text-4xl font-extralight">S</span>tudy</p>
-                </h1>
+                  </h1>
                 </div>
               </Link>
             </div>

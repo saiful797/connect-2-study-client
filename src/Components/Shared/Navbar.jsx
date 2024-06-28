@@ -26,7 +26,6 @@ const Navbar = () => {
         const localTheme = localStorage.getItem("theme");
         document.querySelector("html").setAttribute('data-theme', localTheme)
     },[theme]);
-    // console.log(user);
     
     const navLinks=<>
         <li className=" font-extrabold">
@@ -34,11 +33,10 @@ const Navbar = () => {
                 to='/'
                 className={({ isActive }) =>
                     `flex items-center px-4 py-2 transition-colors duration-300 transform  hover:bg-[#e2d5cd] ${
-                    isActive ? 'bg-[#e2d5cd]  text-[#D35400]' : 'text-[#D35400]'
+                    isActive ? 'bg-[#e2d5cd] text-[#D35400]' : 'text-[#D35400]'
                     }`
                 }
             >
-                {/* <CgProfile  className='w-5 h-5'/> */}
                 <span className='mx-4 text-lg font-medium text-[#D35400]'>Home</span>
             </NavLink>
         </li>
@@ -51,7 +49,6 @@ const Navbar = () => {
                     }`
                 }
             >
-                {/* <CgProfile  className='w-5 h-5'/> */}
                 <span className='mx-4 text-lg font-medium text-[#D35400]'>Study Sessions</span>
             </NavLink>
         </li>
@@ -65,7 +62,6 @@ const Navbar = () => {
                     }`
                 }
             >
-                {/* <CgProfile  className='w-5 h-5'/> */}
                 <span className='mx-4 text-lg font-medium text-[#D35400]'>Announcement</span>
             </NavLink>
         </li>
@@ -79,7 +75,6 @@ const Navbar = () => {
                     }`
                 }
             >
-                {/* <CgProfile  className='w-5 h-5'/> */}
                 <span className='mx-4 text-lg font-medium text-[#D35400]'>About Us</span>
             </NavLink>
         </li>
@@ -93,7 +88,6 @@ const Navbar = () => {
                     }`
                 }
             >
-                {/* <CgProfile  className='w-5 h-5'/> */}
                 <span className='mx-4 text-lg font-medium text-[#D35400]'>Contact Us</span>
             </NavLink>
         </li>       
@@ -106,10 +100,10 @@ const Navbar = () => {
 
     return (
     <div className="navbar fixed z-50 bg-opacity-3 mt-px py-5 border-2 border-[#D35400] md:rounded-lg max-w-7xl mx-auto ">
-        <div className="navbar-start">
+        <div className="navbar-start flex items-center">
             <div className="dropdown">
-                <div tabIndex={0} role="button" className="btn btn-sm lg:hidden">
-                    <RxHamburgerMenu className="w-5 h-5"/>
+                <div tabIndex={0} role="button" className="btn text-xl text-[#D35400] btn-sm lg:hidden">
+                    <RxHamburgerMenu className="w-6 h-6"/>
                 </div>
                 <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[10] p-2 shadow bg-base-100 rounded-box w-52">
                     {navLinks}
@@ -120,7 +114,7 @@ const Navbar = () => {
                     <div className="relative">
                         <h1 className="flex justify-center items-center text-[#D35400]">
                             <FaBookReader  className="text-yellow-500"/>
-                           <p> <span className="text-6xl font-extralight">C</span>onnect<span className="text-6xl font-extralight text-yellow-500">2</span><span className="text-6xl font-extralight">S</span>tudy</p>
+                           <p> <span className="text-4xl md:text-6xl font-extralight">C</span>onnect<span className="text-4xl md:text-6xl font-extralight text-yellow-500">2</span><span className="text-4xl md:text-6xl font-extralight">S</span>tudy</p>
                         </h1>
                     </div>
                 </Link>

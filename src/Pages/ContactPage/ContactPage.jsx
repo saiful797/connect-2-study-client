@@ -22,7 +22,7 @@ const ContactPage = () => {
 
       <div className=" text-gray-800">
       {/* Hero Section */}
-          <section className="bg-blue-950 lg:rounded-tl-full lg:rounded-br-full mt-20 text-white p-12 text-center lg:mr-5 lg:ml-5">
+          <section className="bg-yellow-500 lg:rounded-tl-full lg:rounded-br-full mt-20 text-white p-12 text-center lg:mr-5 lg:ml-5">
             <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
             <p className="text-xl">We'd love to hear from you! Get in touch with us for any inquiries or support.</p>
           </section>

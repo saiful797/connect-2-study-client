@@ -11,7 +11,7 @@ const AboutPage = () => {
             </Helmet>
             <div className=" text-gray-800">
                 {/* Hero Section */}
-                <section className="bg-blue-950 lg:rounded-tl-full lg:rounded-br-full mt-10 text-white p-12 text-center">
+                <section className="bg-yellow-500 lg:rounded-tl-full lg:rounded-br-full mt-10 text-white p-12 text-center">
                     <h1 className="text-4xl font-bold mb-4">About Us</h1>
                     <p className="text-xl">Connecting students with expert tutors for a brighter future.</p>
                 </section>
