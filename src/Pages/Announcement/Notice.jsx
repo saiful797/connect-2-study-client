@@ -24,7 +24,7 @@ const Notice = () => {
                 {
                     AllAnnouncements?.map( announcement => <div 
                         key = {announcement._id}
-                        className='p-5 bg-[#dba07d] rounded-xl text-white'
+                        className='p-5 shadow-xl rounded-xl text-white'
                     >
                         <div className='py-1 bg-yellow-500 w-full mb-2'>
                             <h2 className='text-center text-xl font-bold'>{announcement.title}</h2>
