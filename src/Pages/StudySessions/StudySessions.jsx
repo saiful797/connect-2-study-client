@@ -15,7 +15,7 @@ const StudySessions = () => {
     })
 
     return (
-        <div className="pt-20">
+        <div className="pt-20 min-h-screen">
             <SectionTitle  title="All Study Sessions"/>
             <div className="grid md:grid-cols-2 gap-5 mt-3 p-2">
                 {

@@ -12,7 +12,7 @@ const AllStudySessions = () => {
     const [tabIndex, setTabIndex] = useState(0);
     const axiosSecure = useAxiosSecure();
 
-    const {data: studySessions = [], refetch}= useQuery({
+    const {data: studySessions = [], refetch }= useQuery({
         queryKey: ['studySessions'],
         queryFn: async () => {
             const res = await axiosSecure.get('/allStudySessions');

@@ -45,17 +45,17 @@ const RejectionFeedback = () => {
                     rejectFeedbacks?.map( feedback => <div
                         key = { feedback._id }
                     >
-                        <div className="card w-96 bg-green-100 shadow-xl">
+                        <div className="card w-96 shadow-xl border border-white hover:border-[#D35400]">
                             <div className="card-body">
-                                <h2 className="card-title">Session title: {feedback.title}</h2>
+                                <h2 className="card-title">Session title: {feedback.title} </h2>
                                 <h2 className="card-title">Session ID: {feedback.sessionID}</h2>
-                                <p>Reason: {feedback.reason}</p>
-                                <p>
-                                    Feedback: {feedback.feedback}
+                                <p className="card-title">Reason: <span className='text-red-500'>{feedback.reason}</span></p>
+                                <p className='text-justify'>
+                                    <span className="card-title">Feedback:</span> {feedback.feedback}
                                 </p>
-                                <div className="card-actions justify-end">
+                                <div className="card-actions justify-center">
                                 <div 
-                                    className='cursor-pointer px-4 py-3 badge badge-outline text-red-600'
+                                    className='cursor-pointer mt-5 px-4 py-4 badge badge-outline w-44 text-red-600 hover:bg-red-100'
                                     onClick={() => handleDeleteFeedback (feedback._id)}
                                 >
                                     Delete

@@ -1,10 +1,20 @@
 import moment from "moment";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { BsInstagram } from "react-icons/bs";
 import { FaBookReader, FaFacebook, FaLinkedin, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
+    const { register, handleSubmit, reset } = useForm();
+    
+    const onSubmit = ( result ) =>{
+        if(result){
+            toast.success('Subscribe Successfully!');
+            reset();
+        }
+    }
     
     return (
         <footer className="p-5 text-center mt-10 bg-black text-white">
@@ -44,13 +54,35 @@ const Footer = () => {
                     </div>
                 </nav> 
                 <nav className="mx-auto">
-                    <h6 className="footer footer-title text-xl footer-center">Subscribe</h6> 
-                    <div className="join ml-10 md:ml-0">
-                        <input className="input input-bordered join-item w-1/2 rounded-l-full text-black " placeholder="Enter Email..."/>
-                        <button className=" btn join-item rounded-r-full bg-stone-600">
-                            Subscribe
-                        </button>
-                    </div>
+                    <h2 className="footer footer-title text-xl footer-center">Subscribe to Our Newsletter</h2>
+                    <form
+                        className="w-full"
+                        onSubmit={ handleSubmit(onSubmit) }
+                    >
+                        <div className="mb-4 w-full">
+                            <label 
+                                className=" text-white text-lg font-bold mb-2" htmlFor="email"
+                            >
+                                Email
+                            </label>
+                            <input
+                            className="w-full px-3 py-2 rounded-lg focus:outline-[#D35400] border border-[#ecaf86]"
+                            type="email"
+                            name="email"
+                            id="email"
+                            {...register("email", { required: true })}
+                            required
+                            />
+                        </div>
+                        <div className="text-center">
+                            <button 
+                                className="bg-[#D35400] text-white px-4 py-2 rounded-xl transition duration-300 w-full" 
+                                type="submit"
+                            >
+                                Subscribe
+                            </button>
+                        </div>
+                    </form> 
                 </nav>
             </div>
             <div className="bg-white h-[1px] mt-3"></div>

@@ -50,7 +50,7 @@ const AllMaterials = () => {
                     >
                         <figure>
                             <img 
-                            className='h-56 w-full rounded-lg'
+                            className='h-56 w-full rounded-lg hover:scale-105'
                                 src={material.image}
                                 alt="material image"
                             />

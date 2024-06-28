@@ -14,7 +14,7 @@ const StudySession = ({ studySession }) => {
     
     const {_id, name , email, title,regStart, regEnd, regFee, classStart, classEnd, duration, status} = session;
 
-    const sessionInfo ={
+    const sessionInfo = {
         _id,
         name,
         email,
@@ -22,8 +22,8 @@ const StudySession = ({ studySession }) => {
     }
 
     //handle study session deleted
-    const handleStudySessionDelete = async () => {
-        const res = await axiosPublic.delete(`/study-session-deleted/${_id}`);
+    const handleStudySessionDelete = async (id, refetch) => {
+        const res = await axiosPublic.delete(`/study-session-deleted/${id}`);
         console.log(res.data);
         if(res.data.deletedCount > 0){
             toast.success('Session deleted successfully!');
@@ -80,7 +80,7 @@ const StudySession = ({ studySession }) => {
                             <StudySessionUpdateModal updateData = { [_id, regFee ]}/>
                             <p 
                                 className='cursor-pointer bg-red-50 text-red-500 py-1 pl-2 pr-2'
-                                onClick={handleStudySessionDelete}
+                                onClick={() => handleStudySessionDelete (_id, refetch)}
                                 data-tooltip-id="my-tooltip" 
                                 data-tooltip-content="Are you sure? You want to delete it."
                             >
