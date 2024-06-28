@@ -16,7 +16,10 @@ function Banner() {
             <p className="text-lg text-justify">
                 Welcome to our Collaborative Study Platform, where learning becomes an adventure. Join forces with fellow students to tackle challenges, exchange ideas, and achieve academic excellence together. With powerful tools and a supportive community, we empower you to unlock your full potential and succeed in your educational journey. Start collaborating today and witness the transformations power of collective learning.
             </p>
-            <Link className="w-1/2 mt-20 mx-auto mb-10 lg:mb-0 text-yellow-500 btn btn-ghost btn-outline text-xl">
+            <Link 
+              to="/freeSessions"
+              className="w-1/2 mt-20 mx-auto mb-10 lg:mb-0 text-yellow-500 btn btn-ghost btn-outline text-xl"
+            >
               Access Free Courses
             </Link>
         </div>

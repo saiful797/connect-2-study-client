@@ -31,6 +31,7 @@ import StudentRoute from "./StudentRoute";
 import StudySessions from "../Pages/StudySessions/StudySessions";
 import AdminAnnouncement from "../Components/Dashboard/Admin/AdminAnnouncement/AdminAnnouncement";
 import Notice from "../Pages/Announcement/Notice";
+import FreeCourses from "../Pages/FreeCourses/FreeCourses";
 
 
 export const router = createBrowserRouter([
@@ -58,6 +59,10 @@ export const router = createBrowserRouter([
         {
             path: '/contactUs',
             element: <ContactPage />
+        },
+        {
+          path:'/freeSessions',
+          element:<FreeCourses />
         },
         {
           path:'/study-session-details/:id',
