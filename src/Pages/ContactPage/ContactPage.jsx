@@ -1,13 +1,18 @@
 import { Helmet } from 'react-helmet-async';
 import SectionTitle from '../../Components/Shared/SectionTitle';
 import ScrollToTop from '../../Components/Shared/ScrollToTop';
+import toast from 'react-hot-toast';
+import { useForm } from 'react-hook-form';
 
 const ContactPage = () => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted');
-  };
+  const { register, handleSubmit, reset } = useForm();
+  
+  const onSubmit = ( result ) =>{
+    if(result){
+      toast.success("Message send successfully!");
+      reset();
+    }
+  }
 
   return (
     <div className="contact-page min-h-screen pt-10 bg-green-50 rounded-xl flex flex-col">
@@ -17,7 +22,7 @@ const ContactPage = () => {
 
       <div className=" text-gray-800">
       {/* Hero Section */}
-          <section className="bg-blue-950 mt-20 text-white p-12 text-center lg:mr-5 lg:ml-5">
+          <section className="bg-blue-950 lg:rounded-tl-full lg:rounded-br-full mt-20 text-white p-12 text-center lg:mr-5 lg:ml-5">
             <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
             <p className="text-xl">We'd love to hear from you! Get in touch with us for any inquiries or support.</p>
           </section>
@@ -48,7 +53,8 @@ const ContactPage = () => {
             <div className="max-w-7xl mx-auto px-4">
               <SectionTitle title={'Send Us Your Message'} />
               <form 
-                className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md" 
+                className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md"
+                onSubmit={ handleSubmit(onSubmit) }
               >
                 <div className="mb-4">
                   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">Name</label>
@@ -56,6 +62,7 @@ const ContactPage = () => {
                     className="bg-[#fae9df] w-full px-3 py-2 rounded-lg focus:outline-[#D35400] border border-[#ecaf86]"
                     type="text"
                     name="name"
+                    {...register("name", { required: true })}
                     id="name"
                     required
                   />
@@ -66,6 +73,7 @@ const ContactPage = () => {
                     className="bg-[#fae9df] w-full px-3 py-2 rounded-lg focus:outline-[#D35400] border border-[#ecaf86]"
                     type="email"
                     name="email"
+                    {...register("email", { required: true })}
                     id="email"
                     required
                   />
@@ -76,6 +84,7 @@ const ContactPage = () => {
                     className="bg-[#fae9df] w-full px-3 py-2 rounded-lg focus:outline-[#D35400] border border-[#ecaf86]"
                     name="message"
                     id="message"
+                    {...register("message", { required: true })}
                     rows="5"
                     required
                   ></textarea>

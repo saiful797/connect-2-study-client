@@ -23,19 +23,22 @@ function Banner() {
         <div className="lg:w-1/2 flex justify-center items-center lg:mt-28 relative">
           <img className="h-[450px] w-full rounded-2xl lg:rounded-tl-full" src="https://i.ibb.co/FHFb7kD/pang-yuhao-kd5cxw-ZOK4-unsplash.jpg" alt="" />
 
-          <div className="h-28 w-28 absolute rounded-full shadow-2xl shadow-yellow-500 border-4 border-white bg-yellow-500 top-10 right-10">
+          <div className="h-32 w-32 absolute rounded-full shadow-2xl shadow-yellow-500 border-4 border-white bg-yellow-500 top-10 right-10">
             <p className="text-white flex justify-center items-center mt-2">
               <PiBookOpenTextBold  className="text-4xl font-bold"/>
             </p>
             <p className="text-white text-2xl font-bold flex justify-center items-center">
               1500+
             </p>
-            <p className="text-white text-xs font-bold flex justify-center items-center font-sofia_scans">
+            <p className="text-white text-sm font-bold flex justify-center items-center font-sofia_scans">
               Happy Students
             </p>
           </div>
-          <div className="absolute top-[50%]">
+          <div className="absolute p-4 lg:p-0 lg:w-2/3 top-[50%]">
             <h1 className="text-4xl text-white">Learn Today, Lead Tomorrow</h1>
+              <p>
+                We believe that education is the foundation for a brighter future. Our mission is to empower students to reach their full potential by providing personalized, high-quality tutoring services. By learning today, our students are equipped with the knowledge and skills they need to lead tomorrow. Join us on this journey and unlock the doors to endless possibilities.
+              </p>
           </div>
         </div>
     </div>
