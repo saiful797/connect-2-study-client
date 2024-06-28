@@ -25,9 +25,9 @@ const Notice = () => {
                 {
                     AllAnnouncements?.map( announcement => <div 
                         key = {announcement._id}
-                        className='p-5 shadow-xl rounded-xl border'
+                        className='p-5 shadow-xl rounded-xl border hover:border-[#D35400] box-content'
                     >
-                        <div className='py-1 bg-yellow-500 w-full mb-2'>
+                        <div className='py-1 bg-yellow-500 rounded-tl-3xl rounded-br-3xl w-full mb-2'>
                             <h2 className='text-center text-xl font-bold text-white'>{announcement.title}</h2>
                         </div>
                         <div className='p-1 hover:scale-105'>

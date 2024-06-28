@@ -29,7 +29,7 @@ const AdminAnnouncement = () => {
                             Title 
                         </label>
                         <input
-                            className='w-full px-4 py-3 text-gray-800 border border-teal-200 focus:outline-[#34a87a] rounded-md '
+                            className='ml-2 px-2 py-2 w-full text-gray-800 border border-[#ecaf86] focus:outline-[#D35400] rounded-md '
                             name='title'
                             id='title'
                             type='text'
@@ -45,7 +45,7 @@ const AdminAnnouncement = () => {
 
                         <textarea
                             id='feedback'
-                            className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-teal-200 focus:outline-[#34a87a] '
+                            className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-[#ecaf86] focus:outline-[#D35400]'
                             name='announcement'
                             placeholder="Enter announcement here."
                             {...register("announcement", { required: true })}
@@ -53,7 +53,7 @@ const AdminAnnouncement = () => {
                     </div>
                     <button
                         type='submit'
-                        className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#2db880]'
+                        className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#D35400]'
                     >
                         Submit
                     </button>

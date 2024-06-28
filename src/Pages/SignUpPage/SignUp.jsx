@@ -86,7 +86,7 @@ const SignUp = () => {
           <Helmet>
               <title>Connect2Study | Sign up</title>
           </Helmet>
-        <div className='flex flex-col max-w-md p-5 rounded-md sm:p-10 bg-green-50 text-gray-900'>
+        <div className='flex flex-col max-w-md p-5 rounded-md sm:p-10 bg-[#fffaf5] text-gray-900'>
         <div className='text-center grid place-content-center'>
           <Link 
             data-tooltip-id="my-tooltip"
@@ -94,10 +94,10 @@ const SignUp = () => {
             to = '/'
             className="flex justify-center items-center"
           >
-            <IoHome className="w-7 h-7 text-[#00b16e]"/>
+            <IoHome className="w-7 h-7 text-[#D35400]"/>
           </Link>
           <h1 className='mb-2 text-4xl font-bold'>Sign up</h1>
-          <p className='text-sm text-gray-400'>Welcome to <span className="text-[#00b16e]">Connect2Study</span></p>
+          <p className='text-sm text-gray-400'>Welcome to <span className="text-[#D35400]">Connect2Study</span></p>
         </div>
         <form
           noValidate=''
@@ -116,7 +116,7 @@ const SignUp = () => {
                 id='name'
                 {...register("name", { required: true })}
                 placeholder='Enter Your Name...'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 rounded-md focus:outline-[#D35400] border border-[#ecaf86] bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
             </div>
@@ -131,7 +131,7 @@ const SignUp = () => {
                 {...register("email", { required: true })}
                 required
                 placeholder='Enter Your Email...'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 rounded-md focus:outline-[#D35400] border border-[#ecaf86] bg-gray-200 text-gray-900'
                 data-temp-mail-org='0'
               />
             </div>
@@ -142,7 +142,7 @@ const SignUp = () => {
                     </label>
                     <select 
                       defaultValue="default" 
-                      className="select w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900" 
+                      className='w-full px-3 py-2 rounded-md focus:outline-[#D35400] border border-[#ecaf86] bg-gray-200 text-gray-900'
                       data-temp-mail-org='0'
                       {...register("role", {required: true})} 
                       required
@@ -163,6 +163,7 @@ const SignUp = () => {
                 type='file'
                 id='image'
                 name='image'
+                className='w-full px-3 py-2 rounded-md focus:outline-[#D35400] border border-[#ecaf86] bg-gray-200 text-gray-900'
                 {...register("image", { required: true })}
                 accept='image/*'
               />
@@ -181,7 +182,7 @@ const SignUp = () => {
                 {...register("password", { required: true })}
                 required
                 placeholder='Enter Your Password...'
-                className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900'
+                className='w-full px-3 py-2 rounded-md focus:outline-[#D35400] border border-[#ecaf86] bg-gray-200 text-gray-900'
               />
             </div>
           </div>
@@ -189,7 +190,7 @@ const SignUp = () => {
           <div>
             <button
               type='submit'
-              className='bg-[#00b16e] text-lg font-medium w-full rounded-md py-2 text-white'
+              className='bg-[#D35400] text-lg font-medium w-full rounded-md py-2 text-white'
             >
               Sign up
             </button>
@@ -210,7 +211,7 @@ const SignUp = () => {
           Already have an account?{' '}
           <Link
             to='/signIn'
-            className='hover:underline text-lg font-medium hover:text-[#00b16e] text-gray-600'
+            className='hover:underline text-lg font-medium text-[#D35400]'
           >
             Sign In
           </Link>

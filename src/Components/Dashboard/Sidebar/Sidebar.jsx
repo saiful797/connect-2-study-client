@@ -39,7 +39,7 @@ const Sidebar = () => {
     return (
     <>
       {/* Small Screen Navbar */}
-      <div className='bg-teal-100 text-gray-800 flex justify-between md:hidden'>
+      <div className='bg-[#D35400] text-gray-800 flex justify-between md:hidden'>
         <div>
             <div className='block cursor-pointer p-4 font-bold'>
               <Link to='/' className="text-2xl font-bold flex">
@@ -64,19 +64,19 @@ const Sidebar = () => {
 
       {/* Sidebar */}
       <div
-        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-teal-100 w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
+        className={`z-10 md:fixed flex flex-col justify-between overflow-x-hidden bg-[#D35400] w-64 space-y-6 px-2 py-4 absolute inset-y-0 left-0 transform ${
           isActive && '-translate-x-full'
         }  md:translate-x-0  transition duration-200 ease-in-out`}
       >
         <div>
           <div>
             <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center  mx-auto bg-white'>
-              <Link to='/' className="text-2xl font-bold flex">
+              <Link to='/' className="text-xl font-bold flex">
                 <div className="relative">
-                  <h1 className="flex font-sofia text-[#34a87a]">
-                    <FaBookReader  />
-                    Connect2Study
-                  </h1>
+                <h1 className="flex justify-center items-center text-[#D35400]">
+                    <FaBookReader  className="text-yellow-500"/>
+                    <p> <span className="text-4xl font-extralight">C</span>onnect<span className="text-4xl font-extralight text-yellow-500">2</span><span className="text-4xl font-extralight">S</span>tudy</p>
+                </h1>
                 </div>
               </Link>
             </div>
@@ -89,8 +89,8 @@ const Sidebar = () => {
                 <NavLink
                     to='/dashboard/user-profile'
                     className={({ isActive }) =>
-                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-white   hover:text-gray-700 ${
+                        isActive ? 'bg-white  text-zinc-700' : 'text-white'
                       }`
                     }
                   >
@@ -105,9 +105,10 @@ const Sidebar = () => {
                   <NavLink
                     to='allUsers'
                     className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                    }`}
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-white   hover:text-gray-700 ${
+                        isActive ? 'bg-white  text-zinc-700' : 'text-white'
+                      }`
+                    }
                   >
                     <LiaUsersSolid className='w-5 h-5'/>
 
@@ -118,9 +119,10 @@ const Sidebar = () => {
                   <NavLink
                     to='all-study-sessions'
                     className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                    }`}
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-white   hover:text-gray-700 ${
+                        isActive ? 'bg-white  text-zinc-700' : 'text-white'
+                      }`
+                    }
                   >
                     <FaMagnifyingGlassArrowRight className='w-5 h-5'/>
                     <span className='mx-4 font-medium'>All Study Sessions</span>
@@ -130,9 +132,10 @@ const Sidebar = () => {
                   <NavLink
                     to='all-session-materials'
                     className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                    }`}
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-white   hover:text-gray-700 ${
+                        isActive ? 'bg-white  text-zinc-700' : 'text-white'
+                      }`
+                    }
                   >
                     <IoDocumentsSharp className='w-5 h-5'/>
                     <span className='mx-4 font-medium'>All Session Materials</span>
@@ -142,9 +145,10 @@ const Sidebar = () => {
                   <NavLink
                     to='admin-announcement'
                     className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                    }`}
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-white   hover:text-gray-700 ${
+                        isActive ? 'bg-white  text-zinc-700' : 'text-white'
+                      }`
+                    }
                   >
                     <AiOutlineNotification className='w-5 h-5'/>
 
@@ -160,9 +164,9 @@ const Sidebar = () => {
                   <NavLink
                     to='add-session'
                     className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                    }`
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-white   hover:text-gray-700 ${
+                        isActive ? 'bg-white  text-zinc-700' : 'text-white'
+                      }`
                     }
                   >
 
@@ -174,9 +178,9 @@ const Sidebar = () => {
                   <NavLink
                     to='all-sessions'
                     className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                      isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                    }`
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-white   hover:text-gray-700 ${
+                        isActive ? 'bg-white  text-zinc-700' : 'text-white'
+                      }`
                     }
                   >
                     <FaMagnifyingGlassArrowRight className='w-5 h-5'/>
@@ -187,9 +191,9 @@ const Sidebar = () => {
                   <NavLink
                     to='all-materials'
                     className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                      isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                    }`
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-white   hover:text-gray-700 ${
+                        isActive ? 'bg-white  text-zinc-700' : 'text-white'
+                      }`
                     }
                   >
                     <IoDocumentsSharp className='w-5 h-5'/>
@@ -200,9 +204,9 @@ const Sidebar = () => {
                   <NavLink
                     to='rejection-feedback'
                     className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                      isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                    }`
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-white   hover:text-gray-700 ${
+                        isActive ? 'bg-white  text-zinc-700' : 'text-white'
+                      }`
                     }
                   >
                     <VscFeedback className='w-5 h-5' />
@@ -217,9 +221,9 @@ const Sidebar = () => {
                   <NavLink
                     to='my-booked-sessions'
                     className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                    }`
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-white   hover:text-gray-700 ${
+                        isActive ? 'bg-white  text-zinc-700' : 'text-white'
+                      }`
                     }
                   >
                     <TbBrandBooking className='w-5 h-5'/>
@@ -230,9 +234,9 @@ const Sidebar = () => {
                   <NavLink
                     to='student-personal-notes'
                     className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                    }`
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-white   hover:text-gray-700 ${
+                        isActive ? 'bg-white  text-zinc-700' : 'text-white'
+                      }`
                     }
                   >
                     <SlNotebook className='w-5 h-5'/>
@@ -243,9 +247,9 @@ const Sidebar = () => {
                   <NavLink
                     to='add-student-notes'
                     className={({ isActive }) =>
-                    `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-[#a6f7df]   hover:text-gray-700 ${
-                        isActive ? 'bg-[#a6f7df]  text-gray-700' : 'text-gray-600'
-                    }`
+                      `flex items-center px-4 py-2 my-5  transition-colors duration-300 transform  hover:bg-white   hover:text-gray-700 ${
+                        isActive ? 'bg-white  text-zinc-700' : 'text-white'
+                      }`
                     }
                   >
                     <MdOutlineNoteAdd className='w-5 h-5'/>
@@ -262,7 +266,7 @@ const Sidebar = () => {
           <hr />
           <button
             onClick={logOut}
-            className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-[#a6f7df]   hover:text-gray-700 transition-colors duration-300 transform'
+            className='flex w-full text-xl badge badge-outline py-5 items-center px-4 mt-5 bg-red-100 text-red-600 transition-colors duration-300 transform'
           >
             <RiLogoutCircleRLine className='w-5 h-5'/>
 

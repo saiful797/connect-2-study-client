@@ -4,22 +4,22 @@ import useAxiosSecure from "../../../../Hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
-import { useQuery } from "@tanstack/react-query";
 import useAxiosPublic from "../../../../Hooks/useAxiosPublic";
 import toast from "react-hot-toast";
+import { useEffect, useState } from "react";
 
 const AllUser = () => {
     const axiosSecure = useAxiosSecure();
     const axiosPublic = useAxiosPublic();
+    const [users, setUsers] = useState( [] );
     const { register, handleSubmit, reset } = useForm();
 
-    const {data: users = [], refetch} = useQuery({
-        queryKey:['allUsers'],
-        queryFn: async () => {
-            const res = await axiosSecure.get('/allUsers');
-            return res.data;
-        }
-    })
+    useEffect(() => {
+        axiosSecure.get('/allUsers')
+        .then(res => {
+            setUsers(res.data);
+        })
+    },[])
 
     const onSubmit = async ( data ) => {
         const {text} = data;
@@ -50,9 +50,9 @@ const AllUser = () => {
     const  handleUserDelete = async (id, role) => {
         const res = await axiosPublic.delete(`/delete-a-user/${id}`);
         if(res.data.deletedCount > 0){
-            toast.success(`${role} deleted successfully!`);
-            refetch();
+            toast.success(`${role} deleted successfully!`)
         }
+        refetch();
     }
 
     return (
@@ -73,7 +73,7 @@ const AllUser = () => {
                                     Search Bar:
                                 </label>
                                 <input
-                                    className='ml-2 px-2 py-2 w-1/2 md:w-1/3 text-gray-800 border focus:outline-[#34a87a] rounded-md '
+                                    className='ml-2 px-2 py-2 w-1/2 md:w-1/3 text-gray-800 border border-[#ecaf86] focus:outline-[#D35400] rounded-md '
                                     name='text'
                                     id='text'
                                     type='text'
@@ -85,7 +85,7 @@ const AllUser = () => {
                             <div className="w-full flex justify-center items-center mb-5">
                                 <button
                                     type='submit'
-                                    className='bg-[#00b16e] text-lg font-medium rounded-md px-4 py-1 text-white'
+                                    className='bg-[#D35400] text-lg font-medium rounded-md px-4 py-1 text-white'
                                 >
                                     Search
                                 </button>

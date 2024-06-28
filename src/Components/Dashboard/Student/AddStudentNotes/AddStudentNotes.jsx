@@ -46,7 +46,7 @@ const AddStudentNotes = () => {
                                 Title
                             </label>
                             <input
-                                className='w-full px-4 py-3 text-gray-800 border border-teal-200 focus:outline-[#34a87a] rounded-md '
+                                className='w-full px-3 py-2 rounded-md focus:outline-[#D35400] border border-[#ecaf86] bg-gray-200 text-gray-900'
                                 name='title'
                                 id='title'
                                 type='text'
@@ -62,7 +62,7 @@ const AddStudentNotes = () => {
 
                             <textarea
                                 id='description'
-                                className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-teal-200 focus:outline-[#34a87a] '
+                                className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800 focus:outline-[#D35400] border border-[#ecaf86] '
                                 name='description'
                                 placeholder="Enter your note here."
                                 required
@@ -73,7 +73,7 @@ const AddStudentNotes = () => {
 
                     <button
                         type='submit'
-                        className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#2db880]'
+                        className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#D35400]'
                     >
                         Add Note
                     </button>
