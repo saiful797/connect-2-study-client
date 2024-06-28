@@ -116,11 +116,11 @@ const Navbar = () => {
                 </ul>
             </div>
             <div className="ml-3 lg:ml-5">
-                <Link to='/' className="text-2xl md:text-4xl font-bold flex">
+                <Link to='/' className="text-2xl md:text-4xl font-light flex">
                     <div className="relative">
-                        <h1 className="flex text-[#D35400]">
-                            <FaBookReader  />
-                           <p> Connect<span className="text-red">2</span>Study</p>
+                        <h1 className="flex justify-center items-center text-[#D35400]">
+                            <FaBookReader  className="text-yellow-500"/>
+                           <p> <span className="text-6xl font-extralight">C</span>onnect<span className="text-6xl font-extralight text-yellow-500">2</span><span className="text-6xl font-extralight">S</span>tudy</p>
                         </h1>
                     </div>
                 </Link>
