@@ -21,7 +21,7 @@ function Banner() {
             </Link>
         </div>
         <div className="lg:w-1/2 flex justify-center items-center lg:mt-28 relative">
-          <img className="h-[450px] w-full rounded-2xl lg:rounded-tl-full" src="https://i.ibb.co/FHFb7kD/pang-yuhao-kd5cxw-ZOK4-unsplash.jpg" alt="" />
+          <img className="h-[450px] w-full rounded-2xl lg:rounded-tl-full hover:scale-105" src="https://i.ibb.co/FHFb7kD/pang-yuhao-kd5cxw-ZOK4-unsplash.jpg" alt="" />
 
           <div className="h-32 w-32 absolute rounded-full shadow-2xl shadow-yellow-500 border-4 border-white bg-yellow-500 top-10 right-10">
             <p className="text-white flex justify-center items-center mt-2">
