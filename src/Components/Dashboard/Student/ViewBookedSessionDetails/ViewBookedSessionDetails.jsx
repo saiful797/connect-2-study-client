@@ -29,10 +29,10 @@ const ViewBookedSessionDetails = () => {
             </Helmet>
             <SectionTitle title= {'Session Details'}/>
             {/*view session Details */}
-            <div className="w-full mb-5 p-3 bg-teal-50 rounded-xl">
+            <div className="w-full mb-5 p-3 bg-yellow-50 rounded-xl">
                 <div>
                     <div className="p-3 md:p-5 mx-auto">
-                        <h1 className="text-3xl font-bold text-center mb-5">Course Name: <span className='text-[#00b16e]'>{title}</span></h1>
+                        <h1 className="text-3xl font-bold text-center mb-5">Course Name: <span className='text-[#D35400]'>{title}</span></h1>
                         <div className=' md:flex justify-between mx-auto pl-2 md:pl-5 pr-2 md:pr-5'>
                             <div className=''>
                                 <div>

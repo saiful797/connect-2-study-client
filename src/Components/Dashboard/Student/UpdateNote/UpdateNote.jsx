@@ -39,7 +39,7 @@ const UpdateNote = () => {
             navigate(-1);
         }
         if(res.data.modifiedCount === 0){
-            toast.error('You have not change note!');
+            toast.error('You submit same note!');
             reset();
             navigate(-1);
         }
@@ -51,7 +51,7 @@ const UpdateNote = () => {
                 <title>Connect2Study | Update Note</title>
             </Helmet>
             <SectionTitle title={'Update Note'}/>
-            <div className='md:w-2/3 mx-auto bg-green-50 p-5 rounded-lg'>
+            <div className='md:w-2/3 mx-auto bg-yellow-50 p-5 rounded-lg'>
                 <form 
                     onSubmit={ handleSubmit(onSubmit) }
                 >
@@ -64,7 +64,7 @@ const UpdateNote = () => {
                                 Title
                             </label>
                             <input
-                                className='w-full px-4 py-3 text-gray-800 border border-teal-200 focus:outline-[#34a87a] rounded-md '
+                                className='w-full px-4 py-3 text-gray-800 focus:outline-[#D35400] border border-[#ecaf86] rounded-md '
                                 name='title'
                                 id='title'
                                 type='text'
@@ -81,7 +81,7 @@ const UpdateNote = () => {
 
                             <textarea
                                 id='description'
-                                className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-teal-200 focus:outline-[#34a87a] '
+                                className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800 focus:outline-[#D35400] border border-[#ecaf86]'
                                 name='description'
                                 placeholder="Enter your note here."
                                 defaultValue={note.description}
@@ -93,7 +93,7 @@ const UpdateNote = () => {
                     <div className="mx-auto w-full flex justify-center items-center">
                         <button
                             type='submit'
-                            className='md:w-1/2 p-2 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#2db880]'
+                            className='md:w-1/2 p-2 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#D35400]'
                         >
                             Add Note
                         </button>

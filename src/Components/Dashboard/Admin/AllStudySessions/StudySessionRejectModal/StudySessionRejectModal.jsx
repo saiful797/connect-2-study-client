@@ -43,7 +43,7 @@ const StudySessionRejectModal = ({ sessionItem }) => {
                 Reject
             </button>
             <dialog id="my_modal_4" className="modal">
-                <div className="modal-box bg-green-50">
+                <div className="modal-box">
                     <form method="dialog">
                     {/* if there is a button in form, it will close the modal */}
                     <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
@@ -55,14 +55,14 @@ const StudySessionRejectModal = ({ sessionItem }) => {
                         >
                             <div className='space-y-1 text-sm'>
                                 <div className="mt-5 mb-5">
-                                    <h1 className="text-center text-xl font-bold text-[#34a87a]">Session rejection reason</h1>
+                                    <h1 className="text-center text-xl font-bold text-[#D35400]">Session rejection reason</h1>
                                     <h1 className="text-center text-sm font-bold text-gray-500">If you will solve it. Then send again approval request.</h1>
                                 </div>
                                 <label htmlFor='reason' className='block text-gray-800'>
                                     Rejection reason: 
                                 </label>
                                 <input
-                                    className='w-full px-4 py-3 text-gray-800 border border-teal-200 focus:outline-[#34a87a] rounded-md '
+                                    className='w-full px-4 py-3 text-gray-800 focus:outline-[#D35400] border border-[#ecaf86] rounded-md '
                                     name='reason'
                                     id='reason'
                                     type='text'
@@ -78,7 +78,7 @@ const StudySessionRejectModal = ({ sessionItem }) => {
 
                                 <textarea
                                     id='feedback'
-                                    className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  border border-teal-200 focus:outline-[#34a87a] '
+                                    className='block rounded-md focus:rose-300 w-full h-32 px-4 py-3 text-gray-800  focus:outline-[#D35400] border border-[#ecaf86]'
                                     name='feedback'
                                     placeholder="Enter course feedback here."
                                     {...register("feedback", { required: true })}
@@ -86,7 +86,7 @@ const StudySessionRejectModal = ({ sessionItem }) => {
                             </div>
                             <button
                                 type='submit'
-                                className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#2db880]'
+                                className='w-full p-3 mt-5 text-center font-medium text-white transition duration-200 rounded shadow-md bg-[#D35400]'
                             >
                                 Confirm
                             </button>

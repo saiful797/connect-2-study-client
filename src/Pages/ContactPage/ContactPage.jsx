@@ -59,7 +59,7 @@ const ContactPage = () => {
                 <div className="mb-4">
                   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">Name</label>
                   <input
-                    className="bg-[#fae9df] w-full px-3 py-2 rounded-lg focus:outline-[#D35400] border border-[#ecaf86]"
+                    className="bg-yellow-50 w-full px-3 py-2 rounded-lg focus:outline-[#D35400] border border-[#ecaf86]"
                     type="text"
                     name="name"
                     {...register("name", { required: true })}
@@ -70,7 +70,7 @@ const ContactPage = () => {
                 <div className="mb-4">
                   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
                   <input
-                    className="bg-[#fae9df] w-full px-3 py-2 rounded-lg focus:outline-[#D35400] border border-[#ecaf86]"
+                    className="bg-yellow-50 w-full px-3 py-2 rounded-lg focus:outline-[#D35400] border border-[#ecaf86]"
                     type="email"
                     name="email"
                     {...register("email", { required: true })}
@@ -81,7 +81,7 @@ const ContactPage = () => {
                 <div className="mb-4">
                   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">Message</label>
                   <textarea
-                    className="bg-[#fae9df] w-full px-3 py-2 rounded-lg focus:outline-[#D35400] border border-[#ecaf86]"
+                    className="bg-yellow-50 w-full px-3 py-2 rounded-lg focus:outline-[#D35400] border border-[#ecaf86]"
                     name="message"
                     id="message"
                     {...register("message", { required: true })}

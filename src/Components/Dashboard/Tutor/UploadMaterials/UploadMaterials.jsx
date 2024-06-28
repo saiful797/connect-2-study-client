@@ -58,7 +58,7 @@ const UploadMaterials = () => {
                 <title>Connect2Study | Upload Materials</title>
             </Helmet>
             <SectionTitle title="Upload Materials"/>
-            <div className="w-full md:w-2/3 lg:w-1/2 mx-auto bg-green-50 p-10 rounded-lg border-2">
+            <div className="w-full md:w-2/3 lg:w-1/2 mx-auto p-10 rounded-lg border-2">
                 <div className="mb-3">
                     Session ID: <span className="text-red-600 ml-3">{ id }</span>
                 </div>
@@ -82,7 +82,7 @@ const UploadMaterials = () => {
                         name="title" 
                         required 
                         {...register("title", { required: true })}
-                        className="mt-1 block w-full p-1 border border-gray-300 rounded-md focus:outline-[#00b16e]" 
+                        className="mt-1 block w-full p-1 focus:outline-[#D35400] border border-[#ecaf86] rounded-md" 
                     />
                 </div>
                 <div>
@@ -98,7 +98,7 @@ const UploadMaterials = () => {
                         name="link" 
                         required 
                         {...register("link", { required: true })}
-                        className="mt-1 block w-full p-1 border border-gray-300 rounded-md focus:outline-[#00b16e]" 
+                        className="mt-1 block w-full p-1 focus:outline-[#D35400] border border-[#ecaf86] rounded-md" 
                     />
                 </div>
                 <div className="space-y-1">
@@ -120,7 +120,7 @@ const UploadMaterials = () => {
                 
                 <button 
                     type="submit" 
-                    className="bg-[#00b16e] text-white py-2 px-6 rounded-md hover:bg-[#00b16e] w-full"
+                    className="bg-[#D35400] text-white py-2 px-6 rounded-md  w-full"
                 >
                     Submit
                 </button>

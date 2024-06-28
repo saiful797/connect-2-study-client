@@ -18,7 +18,13 @@ const FreeCourses = () => {
             <SectionTitle 
                 title={'Free Study Sessions'}
             />
-            <p className="text-4xl font-bold text-red-500 text-center">Under Development</p>
+            {
+                sessions.length === 0 && <p 
+                    className="text-4xl font-bold text-red-500 text-center"
+                >
+                    Under Development
+                </p>
+            }
             <div className="grid md:grid-cols-2 gap-5 mt-3 p-2">
                 {
                     sessions?.map(session => <Sessions key={session._id} session ={ session }/>)

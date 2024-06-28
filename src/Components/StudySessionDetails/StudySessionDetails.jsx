@@ -68,7 +68,7 @@ const StudySessionDetails = () => {
                 <SectionTitle title={'Session Details'}/>
 
                 <div className="lg:w-2/3 p-3 md:p-5 mx-auto border-4">
-                    <h1 className="text-3xl font-bold text-center mb-5">Course Name: <span className='text-[#00b16e]'>{title}</span></h1>
+                    <h1 className="text-3xl font-bold text-center mb-5">Course Name: <span className='text-[#D35400]'>{title}</span></h1>
                     <div className=' md:flex justify-between mx-auto pl-2 md:pl-5 pr-2 md:pr-5'>
                         <div className=''>
                             <div>
