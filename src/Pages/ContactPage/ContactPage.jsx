@@ -13,7 +13,7 @@ const ContactPage = () => {
   };
 
   return (
-    <div className="contact-page min-h-screen pt-10 bg-green-50 flex flex-col">
+    <div className="contact-page min-h-screen pt-10 bg-yellow-50 flex flex-col">
       <Helmet>
         <title>Connect2Study | Contact Us</title>
       </Helmet>
