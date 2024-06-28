@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const AllApprovedSessions = ({ session }) => { 
-    const { title, description, regEnd }  = session;
+    const { title, description, regEnd, classStart }  = session;
     const remainingDay = parseInt(regEnd.split('-')[2]) - parseInt(moment().format('L').split('/')[1]) + 1;
     const endMonth = parseInt(regEnd.split('-')[1]);
     const thisMonth = parseInt(moment().format('L').split('/')[0]);
@@ -12,10 +12,14 @@ const AllApprovedSessions = ({ session }) => {
     // console.log(remainingDay)
 
     return (
-        <div className="card bg-white hover:bg-[#f0e4dd] hover:border hover:border-[#D35400] shadow-xl">
+        <div className="card bg-white border border-white hover:border-[#D35400] shadow-xl">
             <div className="card-body">
                 <h2 className="card-title">{ title }</h2>
                 <p className=''><span className='text-lg font-medium text-zinc-900'>Course Details: </span>{ description }</p>
+                <div className='flex justify-between'>
+                    <p>Registration End: {regEnd}</p>
+                    <p>Class Start: {classStart}</p>
+                </div>
             </div>
             <div className="flex justify-between gap-10 pl-5 pr-10 pb-5 ml-3 -mt-5">
                 {
