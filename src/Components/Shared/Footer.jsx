@@ -11,7 +11,7 @@ const Footer = () => {
     
     const onSubmit = ( result ) =>{
         if(result){
-            toast.success('Subscribe Successfully!');
+            toast.success('You have subscribed successfully!');
             reset();
         }
     }
