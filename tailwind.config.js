@@ -6,7 +6,6 @@ export default {
   ],
   theme: {
     extend: {
-      
       fontFamily:{
         sofia: ["Sofia", "cursive"],
         sofia_scans: ["Sofia Sans Condensed", "sans-serif"],

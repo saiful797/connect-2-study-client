@@ -25,7 +25,7 @@ const AllApprovedSessions = ({ session }) => {
                    ( remainingDay === 0 ) && ( endMonth < thisMonth ) && <p className="bg-red-50 text-red-500 pl-2 pr-2 w-16 flex justify-center items-center">closed</p>
                 }
                 <Link to={`/study-session-details/${session._id}`} className='text-lg font-bold cursor-pointer border border-zinc-800 hover:border-[#D35400] pl-3 pr-3 hover:bg-white hover:text-[#D35400]'>
-                    Read more
+                    Read more...
                 </Link>
             </div>
         </div>

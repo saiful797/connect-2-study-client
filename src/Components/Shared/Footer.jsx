@@ -7,15 +7,15 @@ import { Link } from "react-router-dom";
 const Footer = () => {
     
     return (
-        <footer className="p-5 text-center mt-10 bg-blue-950 text-white">
+        <footer className="p-5 text-center mt-10 bg-black text-white">
             <div className="footer max-w-6xl grid  place-content-center md:place-content-between	">
                 <aside>
                     <div className="ml-12 lg:ml-5 grid place-content-center">
-                        <Link to='/' className="text-2xl md:text-4xl font-bold flex">
+                        <Link to='/' className="text-2xl font-light flex">
                             <div className="relative">
-                                <h1 className="flex font-sofia text-[#34a87a]">
-                                    <FaBookReader  />
-                                    Connect2Study
+                                <h1 className="flex justify-center items-center text-[#D35400]">
+                                    <FaBookReader  className="text-yellow-500 text-4xl"/>
+                                <p> <span className="text-6xl font-extralight">C</span>onnect<span className="text-6xl font-extralight text-yellow-500">2</span><span className="text-6xl font-extralight">S</span>tudy</p>
                                 </h1>
                             </div>
                         </Link>
