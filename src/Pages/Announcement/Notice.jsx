@@ -3,6 +3,7 @@ import SectionTitle from '../../Components/Shared/SectionTitle';
 import { useQuery } from '@tanstack/react-query';
 import useAxiosPublic from '../../Hooks/useAxiosPublic';
 import { Helmet } from 'react-helmet-async';
+import ScrollToTop from '../../Components/Shared/ScrollToTop';
 
 const Notice = () => {
     const axiosPublic = useAxiosPublic();
@@ -24,17 +25,19 @@ const Notice = () => {
                 {
                     AllAnnouncements?.map( announcement => <div 
                         key = {announcement._id}
-                        className='p-5 shadow-xl rounded-xl text-white'
+                        className='p-5 shadow-xl rounded-xl border'
                     >
                         <div className='py-1 bg-yellow-500 w-full mb-2'>
-                            <h2 className='text-center text-xl font-bold'>{announcement.title}</h2>
+                            <h2 className='text-center text-xl font-bold text-white'>{announcement.title}</h2>
                         </div>
-                        <div className='p-1 text-blue-950 hover:scale-105'>
+                        <div className='p-1 hover:scale-105'>
                             <p className='text-justify'>{announcement.announcement}</p>
                         </div>
                     </div>)
                 }
             </div>
+            {/* Scroll to top */}
+            <ScrollToTop />
         </div>
     );
 };

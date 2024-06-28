@@ -34,7 +34,7 @@ const SignIn = () => {
         <Helmet>
             <title>Connect2Study | Sign in</title>
         </Helmet>
-        <div className='flex flex-col max-w-lg p-6 rounded-md sm:p-10 bg-green-50 text-gray-900'>
+        <div className='flex flex-col max-w-lg p-6 rounded-md sm:p-10 bg-[#fffaf5] text-gray-900'>
           <div className='mb-3 text-center grid place-content-center'>
             <Link 
               data-tooltip-id="my-tooltip"
@@ -42,11 +42,11 @@ const SignIn = () => {
               to = '/'
               className="flex justify-center items-center"
             >
-              <IoHome className="w-7 h-7 text-[#00b16e]"/>
+              <IoHome className="w-7 h-7 text-[#D35400]"/>
             </Link>
 
             <h1 className='my-3 text-4xl font-bold'>Sign in</h1>
-            <p className='text-sm text-gray-400'>Welcome to <span className="text-[#00b16e]">Connect2Study</span></p>
+            <p className='text-sm text-gray-400'>Welcome to <span className="text-[#D35400]">Connect2Study</span></p>
           </div>
           <div className='flex mt-1 items-center space-x-1'>
             <div className='flex-1 h-px sm:w-16 dark:bg-gray-700'></div>
@@ -85,7 +85,7 @@ const SignIn = () => {
                   {...register("email", { required: true })}
                   required
                   placeholder='Enter Your Email...'
-                  className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900'
+                  className='w-full px-3 py-2 rounded-md focus:outline-[#D35400] border border-[#ecaf86] bg-gray-200 text-gray-900'
                   data-temp-mail-org='0'
                 />
               </div>
@@ -103,7 +103,7 @@ const SignIn = () => {
                   {...register("password", { required: true })}
                   required
                   placeholder='Enter Your Password...'
-                  className='w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-[#00b16e] bg-gray-200 text-gray-900'
+                  className='w-full px-3 py-2 rounded-md focus:outline-[#D35400] border border-[#ecaf86] bg-gray-200 text-gray-900'
                 />
               </div>
             </div>
@@ -111,14 +111,14 @@ const SignIn = () => {
             <div>
               <button
                 type='submit'
-                className='bg-[#00b16e] text-lg font-medium w-full rounded-md py-2 text-white'
+                className='bg-[#D35400] text-lg font-medium w-full rounded-md py-2 text-white'
               >
                 Sign in
               </button>
             </div>
           </form>
           <div className='space-y-1'>
-            <button className='text-xs hover:underline hover:text-[#00b16e] text-gray-400'>
+            <button className='text-xs hover:underline hover:text-[#D35400] text-gray-400'>
               Forgot password?
             </button>
           </div>
@@ -127,7 +127,7 @@ const SignIn = () => {
             Don&apos;t have an account yet?{' '}
             <Link
               to='/signUp'
-              className='hover:underline text-lg font-medium hover:text-[#00b16e] text-gray-600'
+              className='hover:underline text-lg font-medium text-[#D35400]'
             >
               Sign up
             </Link>

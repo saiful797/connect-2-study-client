@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../Components/Shared/SectionTitle";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
 import Sessions from "./Sessions/Sessions";
+import ScrollToTop from "../../Components/Shared/ScrollToTop";
 
 const StudySessions = () => {
     const axiosPublic = useAxiosPublic();
@@ -21,6 +22,9 @@ const StudySessions = () => {
                     approvedSessions?.map(session => <Sessions key={session._id} session ={ session }/>)
                 }
             </div>
+
+            {/* Scroll to top */}
+            <ScrollToTop />
         </div>
     );
 };

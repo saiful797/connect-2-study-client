@@ -1,5 +1,6 @@
 import { Helmet } from 'react-helmet-async';
 import SectionTitle from '../../Components/Shared/SectionTitle';
+import ScrollToTop from '../../Components/Shared/ScrollToTop';
 
 const ContactPage = () => {
   const handleSubmit = (e) => {
@@ -16,7 +17,7 @@ const ContactPage = () => {
 
       <div className=" text-gray-800">
       {/* Hero Section */}
-          <section className="bg-blue-950 mt-20 text-white p-12 text-center">
+          <section className="bg-blue-950 mt-20 text-white p-12 text-center lg:mr-5 lg:ml-5">
             <h1 className="text-4xl font-bold mb-4">Contact Us</h1>
             <p className="text-xl">We'd love to hear from you! Get in touch with us for any inquiries or support.</p>
           </section>
@@ -45,12 +46,14 @@ const ContactPage = () => {
           {/* Send Us a Message Form */}
           <section className="pb-12">
             <div className="max-w-7xl mx-auto px-4">
-              <SectionTitle title={'Send Us a Message'} />
-              <form className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md" >
+              <SectionTitle title={'Send Us Your Message'} />
+              <form 
+                className="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-md" 
+              >
                 <div className="mb-4">
                   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">Name</label>
                   <input
-                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="bg-[#fae9df] w-full px-3 py-2 rounded-lg focus:outline-[#D35400] border border-[#ecaf86]"
                     type="text"
                     name="name"
                     id="name"
@@ -60,7 +63,7 @@ const ContactPage = () => {
                 <div className="mb-4">
                   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">Email</label>
                   <input
-                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="bg-[#fae9df] w-full px-3 py-2 rounded-lg focus:outline-[#D35400] border border-[#ecaf86]"
                     type="email"
                     name="email"
                     id="email"
@@ -70,7 +73,7 @@ const ContactPage = () => {
                 <div className="mb-4">
                   <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="message">Message</label>
                   <textarea
-                    className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600"
+                    className="bg-[#fae9df] w-full px-3 py-2 rounded-lg focus:outline-[#D35400] border border-[#ecaf86]"
                     name="message"
                     id="message"
                     rows="5"
@@ -78,12 +81,19 @@ const ContactPage = () => {
                   ></textarea>
                 </div>
                 <div className="text-center">
-                  <button className="bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition duration-300" type="submit">Send Message</button>
+                  <button 
+                    className="bg-[#D35400] border-2 hover:border-2 hover:border-blue-950 text-white px-4 py-2 rounded-full transition duration-300 " 
+                    type="submit"
+                  >
+                    Send Message
+                  </button>
                 </div>
               </form>
             </div>
           </section>
       </div>
+      {/* Scroll to top */}
+      <ScrollToTop />
     </div>
   );
 };
